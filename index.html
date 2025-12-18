@@ -220,16 +220,13 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                logopede<span style="color: var(--accent)">.lt</span>
+                Sigrida <span style="color: var(--accent)">Rupšytė</span>-Paleičikė
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-lg-center gap-lg-3">
+            <div class="d-none d-lg-block">
+                <ul class="navbar-nav flex-row align-items-center gap-3">
                     <li class="nav-item"><a class="nav-link fw-medium" href="#paslaugos">Paslaugos</a></li>
                     <li class="nav-item">
                         <button class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#cvModal">CV</button>
@@ -261,6 +258,9 @@
                         <a href="#paslaugos" class="btn btn-outline btn-lg px-4">
                             Peržiūrėti paslaugas
                         </a>
+                        <button class="btn btn-outline btn-lg px-4 d-lg-none" data-bs-toggle="modal" data-bs-target="#cvModal">
+                            CV
+                        </button>
                     </div>
                     <div class="mt-5 d-flex gap-4">
                         <div class="small d-flex align-items-center gap-2">
@@ -273,7 +273,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 reveal" style="animation-delay: 0.1s">
+                <div class="col-lg-5 reveal d-none d-lg-block" style="animation-delay: 0.1s">
                     <div class="photo-card">
                         <div class="hero-img-wrap">
                             <img src="logopede.png" alt="Sigrida Rupšytė-Paleičikė" class="hero-img">
