@@ -3,275 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klinikinė logopedė Sigrida Rupšytė-Paleičikė</title>
-    <meta name="description" content="Klinikinė logopedė Sigrida Rupšytė-Paleičikė. Profesionali pagalba vaikams ir suaugusiems Vilniuje, Balsiuose.">
+    <title>Logopedė Sigrida Rupšytė-Paleičikė | Klinikinė logopedė Vilniuje</title>
+    <meta name="description" content="Profesionali klinikinė logopedė Sigrida Rupšytė-Paleičikė. Pagalba vaikams ir suaugusiems Vilniuje (Balsiuose): kalbos raida, artikuliacija, reabilitacija.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://logopede.lt/">
+    <meta property="og:title" content="Logopedė Sigrida Rupšytė-Paleičikė | Klinikinė logopedė Vilniuje">
+    <meta property="og:description" content="Profesionali klinikinė logopedė Sigrida Rupšytė-Paleičikė. Pagalba vaikams ir suaugusiems Vilniuje (Balsiuose).">
+    <meta property="og:image" content="https://logopede.lt/logopede-sigrida-rupsyte-paleicike.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://logopede.lt/">
+    <meta property="twitter:title" content="Logopedė Sigrida Rupšytė-Paleičikė | Klinikinė logopedė Vilniuje">
+    <meta property="twitter:description" content="Profesionali klinikinė logopedė Sigrida Rupšytė-Paleičikė. Pagalba vaikams ir suaugusiems Vilniuje (Balsiuose).">
+    <meta property="twitter:image" content="https://logopede.lt/logopede-sigrida-rupsyte-paleicike.png">
+
+    <link rel="canonical" href="https://logopede.lt/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
     <style>
-        :root{
-            --bg: #F8FAFC;
-            --surface: #FFFFFF;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --primary: #0F172A;      /* Deep Navy */
-            --accent: #2563EB;       /* Modern Blue */
-            --accent-soft: rgba(37, 99, 235, 0.08);
-            --border: rgba(15, 23, 42, 0.08);
-            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            --radius-lg: 24px;
-            --radius-md: 16px;
+        :root {
+            /* Modern Palette */
+            --bg-body: #ffffff;
+            --bg-surface: #f8fafc;
+            --bg-surface-2: #f1f5f9;
+            
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            
+            --primary: #0b57d0;      /* Vibrant Blue */
+            --primary-dark: #0842a0; /* Deeper Blue */
+            --primary-light: #eff6ff; /* Lightest Blue */
+            
+            --accent: #f59e0b;       /* Amber 500 */
+            --accent-soft: #fef3c7;
+            
+            --success-soft: #dcfce7;
+            --success-text: #166534;
+
+            --border: #e2e8f0;
+            
+            --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --radius-md: 12px;
         }
 
-        body{
-            font-family: 'Instrument Sans', sans-serif;
+        body {
+            font-family: 'Inter', sans-serif;
             color: var(--text-main);
-            background: var(--bg);
+            background: var(--bg-body);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5 {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Navbar */
-        .navbar{
-            background: rgba(248, 250, 252, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 0;
-        }
-        .navbar-brand{
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--primary);
-            letter-spacing: -0.02em;
-        }
-
-        /* Buttons */
-        .btn-primary{
-            background: var(--primary);
-            border: none;
-            padding: 12px 28px;
-            font-weight: 600;
-            border-radius: 100px;
-            transition: all 0.2s ease;
-        }
-        .btn-primary:hover{
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-        }
-        .btn-outline{
-            border: 1px solid var(--border);
-            background: white;
-            color: var(--primary);
-            padding: 12px 28px;
-            font-weight: 600;
-            border-radius: 100px;
-            transition: all 0.2s ease;
-        }
-        .btn-outline:hover{
-            background: var(--bg);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero{
-            padding: 120px 0 80px;
-            background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.05), transparent),
-                        radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.03), transparent);
-        }
-        .hero-label {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--accent-soft);
-            color: var(--accent);
-            border-radius: 100px;
             font-weight: 700;
-            font-size: 0.85rem;
+            letter-spacing: -0.025em;
+            color: var(--text-main);
+        }
+
+        /* Gradient Background Blobs */
+        .bg-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.07;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .blob-1 { background: var(--primary); top: -10%; right: -10%; }
+        .blob-2 { background: var(--accent); bottom: 10%; left: -10%; width: 400px; height: 400px; }
+
+        /* Components */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 1.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .hero-title{
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary) !important;
+            background: var(--bg-surface-2);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary {
+            background: var(--text-main); /* Dark slate for primary actions */
+            border: none;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06);
+        }
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(14, 116, 144, 0.3);
+        }
+        .btn-outline {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            border-color: var(--text-main);
+            background: var(--bg-surface);
+            transform: translateY(-2px);
+        }
+        .btn-accent {
+            background: var(--primary);
+            border: none;
+            color: white;
+        }
+        .btn-accent:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(14, 116, 144, 0.4);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 100px;
+            position: relative;
+        }
+        .hero-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+        .hero-title .highlight {
+            color: transparent;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
         }
         .hero-desc {
             font-size: 1.25rem;
             color: var(--text-muted);
             max-width: 540px;
             margin-bottom: 2.5rem;
+            line-height: 1.7;
         }
-
-        .photo-card {
+        
+        /* Modern Photo Card */
+        .hero-img-container {
             position: relative;
-            padding: 20px;
+            z-index: 1;
         }
-        .photo-card::before {
-            content: '';
+        .hero-img-bg {
             position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            background: white;
-            border-radius: var(--radius-lg);
-            transform: rotate(2deg);
+            top: 20px;
+            right: -20px;
+            bottom: -20px;
+            left: 20px;
+            background: var(--primary-light);
+            border-radius: var(--radius-xl);
             z-index: -1;
-            box-shadow: var(--shadow);
+            transform: rotate(3deg);
+            transition: transform 0.4s ease;
         }
-        .hero-img-wrap {
-            border-radius: var(--radius-lg);
+        .hero-img-wrapper {
+            border-radius: var(--radius-xl);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            background: #e2e8f0;
+            box-shadow: var(--shadow-lg);
+            background: white;
+            transition: transform 0.4s ease;
         }
+        .hero-img-container:hover .hero-img-bg { transform: rotate(5deg); }
+        .hero-img-container:hover .hero-img-wrapper { transform: translateY(-5px); }
+        
         .hero-img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s ease;
         }
-        .hero-img:hover {
-            transform: scale(1.02);
+
+        .stats-row {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .stat-item h4 {
+            font-size: 2rem;
+            margin-bottom: 0;
+            color: var(--text-main);
+        }
+        .stat-item p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            font-weight: 500;
         }
 
         /* Services */
+        .services-section {
+            padding: 100px 0;
+            background: var(--bg-surface);
+            position: relative;
+        }
         .service-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: var(--radius-lg);
-            height: 100%;
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
+            height: 100%;
         }
         .service-card:hover {
-            border-color: var(--accent);
-            box-shadow: var(--shadow);
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
         }
-        .icon-box {
+        .service-icon-wrapper {
             width: 56px;
             height: 56px;
-            background: var(--accent-soft);
-            color: var(--accent);
-            border-radius: 14px;
+            background: var(--bg-surface-2);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--text-main);
             font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        .service-card:hover .service-icon-wrapper {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .service-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .service-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Milestones */
+        .milestone-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .milestone-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        .milestone-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .milestone-badge {
+            background: var(--bg-surface-2);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        .milestone-important {
+            background: var(--text-main);
+            color: white;
+            border: none;
+        }
+        .milestone-important .milestone-badge {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .milestone-important p { color: rgba(255,255,255,0.9); }
+
+        /* CTA */
+        .cta-box {
+            background: var(--text-main);
+            border-radius: var(--radius-xl);
+            padding: 4rem 2rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.5;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .cta-title {
+            color: white;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
 
         /* Footer */
         footer {
-            background: var(--surface);
+            padding: 4rem 0 2rem;
+            background: white;
             border-top: 1px solid var(--border);
-            padding: 40px 0;
         }
-        .footer-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.9rem;
-        }
-        .footer-link:hover {
-            color: var(--accent);
+        .footer-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 1rem;
         }
 
-        /* Modals */
+        /* Modal */
         .modal-content {
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             border: none;
-            overflow: hidden;
+            box-shadow: var(--shadow-lg);
         }
+        .modal-header {
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+        .modal-body { padding: 2rem; }
 
         /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .reveal {
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
 
         @media (max-width: 991px) {
-            .hero { padding: 80px 0 40px; }
+            .hero-img-container {
+                max-width: 400px;
+                margin: 3rem auto 0;
+            }
             .hero-title { font-size: 2.5rem; }
-            .photo-card { margin-top: 40px; max-width: 400px; margin-left: auto; margin-right: auto; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Background Blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
     <nav class="navbar sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                Sigrida <span style="color: var(--accent)">Rupšytė</span>-Paleičikė
+            <a class="navbar-brand lh-sm" href="#">
+                <div class="text-primary text-uppercase" style="letter-spacing: 0.02em;">Logopedė</div>
+                <div class="text-muted fw-medium" style="font-size: 0.85rem; letter-spacing: 0; text-transform: none;">Sigrida Rupšytė-Paleičikė</div>
             </a>
-            <div class="d-none d-lg-block">
-                <ul class="navbar-nav flex-row align-items-center gap-3">
-                    <li class="nav-item"><a class="nav-link fw-medium" href="#paslaugos">Paslaugos</a></li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#cvModal">CV</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                            Registruotis
-                        </button>
-                    </li>
-                </ul>
+            <div class="d-none d-lg-flex align-items-center gap-2">
+                <a class="nav-link" href="#paslaugos">Paslaugos</a>
+                <a class="nav-link" href="#kada">Kada kreiptis</a>
+                <a class="nav-link" href="#kontaktai">Kontaktai</a>
+                <div class="vr mx-2 text-muted opacity-25"></div>
+                <button class="btn btn-outline btn-sm px-4" data-bs-toggle="modal" data-bs-target="#cvModal">CV</button>
+                <button class="btn btn-primary btn-sm px-4" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                    Registruotis
+                </button>
             </div>
+            <button class="btn btn-outline d-lg-none p-2" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                <i class="bi bi-calendar-check fs-5"></i>
+            </button>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7 reveal">
-                    <span class="hero-label">Klinikinė logopedė</span>
-                    <h1 class="hero-title">Padedu rasti <br>Jūsų <span style="color: var(--accent)">balsą.</span></h1>
+                <div class="col-lg-6 reveal">
+                    <span class="section-label">
+                        <i class="bi bi-patch-check-fill me-1"></i> Klinikinė logopedė
+                    </span>
+                    <h1 class="hero-title">
+                        Logopedinė pagalba: <br>nuo <span class="highlight">klinikinio vertinimo</span> iki sėkmės
+                    </h1>
                     <p class="hero-desc">
-                        Profesionali pagalba vaikams ir suaugusiems: nuo kalbos raidos iki rijimo sutrikimų reabilitacijos. Dirbu Vilniuje, Balsiuose ir nuotoliu.
+                        Sujungiu klinikinį tikslumą su edukaciniu pritaikymu. Padedu rasti pamatines kalbos sutrikimų priežastis ir ruošiu vaiką sėkmingam mokymuisi bei socializacijai.
                     </p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <button class="btn btn-primary btn-lg px-5" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                            Rezervuoti laiką
+                    <div class="d-flex flex-wrap gap-3 mb-5">
+                        <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                            <i class="bi bi-calendar2-check me-2"></i>Rezervuoti vizitą
                         </button>
-                        <a href="#paslaugos" class="btn btn-outline btn-lg px-4">
-                            Peržiūrėti paslaugas
+                        <a href="#paslaugos" class="btn btn-outline btn-lg">
+                            Sužinoti daugiau
                         </a>
-                        <button class="btn btn-outline btn-lg px-4 d-lg-none" data-bs-toggle="modal" data-bs-target="#cvModal">
-                            CV
-                        </button>
                     </div>
-                    <div class="mt-5 d-flex gap-4">
-                        <div class="small d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-accent" style="color: var(--accent)"></i>
-                            <span class="fw-semibold">Konfidencialu</span>
+                    
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <h4>5+</h4>
+                            <p>Metų patirties</p>
                         </div>
-                        <div class="small d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-accent" style="color: var(--accent)"></i>
-                            <span class="fw-semibold">Individualus planas</span>
+                        <div class="stat-item">
+                            <h4>Vilnius</h4>
+                            <p>Balsiai / Nuotoliu</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 reveal d-none d-lg-block" style="animation-delay: 0.1s">
-                    <div class="photo-card">
-                        <div class="hero-img-wrap">
-                            <img src="logopede.png" alt="Sigrida Rupšytė-Paleičikė" class="hero-img">
+                <div class="col-lg-5 offset-lg-1 reveal delay-100">
+                    <div class="hero-img-container">
+                        <div class="hero-img-bg"></div>
+                        <div class="hero-img-wrapper">
+                            <img src="logopede-sigrida-rupsyte-paleicike.png" alt="Sigrida Rupšytė-Paleičikė" class="hero-img">
                         </div>
                     </div>
                 </div>
@@ -279,114 +521,320 @@
         </div>
     </section>
 
-    <section id="paslaugos" class="py-5" style="padding-top: 100px !important;">
+    <section id="paslaugos" class="services-section">
         <div class="container">
-            <div class="row mb-5 reveal">
-                <div class="col-lg-6">
-                    <h2 class="section-title">Specializuota pagalba</h2>
-                    <p class="text-muted">Kiekvienas atvejis unikalus, todėl terapija pritaikoma asmeniškai pagal poreikiys ir tikslus.</p>
-                </div>
+            <div class="text-center mb-5 reveal">
+                <span class="section-label">Specializacija</span>
+                <h2 class="section-title">Kryptingas darbas su vaiku</h2>
+                <p class="section-desc mx-auto">Terapija pritaikoma asmeniškai, derinant mokslines metodikas ir žaidybinį procesą.</p>
             </div>
 
-            <div class="row g-4 reveal" style="animation-delay: 0.2s">
-                <div class="col-md-4">
+            <div class="row g-4 reveal delay-100">
+                <div class="col-md-6 col-lg-4">
                     <div class="service-card">
-                        <div class="icon-box"><i class="bi bi-search"></i></div>
-                        <h3>Diagnostika</h3>
-                        <p class="text-muted">Išsamus kalbos, kalbėjimo ir komunikacijos vertinimas. Sudarome aiškų tolesnių veiksmų planą.</p>
+                        <div class="service-icon-wrapper"><i class="bi bi-balloon-heart"></i></div>
+                        <h3>Ankstyvoji intervencija</h3>
+                        <p class="text-muted small mb-3">Mažyliams ir vėluojantiems prabilti.</p>
+                        <ul class="service-list list-unstyled">
+                            <li>Ikikalbinių įgūdžių lavinimas</li>
+                            <li>Garsų ir skiemenų provokavimas</li>
+                            <li>Komunikacijos džiaugsmo kūrimas</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-4">
+
+                <div class="col-md-6 col-lg-4">
                     <div class="service-card">
-                        <div class="icon-box"><i class="bi bi-balloon-heart"></i></div>
-                        <h3>Vaikų logopedija</h3>
-                        <p class="text-muted">Kalbos raidos skatinimas, tarties korekcija ir fonologinio suvokimo lavinimas per žaidimą.</p>
+                        <div class="service-icon-wrapper"><i class="bi bi-emoji-smile"></i></div>
+                        <h3>Oralinė motorika ir mityba</h3>
+                        <p class="text-muted small mb-3">Artikuliacinio aparato funkcijos.</p>
+                        <ul class="service-list list-unstyled">
+                            <li>Artikuliacinė mankšta</li>
+                            <li>Mitybos terapija „išrankiems"</li>
+                            <li>Kvėpavimo pratimai fonacijai</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-4">
+
+                <div class="col-md-6 col-lg-4">
                     <div class="service-card">
-                        <div class="icon-box"><i class="bi bi-person-walking"></i></div>
-                        <h3>Reabilitacija</h3>
-                        <p class="text-muted">Darbas su suaugusiais po neurologinių susirgimų (insultų, traumų). Rijimo ir kalbos atkūrimas.</p>
+                        <div class="service-icon-wrapper"><i class="bi bi-ear"></i></div>
+                        <h3>Po kochlearinės implantacijos</h3>
+                        <p class="text-muted small mb-3">Pagalba esant klausos sutrikimams.</p>
+                        <ul class="service-list list-unstyled">
+                            <li>Klausos-žodinė terapija</li>
+                            <li>Garsų diskriminacija triukšme</li>
+                            <li>Kalbos amžiaus pasivijimas</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper"><i class="bi bi-chat-dots"></i></div>
+                        <h3>Artikuliacija ir fonologija</h3>
+                        <ul class="service-list list-unstyled">
+                            <li>Garsų (R, Š, Ž, Č, S) tarimo korekcija</li>
+                            <li>Foneminis suvokimas</li>
+                            <li>Pasiruošimas skaitymui/rašymui</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper"><i class="bi bi-book"></i></div>
+                        <h3>Akademinis raštingumas</h3>
+                        <ul class="service-list list-unstyled">
+                            <li>Pasiruošimas mokyklai</li>
+                            <li>Foneminė analizė ir sintezė</li>
+                            <li>Disleksijos/disgrafijos prevencija</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper"><i class="bi bi-mic"></i></div>
+                        <h3>Balso lavinimas</h3>
+                        <ul class="service-list list-unstyled">
+                            <li>Balso higiena ir tausojimas</li>
+                            <li>Diafragminis kvėpavimas</li>
+                            <li>Dizfonijos prevencija</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5" style="background: var(--bg); border-top: 1px solid var(--border);">
-        <div class="container py-5 reveal">
-            <div class="text-center max-width-700 mx-auto">
-                <h2 class="display-5 mb-4">Pradėkime pokyčius šiandien</h2>
-                <p class="text-muted fs-5 mb-5">Rezervuokite pirminę konsultaciją patogiu laiku per rezervacijos sistemą.</p>
-                <button class="btn btn-primary btn-lg px-5" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                    Užsiregistruoti vizitui
-                </button>
+    <section id="kada" class="py-5" style="background: white;">
+        <div class="container py-5">
+            <div class="row align-items-center mb-5 reveal">
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-3">Kada verta kreiptis?</h2>
+                    <p class="section-desc mb-0">Atkreipkite dėmesį į šiuos vaiko raidos etapus. Ankstyva pagalba visada efektyvesnė.</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <a href="#" class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#bookingModal">Pasitarti su logopedu</a>
+                </div>
+            </div>
+
+            <div class="row g-4 reveal delay-100">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="milestone-card">
+                        <div class="milestone-header">
+                            <span class="milestone-badge">12–18 mėn.</span>
+                        </div>
+                        <p class="text-muted">Vaikas nenaudoja gestų, neatsiliepia šaukiamas vardu, nesidomi garso šaltiniais.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="milestone-card">
+                        <div class="milestone-header">
+                            <span class="milestone-badge">2 metai</span>
+                        </div>
+                        <p class="text-muted">Taria mažiau nei 50 žodžių, nejungia jų į paprastas dviejų žodžių frazes.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="milestone-card">
+                        <div class="milestone-header">
+                            <span class="milestone-badge">3–4 metai</span>
+                        </div>
+                        <p class="text-muted">Kalba „sava kalba", aplinkiniai sunkiai supranta, netaisyklingai taria daugelį garsų.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="milestone-card milestone-important">
+                        <div class="milestone-header">
+                            <span class="milestone-badge">Svarbu</span>
+                            <i class="bi bi-exclamation-circle"></i>
+                        </div>
+                        <p class="mb-0">Bet kuriuo amžiumi: jei vaikas kvėpuoja per burną, gausiai seilėjasi ar sunkiai kramto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container reveal">
+            <div class="cta-box">
+                <div class="cta-pattern"></div>
+                <div class="cta-content">
+                    <h2 class="cta-title">Pradėkime pokyčius šiandien</h2>
+                    <p class="mb-4 opacity-75 fs-5">Rezervuokite pirminę konsultaciją Jums patogiu laiku.</p>
+                    <button class="btn btn-light btn-lg text-primary fw-bold px-5" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                        Registruotis vizitui
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="kontaktai" class="py-5" style="background: var(--bg-surface);">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center reveal">
+                <div class="col-lg-5">
+                    <span class="section-label">Kontaktai</span>
+                    <h2 class="section-title mb-4">Kaip mane rasti?</h2>
+                    <p class="section-desc mb-5">Konsultacijos vyksta Balsiuose. Patogus privažiavimas ir nemokamas parkavimas. Netoliese – vaizdingi Žalieji ežerai, kur galėsite ramiai pasivaikščioti, kol vaikas bus užsiėmime.</p>
+                    
+                    <div class="d-flex flex-column gap-4">
+                        <div class="d-flex align-items-start">
+                            <div class="service-icon-wrapper mb-0 me-3" style="width: 48px; height: 48px; font-size: 1.25rem; flex-shrink: 0;">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-1">Adresas</h5>
+                                <p class="text-muted mb-0">Alko g. 4 - 2 <br>Vilnius, 08401 Vilniaus m. sav.</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start">
+                            <div class="service-icon-wrapper mb-0 me-3" style="width: 48px; height: 48px; font-size: 1.25rem; flex-shrink: 0;">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-1">El. paštas</h5>
+                                <a href="mailto:info@logopede.lt" class="text-decoration-none text-muted hover-primary">info@logopede.lt</a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start">
+                            <div class="service-icon-wrapper mb-0 me-3" style="width: 48px; height: 48px; font-size: 1.25rem; flex-shrink: 0;">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-1">Telefonas</h5>
+                                <a href="tel:+37060429594" class="text-decoration-none text-muted hover-primary">+370 604 29594</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="rounded-4 overflow-hidden shadow-lg position-relative" style="min-height: 450px; background: #e2e8f0;">
+                         <iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Alko+g.+4,+Vilnius&hl=lt&z=15&amp;output=embed"></iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4 text-center text-md-start">
-                <div>
-                    <div class="fw-bold text-primary mb-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">logopede.lt</div>
-                    <div class="small text-muted">&copy; 2025 Sigrida Rupšytė-Paleičikė</div>
+            <div class="row gy-4 justify-content-between align-items-center">
+                <div class="col-md-4">
+                    <a href="#" class="text-decoration-none d-block mb-1">
+                        <div class="fw-bold text-primary text-uppercase" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.25rem; line-height: 1; letter-spacing: 0.02em;">Logopedė</div>
+                        <div class="small text-muted fw-medium">Sigrida Rupšytė-Paleičikė</div>
+                    </a>
+                    <p class="text-muted small mb-0 mt-2">&copy; 2025 Visos teisės saugomos.</p>
                 </div>
-                
-                <div class="d-flex flex-wrap justify-content-center gap-4">
-                    <a href="mailto:info@logopede.lt" class="footer-link"><i class="bi bi-envelope me-2"></i>info@logopede.lt</a>
-                    <span class="footer-link"><i class="bi bi-geo-alt me-2"></i>Vilnius, Balsiai</span>
-                </div>
-
-                <div class="d-flex gap-4">
-                    <a href="#" class="footer-link fw-medium" data-bs-toggle="modal" data-bs-target="#cvModal">CV</a>
-                    <a href="#" class="footer-link fw-medium" data-bs-toggle="modal" data-bs-target="#bookingModal">Registracija</a>
+                <div class="col-md-auto">
+                    <div class="d-flex gap-4">
+                        <a href="mailto:info@logopede.lt" class="text-decoration-none text-muted small hover-primary">
+                            <i class="bi bi-envelope-fill me-2"></i>info@logopede.lt
+                        </a>
+                        <a href="tel:+37060429594" class="text-decoration-none text-muted small hover-primary">
+                            <i class="bi bi-telephone-fill me-2"></i>+370 604 29594
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- CV Modal -->
     <div class="modal fade" id="cvModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header border-0 pb-0">
+                <div class="modal-header">
+                    <div>
+                        <h4 class="mb-1">Sigrida Rupšytė-Paleičikė</h4>
+                        <p class="text-muted mb-0 small">Klinikinė logopedė | Surdopedagogė</p>
+                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-4">
-                    <div class="mb-4">
-                        <h3 class="h4 mb-1">Sigrida Rupšytė-Paleičikė</h3>
-                        <p class="text-muted small mb-0">Klinikinė logopedė</p>
+                <div class="modal-body">
+                    <!-- Contact Info Header -->
+                    <div class="d-flex flex-wrap gap-3 mb-4 pb-4 border-bottom">
+                        <div class="d-flex align-items-center text-muted small">
+                            <i class="bi bi-geo-alt text-primary me-2"></i>Alko g. 4 - 2 (Balsiai), Vilnius
+                        </div>
+                        <div class="d-flex align-items-center text-muted small">
+                            <i class="bi bi-envelope text-primary me-2"></i>info@logopede.lt
+                        </div>
+                        <div class="d-flex align-items-center text-muted small">
+                            <i class="bi bi-telephone text-primary me-2"></i>+370 604 29594
+                        </div>
                     </div>
-                    <div class="d-flex align-items-center gap-3 mb-4">
-                        <div class="icon-box mb-0" style="width: 48px; height: 48px;"><i class="bi bi-person-badge"></i></div>
-                        <h4 class="mb-0">Kvalifikacija</h4>
-                    </div>
+
                     <div class="mb-4">
-                        <h6 class="fw-bold text-uppercase small text-accent" style="letter-spacing: 0.1em">Specializacija</h6>
-                        <ul class="list-unstyled mt-2">
-                            <li class="mb-2"><i class="bi bi-dot text-accent"></i> Kalbos raidos sutrikimai</li>
-                            <li class="mb-2"><i class="bi bi-dot text-accent"></i> Afazija ir kiti neurologiniai sutrikimai</li>
-                            <li class="mb-2"><i class="bi bi-dot text-accent"></i> Disfagija (rijimo sutrikimai)</li>
-                        </ul>
+                        <p class="text-muted">Esu klinikinė logopedė, sukaupusi daugialypę patirtį dirbant su vaikų kalbos, komunikacijos ir kalbos raidos sutrikimais. Kompetencijos apima klinikinę logopediją, darbą PPT bei specialųjį ugdymą.</p>
                     </div>
-                    <div class="mb-4">
-                        <h6 class="fw-bold text-uppercase small text-accent" style="letter-spacing: 0.1em">Darbo principai</h6>
-                        <p class="small text-muted">Naudoju tik mokslu pagrįstas metodikas, nuolat keliu kvalifikaciją kursuose ir seminaruose, kad klientams suteikčiau geriausią įmanomą pagalbą.</p>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-uppercase text-primary small mb-3">Patirtis</h6>
+                            <div class="border-start border-2 ps-3 mb-3">
+                                <div class="fw-bold text-dark">Klinikinė logopedė</div>
+                                <div class="small text-muted">Karoliniškių poliklinika</div>
+                                <div class="small text-primary fw-bold">2023 – dabar</div>
+                            </div>
+                            <div class="border-start border-2 ps-3 mb-3">
+                                <div class="fw-bold text-dark">Logopedė</div>
+                                <div class="small text-muted">Marijampolės PPT</div>
+                                <div class="small text-primary fw-bold">2022 – 2024</div>
+                            </div>
+                            <div class="border-start border-2 ps-3">
+                                <div class="fw-bold text-dark">Logopedo praktika</div>
+                                <div class="small text-muted">Ankstyvosios reabilitacijos sk.</div>
+                                <div class="small text-primary fw-bold">2022</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-uppercase text-primary small mb-3">Išsilavinimas</h6>
+                            <div class="mb-3">
+                                <div class="fw-bold text-dark">Surdopedagogika</div>
+                                <div class="small text-muted">VDU, 2023</div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="fw-bold text-dark">Klinikinė logopedija</div>
+                                <div class="small text-muted">VU Medicinos fakultetas, 2022</div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="fw-bold text-dark">Spec. pedagogika (Logopedija)</div>
+                                <div class="small text-muted">VU Šiaulių akademija, 2022</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-3 border-top">
+                        <h6 class="fw-bold text-uppercase text-primary small mb-3">Kvalifikacija</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border">Miofunkcinė terapija</span>
+                            <span class="badge bg-light text-dark border">Autizmo spektro sutrikimai</span>
+                            <span class="badge bg-light text-dark border">Kaniterapija</span>
+                            <span class="badge bg-light text-dark border">Anglų / Graikų kalbos</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Booking Modal -->
     <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content" style="height: 90vh;">
+            <div class="modal-content h-100">
                 <div class="modal-header border-bottom">
                     <h5 class="modal-title fw-bold">Rezervacija</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-0">
+                <div class="modal-body p-0" style="height: 80vh">
                     <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ30fHviBt3r3jYP4VJHAWSQv34lqeb-wjdAqYZI3z4TlJ9xyaaK3SJW-RUdwIaZofBdX-I3CXrr?gv=true" style="border: 0" width="100%" height="100%" frameborder="0"></iframe>
                 </div>
             </div>
