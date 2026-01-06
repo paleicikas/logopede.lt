@@ -230,6 +230,7 @@
         .hero-img-container {
             position: relative;
             z-index: 1;
+            margin-top: -50px;
         }
         .hero-img-bg {
             position: absolute;
@@ -257,6 +258,38 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        .photo-info-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            pointer-events: none;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: var(--shadow-sm);
+        }
+        .photo-info-overlay .name {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin-bottom: 0px;
+            line-height: 1.2;
+        }
+        .photo-info-overlay .title {
+            display: block;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
         .stats-row {
@@ -520,6 +553,10 @@
                         <div class="hero-img-bg"></div>
                         <div class="hero-img-wrapper">
                             <img src="logopede-sigrida-rupsyte-paleicike.png" alt="Sigrida Rupšytė-Paleičikė" class="hero-img">
+                            <div class="photo-info-overlay">
+                                <span class="name">Sigrida Rupšytė-Paleičikė</span>
+                                <span class="title">Klinikinė logopedė</span>
+                            </div>
                         </div>
                     </div>
                 </div>
