@@ -311,7 +311,6 @@
             bottom: 20px;
             left: 20px;
             z-index: 2;
-            pointer-events: none;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -319,6 +318,9 @@
             border-radius: var(--radius-md);
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         .photo-info-overlay .name {
             display: block;
@@ -326,7 +328,7 @@
             font-weight: 700;
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            margin-bottom: 0px;
+            margin-bottom: 4px;
             line-height: 1.2;
         }
         .photo-info-overlay .title {
@@ -555,9 +557,12 @@
                     Registruotis
                 </button>
             </div>
-            <button class="btn btn-outline d-lg-none p-2" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                <i class="bi bi-calendar-check fs-5"></i>
-            </button>
+            <div class="d-flex d-lg-none align-items-center gap-2">
+                <button class="btn btn-outline btn-sm py-1 px-3" data-bs-toggle="modal" data-bs-target="#cvModal" style="font-size: 0.85rem; border-radius: 8px;">CV</button>
+                <button class="btn btn-outline p-2" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                    <i class="bi bi-calendar-check fs-5"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -600,8 +605,11 @@
                         <div class="hero-img-wrapper">
                             <img src="logopede-sigrida-rupsyte-paleicike.png" alt="Sigrida Rupšytė-Paleičikė" class="hero-img">
                             <div class="photo-info-overlay">
-                                <span class="name">Sigrida Rupšytė-Paleičikė</span>
-                                <span class="title">Klinikinė logopedė</span>
+                                <div class="lh-1">
+                                    <span class="name">Sigrida Rupšytė-Paleičikė</span>
+                                    <span class="title">Klinikinė logopedė</span>
+                                </div>
+                                <button class="btn btn-outline btn-sm d-lg-none py-1 px-3" data-bs-toggle="modal" data-bs-target="#cvModal" style="font-size: 0.75rem; border-radius: 8px;">CV</button>
                             </div>
                         </div>
                     </div>
