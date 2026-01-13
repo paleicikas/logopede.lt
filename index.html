@@ -35,8 +35,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Preloads -->
+    <link rel="preload" as="image" href="logopede-sigrida-rupsyte-paleicike.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></noscript>
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -92,7 +98,7 @@
             --bg-surface-2: #f1f5f9;
             
             --text-main: #0f172a;
-            --text-muted: #64748b;
+            --text-muted: #475569;
             --text-light: #94a3b8;
             
             --primary: #0b57d0;      /* Vibrant Blue */
@@ -564,8 +570,8 @@
                 </button>
             </div>
             <div class="d-flex d-lg-none align-items-center gap-2">
-                <button class="btn btn-outline btn-sm px-3" data-bs-toggle="modal" data-bs-target="#cvModal" style="height: 38px; border-radius: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center; padding-top: 0; padding-bottom: 0;">CV</button>
-                <button class="btn btn-outline btn-sm px-2" data-bs-toggle="modal" data-bs-target="#bookingModal" style="height: 38px; width: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 0;">
+                <button class="btn btn-outline btn-sm px-3" data-bs-toggle="modal" data-bs-target="#cvModal" style="height: 44px; min-width: 44px; border-radius: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center; padding-top: 0; padding-bottom: 0;" aria-label="Atidaryti CV">CV</button>
+                <button class="btn btn-outline btn-sm px-2" data-bs-toggle="modal" data-bs-target="#bookingModal" style="height: 44px; width: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 0;" aria-label="Registruotis vizitui">
                     <i class="bi bi-calendar-check fs-5"></i>
                 </button>
             </div>
