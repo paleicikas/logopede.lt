@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaikai netingi: ka is tikruju reiskia vaiko "tingejimas" kalbeti | Logopede Sigrida Rupsyte-Paleicike</title>
+    <meta name="description" content="Suzinokite, kodel vaikai nekalbeti ne del tingumo. Kalba - tai daugelio sistemu sklandus bendras darbas, ne vienalypis igudis.">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://logopede.lt/blog/vaikai-netingi-kalbos-raida/">
+    <meta property="og:title" content="Vaikai netingi: ka is tikruju reiskia vaiko tingejimas kalbeti">
+    <meta property="og:description" content="Suzinokite, kodel vaikai nekalbeti ne del tingumo. Kalba - tai daugelio sistemu sklandus bendras darbas.">
+    <meta property="og:image" content="https://logopede.lt/blog/vaikai-netingi-kalbos-raida/vaikai.jpg">
+
+    <link rel="canonical" href="https://logopede.lt/blog/vaikai-netingi-kalbos-raida/">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --bg-body: #ffffff;
+            --bg-surface: #f8fafc;
+            --bg-surface-2: #f1f5f9;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #94a3b8;
+            --primary: #0b57d0;
+            --primary-dark: #0842a0;
+            --primary-light: #eff6ff;
+            --border: #e2e8f0;
+            --accent: #7c3aed;
+            --accent-light: #ede9fe;
+            --success: #059669;
+            --success-light: #d1fae5;
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background: var(--bg-body);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            text-decoration: none;
+        }
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary) !important;
+            background: var(--bg-surface-2);
+        }
+
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        .article-header {
+            padding: 80px 0 40px;
+            background: var(--bg-surface);
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .article-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .article-category {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .article-excerpt {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+        }
+
+        .article-image {
+            margin: -60px auto 0;
+            max-width: 800px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .article-image img {
+            width: 100%;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .article-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 0 80px;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .article-content h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+
+        .article-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.35rem;
+        }
+
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .article-content ul li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .article-content ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            margin-top: 3rem;
+        }
+
+        .author-box img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin: 0 0 0.25rem;
+            font-size: 1rem;
+        }
+
+        .author-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .system-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .system-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .system-card.cognitive {
+            border-left: 4px solid var(--primary);
+        }
+
+        .system-card.motor {
+            border-left: 4px solid var(--accent);
+        }
+
+        .system-card.sensory {
+            border-left: 4px solid #f59e0b;
+        }
+
+        .system-card.linguistic {
+            border-left: 4px solid var(--success);
+        }
+
+        .system-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .system-card h3 i {
+            font-size: 1.25rem;
+        }
+
+        .system-card.cognitive h3 i { color: var(--primary); }
+        .system-card.motor h3 i { color: var(--accent); }
+        .system-card.sensory h3 i { color: #f59e0b; }
+        .system-card.linguistic h3 i { color: var(--success); }
+
+        .system-card ul {
+            margin-bottom: 0;
+        }
+
+        .system-card ul li {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .system-card ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--success-light) 0%, var(--primary-light) 100%);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--success);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        footer {
+            padding: 3rem 0 2rem;
+            background: white;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand lh-sm" href="/">
+                <div class="text-primary text-uppercase" style="letter-spacing: 0.02em;">Logopede</div>
+                <div class="text-muted fw-medium" style="font-size: 0.85rem; letter-spacing: 0; text-transform: none;">Sigrida Rupsyte-Paleicike</div>
+            </a>
+            <div class="d-none d-lg-flex align-items-center gap-2">
+                <a class="nav-link" href="/#paslaugos">Paslaugos</a>
+                <a class="nav-link" href="/#kada">Kada kreiptis</a>
+                <a class="nav-link" href="/#kainos">Kainos</a>
+                <a class="nav-link" href="/#kontaktai">Kontaktai</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <header class="article-header">
+                <div class="container">
+                    <a href="/" class="back-link">
+                        <i class="bi bi-arrow-left"></i> Grizti i pradzia
+                    </a>
+                    <div class="article-meta">
+                        <span class="article-category">Kalbos raida</span>
+                        <span class="article-date"><i class="bi bi-calendar3 me-1"></i> 2026-01-15</span>
+                    </div>
+                    <h1 class="article-title">Vaikai netingi: ka is tikruju reiskia vaiko "tingejimas" kalbeti</h1>
+                    <p class="article-excerpt">Kalba – tai daugelio sistemu sklandus bendras darbas, ne vienalypis igudis. Kai sistema perkrauta, pilnavertes kalbos raidos nebus.</p>
+                </div>
+            </header>
+
+            <div class="container">
+                <div class="article-image">
+                    <img src="vaikai.jpg" alt="Vaikai netingi - kalbos raidos sudetingumas">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="article-content">
+                    <p>Ka is tikruju reiskia vaiko "tingejimas", "nenoras kalbeti", "mazazodiškumas"? <strong>Kalba – tai daugelio sistemu sklandus bendras darbas, ne vienalypis igudis.</strong> Kai sistema perkrauta, arba kuri nors jos dalis vyrauja, usgoszdama kitas, pilnavertes kalbos raidos nebus.</p>
+
+                    <h2>Kalbos sudetingumas: keturios pagrindibes sistemos</h2>
+
+                    <div class="system-card cognitive">
+                        <h3><i class="bi bi-lightbulb"></i> Pries kalbant reikia</h3>
+                        <ul>
+                            <li>Suprasti, ko klausia, kas sakoma</li>
+                            <li>Parinkti tinkamus zodzius (zodi)</li>
+                            <li>Suplanuoti, ka sakyti</li>
+                            <li>Visa tai reikia atlikti pakankamu greicuu, kitaip kalbos momente busi pavelaves</li>
+                        </ul>
+                    </div>
+
+                    <div class="system-card motor">
+                        <h3><i class="bi bi-arrows-move"></i> Kalba yra motorinis procesas (judejimas)</h3>
+                        <ul>
+                            <li>Reikia tiksliai koordinuoti lupas, liezuvi, zandikaulii ir kvepavima</li>
+                            <li>Greitai ir tiksliai planuoti judesius</li>
+                            <li>Jei turi ka pasakyti, nereiskia, jog pavyks tai isartikuliuoti</li>
+                        </ul>
+                    </div>
+
+                    <div class="system-card sensory">
+                        <h3><i class="bi bi-hand-index"></i> Kuno pojuuciai turi buti sureguliuoti</h3>
+                        <ul>
+                            <li>Jautrumas garsams; taktilinis, oralinis jautrumas</li>
+                            <li>Reikia neblogai toleruoti aplinkos garsus ir neiprastas situacijas</li>
+                            <li>Turint jautrumus arba nepakankama jautruma, kalbos irankiai sunkiau pasiekiami ir idarbinami</li>
+                        </ul>
+                    </div>
+
+                    <div class="system-card linguistic">
+                        <h3><i class="bi bi-chat-text"></i> Kalbiniai issukiai</h3>
+                        <ul>
+                            <li>Reikia tureti pakankamai platu zodyna</li>
+                            <li>Ismanyti sakinio struktura</li>
+                            <li>Pakankamu greciu "issitraukti" zodzius is atminties</li>
+                            <li><strong>Nekalbejimas savaime nereiskia prasto kalbos suvokimo</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Nesakykime "tingi" ar "yra mazakalbis"</strong> – paieskokkime priezasciu ir padekime pagerinti arba suformuoti igudžius.</p>
+                    </div>
+
+                    <h2>Kada pradeti?</h2>
+                    <p>Visus siuos igudžius galime pradeti ugdyti dar kudikiui esant gimdoje arba nuo pirmuju menesiu, o jeigu kyla sunkumu – <strong>nelaukiant</strong>.</p>
+
+                    <p>Kiekviena is siu sistemu galima lavinti ir stiprinti. Svarbu suprasti, kad vaikas nekalba ne del tingumo ar nenoro – jo smegenys ir kunas tiesiog dar mokosi suderinti visas sias sudetingas sistemas.</p>
+
+                    <blockquote>
+                        "Kalba – tai daugelio sistemu sklandus bendras darbas. Padekime vaikui, o ne kaltinkime ji."
+                    </blockquote>
+
+                    <div class="author-box">
+                        <img src="/logopede-sigrida-rupsyte-paleicike.png" alt="Sigrida Rupsyte-Paleicike">
+                        <div class="author-info">
+                            <h4>Sigrida Rupsyte-Paleicike</h4>
+                            <p>Klinikine logopede</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row gy-4 justify-content-between align-items-center">
+                <div class="col-md-4">
+                    <a href="/" class="text-decoration-none d-block mb-1">
+                        <div class="fw-bold text-primary text-uppercase" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.25rem;">Klinikine logopede</div>
+                        <div class="small text-muted fw-medium">Sigrida Rupsyte-Paleicike</div>
+                    </a>
+                    <p class="text-muted small mb-0 mt-2">&copy; 2025 Visos teises saugomos.</p>
+                </div>
+                <div class="col-md-auto">
+                    <div class="d-flex gap-4">
+                        <a href="mailto:info@logopede.lt" class="text-decoration-none text-muted small">
+                            <i class="bi bi-envelope-fill me-2"></i>info@logopede.lt
+                        </a>
+                        <a href="tel:+37060429594" class="text-decoration-none text-muted small">
+                            <i class="bi bi-telephone-fill me-2"></i>+370 604 29594
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
