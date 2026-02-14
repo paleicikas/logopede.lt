@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <!-- Form column (full width initially, col-md-3 when document visible) -->
+            <!-- Form column -->
             <div class="col-12" id="formCol">
                 <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -72,6 +72,10 @@
             }
         }
 
+        function esc(str) {
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+        }
+
         function renderForm() {
             const container = document.getElementById('formFields');
             if (!data.length) {
@@ -81,30 +85,44 @@
 
             container.innerHTML = data.map((field, fi) => {
                 let html = `<div class="mb-3 pb-2 border-bottom">`;
-                html += `<div class="fw-bold mb-1">${field.title}</div>`;
+                html += `<div class="fw-bold mb-1">${esc(field.title)}</div>`;
 
-                // Radio buttons
+                // Radio options (objects with label + optional checkboxes)
                 if (field.radio && field.radio.length) {
-                    html += field.radio.map((opt, oi) => `
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input field-input" type="radio"
-                                   name="radio_${fi}" id="radio_${fi}_${oi}"
-                                   value="${escapeAttr(opt)}" data-field="${fi}">
-                            <label class="form-check-label" for="radio_${fi}_${oi}">${opt}</label>
-                        </div>
-                    `).join('');
+                    html += field.radio.map((opt, oi) => {
+                        let rHtml = `
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input field-radio" type="radio"
+                                       name="radio_${fi}" id="radio_${fi}_${oi}"
+                                       value="${esc(opt.label)}" data-field="${fi}" data-radio="${oi}">
+                                <label class="form-check-label" for="radio_${fi}_${oi}">${esc(opt.label)}</label>
+                            </div>`;
+
+                        // Nested checkboxes (hidden until this radio is selected)
+                        if (opt.checkboxes && opt.checkboxes.length) {
+                            rHtml += `<div class="ms-4 d-none" id="rcb_${fi}_${oi}">`;
+                            rHtml += opt.checkboxes.map((cb, ci) => `
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input field-cb-nested" type="checkbox"
+                                           id="cb_${fi}_${oi}_${ci}" value="${esc(cb)}"
+                                           data-field="${fi}" data-radio="${oi}">
+                                    <label class="form-check-label" for="cb_${fi}_${oi}_${ci}">${esc(cb)}</label>
+                                </div>
+                            `).join('');
+                            rHtml += `</div>`;
+                        }
+
+                        return rHtml;
+                    }).join('');
                 }
 
-                // Checkboxes
+                // Standalone checkboxes (field-level, not tied to radio)
                 if (field.checkboxes && field.checkboxes.length) {
-                    if (field.radio && field.radio.length) {
-                        html += '<br>';
-                    }
-                    html += field.checkboxes.map((opt, oi) => `
+                    html += field.checkboxes.map((cb, ci) => `
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input field-input" type="checkbox"
-                                   id="cb_${fi}_${oi}" value="${escapeAttr(opt)}" data-field="${fi}">
-                            <label class="form-check-label" for="cb_${fi}_${oi}">${opt}</label>
+                            <input class="form-check-input field-cb-standalone" type="checkbox"
+                                   id="scb_${fi}_${ci}" value="${esc(cb)}" data-field="${fi}">
+                            <label class="form-check-label" for="scb_${fi}_${ci}">${esc(cb)}</label>
                         </div>
                     `).join('');
                 }
@@ -113,18 +131,38 @@
                 return html;
             }).join('');
 
-            // Attach change listeners
-            container.querySelectorAll('.field-input').forEach(input => {
-                input.addEventListener('change', onFieldChange);
+            // Radio change: show/hide nested checkboxes
+            container.querySelectorAll('.field-radio').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const fi = radio.dataset.field;
+                    const oi = radio.dataset.radio;
+
+                    // Hide all nested checkbox groups for this field
+                    container.querySelectorAll(`[id^="rcb_${fi}_"]`).forEach(el => {
+                        el.classList.add('d-none');
+                        // Uncheck hidden checkboxes
+                        el.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                    });
+
+                    // Show checkboxes for selected radio (if any)
+                    const target = document.getElementById(`rcb_${fi}_${oi}`);
+                    if (target) target.classList.remove('d-none');
+
+                    onFieldChange();
+                });
+            });
+
+            // Checkbox change
+            container.querySelectorAll('.field-cb-nested, .field-cb-standalone').forEach(cb => {
+                cb.addEventListener('change', onFieldChange);
             });
         }
 
-        function escapeAttr(str) {
-            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-        }
-
         function onFieldChange() {
-            const anySelected = document.querySelectorAll('.field-input:checked').length > 0;
+            const anySelected =
+                document.querySelectorAll('.field-radio:checked').length > 0 ||
+                document.querySelectorAll('.field-cb-standalone:checked').length > 0;
+
             if (anySelected && !isGenerated) {
                 switchToGeneratedLayout();
             } else if (!anySelected && isGenerated) {
@@ -141,10 +179,18 @@
 
                 // Selected radio
                 const radio = document.querySelector(`input[name="radio_${fi}"]:checked`);
-                if (radio) values.push(radio.value);
+                if (radio) {
+                    values.push(radio.value);
 
-                // Selected checkboxes
-                document.querySelectorAll(`input[type="checkbox"][data-field="${fi}"]:checked`).forEach(cb => {
+                    // Nested checkboxes of selected radio
+                    const oi = radio.dataset.radio;
+                    document.querySelectorAll(`#rcb_${fi}_${oi} input[type="checkbox"]:checked`).forEach(cb => {
+                        values.push(cb.value);
+                    });
+                }
+
+                // Standalone checkboxes
+                document.querySelectorAll(`.field-cb-standalone[data-field="${fi}"]:checked`).forEach(cb => {
                     values.push(cb.value);
                 });
 
@@ -163,7 +209,7 @@
                 return;
             }
             preview.innerHTML = selections.map(s =>
-                `<p><strong>${s.title}:</strong> ${s.values.join(', ')}</p>`
+                `<p><strong>${esc(s.title)}:</strong> ${s.values.map(v => esc(v)).join(', ')}</p>`
             ).join('');
         }
 
@@ -201,7 +247,6 @@
             }
         }
 
-        // File upload
         document.getElementById('fileInput').addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (!file) return;

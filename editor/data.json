@@ -1,8 +1,10 @@
 [
   {
     "title": "Artikuliacinis aparatas",
-    "radio": ["Anatomiškai pakitęs", "Anatomiškai nepakitęs"],
-    "checkboxes": ["Aukštas gomurys", "Gomurio defektas"]
+    "radio": [
+      { "label": "Anatomiškai pakitęs", "checkboxes": ["Aukštas gomurys", "Gomurio defektas"] },
+      { "label": "Anatomiškai nepakitęs" }
+    ]
   },
   {
     "title": "Oralinė motorika",
@@ -14,55 +16,108 @@
   },
   {
     "title": "Dėmesio koncentracija",
-    "radio": ["Pakankama", "Nepakankama"]
+    "radio": [
+      { "label": "Pakankama" },
+      { "label": "Nepakankama" }
+    ]
   },
   {
     "title": "Akių kontaktas",
-    "radio": ["Yra", "Nėra", "Trumpalaikis"]
+    "radio": [
+      { "label": "Yra" },
+      { "label": "Nėra" },
+      { "label": "Trumpalaikis" }
+    ]
   },
   {
     "title": "Tartis",
-    "radio": ["Aiški", "Suprantama", "Sutrikusi"]
+    "radio": [
+      { "label": "Aiški" },
+      { "label": "Suprantama" },
+      { "label": "Sutrikusi" }
+    ]
   },
   {
     "title": "Foneminė klausa",
-    "radio": ["Atitinka amžių", "Išlavėjusi", "Lavėjanti", "Nesusiformavusi"]
+    "radio": [
+      { "label": "Atitinka amžių" },
+      { "label": "Išlavėjusi" },
+      { "label": "Lavėjanti" },
+      { "label": "Nesusiformavusi" }
+    ]
   },
   {
     "title": "Žaidimo medžiaga",
-    "radio": ["Domisi", "Nesidomi", "Tyrinėja visais pojūčių kanalais"]
+    "radio": [
+      { "label": "Domisi" },
+      { "label": "Nesidomi" },
+      { "label": "Tyrinėja visais pojūčių kanalais" }
+    ]
   },
   {
     "title": "Pažinimo gebėjimai",
-    "radio": ["Atitinka amžių", "Sutrikęs", "Nesiekia amžiaus", "Dominuoja neverbalinė komunikacija"]
+    "radio": [
+      { "label": "Atitinka amžių" },
+      { "label": "Sutrikęs" },
+      { "label": "Nesiekia amžiaus" },
+      { "label": "Dominuoja neverbalinė komunikacija" }
+    ]
   },
   {
     "title": "Kalbos suvokimas",
-    "radio": ["Atitinka amžių", "Nepakankamas", "Sutrikęs"]
+    "radio": [
+      { "label": "Atitinka amžių" },
+      { "label": "Nepakankamas" },
+      { "label": "Sutrikęs" }
+    ]
   },
   {
     "title": "Kalbinė raiška",
-    "radio": ["Atitinka amžių", "Sulėtėjusi", "Sutrikusi"],
-    "checkboxes": ["Gugavimas", "Vogravimas", "Čiaukškėjimas", "Pavieniai žodžiai", "Dviejų žodžių junginiais", "Trijų žodžių junginiais", "Sudėtiniais sakiniais"]
+    "radio": [
+      { "label": "Atitinka amžių" },
+      { "label": "Sulėtėjusi" },
+      { "label": "Sutrikusi", "checkboxes": ["Gugavimas", "Vogravimas", "Čiaukškėjimas", "Pavieniai žodžiai", "Dviejų žodžių junginiais", "Trijų žodžių junginiais", "Sudėtiniais sakiniais"] }
+    ]
   },
   {
     "title": "Aktyvus žodynas",
-    "radio": ["Atitinka amžių", "Skurdus", "Buitinio lygio"]
+    "radio": [
+      { "label": "Atitinka amžių" },
+      { "label": "Skurdus" },
+      { "label": "Buitinio lygio" }
+    ]
   },
   {
     "title": "Pasyvus žodynas",
-    "radio": ["Atitinka amžių", "Skurdus", "Buitinio lygio"]
+    "radio": [
+      { "label": "Atitinka amžių" },
+      { "label": "Skurdus" },
+      { "label": "Buitinio lygio" }
+    ]
   },
   {
     "title": "Gramatinė sandara",
-    "radio": ["Atitinka amžių", "Lavėjanti", "Nesusiformavusi", "Pasitaiko žodžių gramatinių klaidų"]
+    "radio": [
+      { "label": "Atitinka amžių" },
+      { "label": "Lavėjanti" },
+      { "label": "Nesusiformavusi" },
+      { "label": "Pasitaiko žodžių gramatinių klaidų" }
+    ]
   },
   {
     "title": "Rišlioji kalba",
-    "radio": ["Atitinka amžių", "Išlavėjusi", "Lavėjanti", "Nesuformuota"]
+    "radio": [
+      { "label": "Atitinka amžių" },
+      { "label": "Išlavėjusi" },
+      { "label": "Lavėjanti" },
+      { "label": "Nesuformuota" }
+    ]
   },
   {
     "title": "Rašymo sutrikimai",
-    "radio": ["Turi", "Neturi"]
+    "radio": [
+      { "label": "Turi" },
+      { "label": "Neturi" }
+    ]
   }
 ]
