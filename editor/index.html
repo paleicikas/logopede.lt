@@ -9,8 +9,6 @@
 </head>
 <body>
     <div class="container-fluid py-4 px-4">
-        <h1 class="mb-4">Dokumento generatorius</h1>
-
         <div class="row" id="mainRow">
             <!-- Document preview (hidden initially, shown on left) -->
             <div class="col-md-9 d-none" id="documentCol">
@@ -30,13 +28,6 @@
             <!-- Form column -->
             <div class="col-12" id="formCol">
                 <div class="card mb-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <strong>Forma</strong>
-                        <label class="btn btn-sm btn-outline-secondary mb-0">
-                            <i class="bi bi-upload"></i> Įkelti JSON
-                            <input type="file" accept=".json" id="fileInput" class="d-none">
-                        </label>
-                    </div>
                     <div class="card-body">
                         <div id="formFields">
                             <p class="text-muted">Kraunama...</p>
@@ -85,7 +76,7 @@
 
             container.innerHTML = data.map((field, fi) => {
                 let html = `<div class="mb-3 pb-2 border-bottom">`;
-                html += `<div class="fw-bold mb-1">${esc(field.title)}</div>`;
+                html += `<div class="fw-bold mb-1">${esc(field.title)} <a href="#" class="fw-normal text-decoration-none small text-muted d-none" data-clear="${fi}" onclick="clearField(${fi}); return false;">&#x2715;</a></div>`;
 
                 // Radio options (objects with label + optional checkboxes)
                 if (field.radio && field.radio.length) {
@@ -148,6 +139,9 @@
                     const target = document.getElementById(`rcb_${fi}_${oi}`);
                     if (target) target.classList.remove('d-none');
 
+                    // Show clear link
+                    document.querySelector(`[data-clear="${fi}"]`).classList.remove('d-none');
+
                     onFieldChange();
                 });
             });
@@ -156,6 +150,22 @@
             container.querySelectorAll('.field-cb-nested, .field-cb-standalone').forEach(cb => {
                 cb.addEventListener('change', onFieldChange);
             });
+        }
+
+        function clearField(fi) {
+            // Uncheck radio
+            document.querySelectorAll(`input[name="radio_${fi}"]`).forEach(r => r.checked = false);
+
+            // Hide and uncheck nested checkboxes
+            document.querySelectorAll(`[id^="rcb_${fi}_"]`).forEach(el => {
+                el.classList.add('d-none');
+                el.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            });
+
+            // Hide clear link
+            document.querySelector(`[data-clear="${fi}"]`).classList.add('d-none');
+
+            onFieldChange();
         }
 
         function onFieldChange() {
@@ -251,23 +261,6 @@
                 toast.show();
             }
         }
-
-        document.getElementById('fileInput').addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (ev) => {
-                try {
-                    data = JSON.parse(ev.target.result);
-                    renderForm();
-                    if (isGenerated) switchToInitialLayout();
-                } catch (err) {
-                    alert('Netinkamas JSON formatas.');
-                }
-            };
-            reader.readAsText(file);
-            e.target.value = '';
-        });
 
         document.getElementById('btnCopy').addEventListener('click', copyDocument);
 
