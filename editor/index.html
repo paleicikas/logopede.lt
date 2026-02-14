@@ -175,27 +175,28 @@
         function getFieldSelections() {
             const results = [];
             data.forEach((field, fi) => {
-                const values = [];
+                let main = [];
+                let sub = [];
 
                 // Selected radio
                 const radio = document.querySelector(`input[name="radio_${fi}"]:checked`);
                 if (radio) {
-                    values.push(radio.value);
+                    main.push(radio.value);
 
                     // Nested checkboxes of selected radio
                     const oi = radio.dataset.radio;
                     document.querySelectorAll(`#rcb_${fi}_${oi} input[type="checkbox"]:checked`).forEach(cb => {
-                        values.push(cb.value);
+                        sub.push(cb.value);
                     });
                 }
 
                 // Standalone checkboxes
                 document.querySelectorAll(`.field-cb-standalone[data-field="${fi}"]:checked`).forEach(cb => {
-                    values.push(cb.value);
+                    main.push(cb.value);
                 });
 
-                if (values.length) {
-                    results.push({ title: field.title, values });
+                if (main.length || sub.length) {
+                    results.push({ title: field.title, main, sub });
                 }
             });
             return results;
@@ -208,9 +209,13 @@
                 preview.innerHTML = '<p class="text-muted">Pasirinkite bent vieną elementą.</p>';
                 return;
             }
-            preview.innerHTML = selections.map(s =>
-                `<p><strong>${esc(s.title)}:</strong> ${s.values.map(v => esc(v)).join(', ')}</p>`
-            ).join('');
+            preview.innerHTML = selections.map(s => {
+                let text = s.main.map(v => esc(v)).join(', ');
+                if (s.sub.length) {
+                    text += ` (${s.sub.map(v => esc(v.toLowerCase())).join(', ')})`;
+                }
+                return `<p><strong>${esc(s.title)}:</strong> ${text}</p>`;
+            }).join('');
         }
 
         function switchToGeneratedLayout() {
