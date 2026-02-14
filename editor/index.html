@@ -220,7 +220,7 @@
                 return;
             }
             preview.innerHTML = selections.map(s => {
-                let text = s.main.map(v => esc(v)).join(', ');
+                let text = s.main.map(v => esc(v.toLowerCase())).join(', ');
                 if (s.sub.length) {
                     text += ` (${s.sub.map(v => esc(v.toLowerCase())).join(', ')})`;
                 }
