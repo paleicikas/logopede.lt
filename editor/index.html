@@ -17,14 +17,9 @@
                 <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <strong>Sugeneruotas dokumentas</strong>
-                        <div>
-                            <button class="btn btn-sm btn-outline-secondary me-2" id="btnBack" title="Grįžti">
-                                <i class="bi bi-arrow-left"></i> Grįžti
-                            </button>
-                            <button class="btn btn-sm btn-outline-primary" id="btnCopy" title="Kopijuoti">
-                                <i class="bi bi-clipboard"></i> Kopijuoti
-                            </button>
-                        </div>
+                        <button class="btn btn-sm btn-outline-primary" id="btnCopy" title="Kopijuoti">
+                            <i class="bi bi-clipboard"></i> Kopijuoti
+                        </button>
                     </div>
                     <div class="card-body" id="documentPreview">
                         <p class="text-muted">Pasirinkite bent vieną elementą.</p>
@@ -46,11 +41,6 @@
                         <div id="checkboxList">
                             <p class="text-muted">Kraunama...</p>
                         </div>
-                    </div>
-                    <div class="card-footer text-end">
-                        <button class="btn btn-primary" id="btnGenerate">
-                            <i class="bi bi-file-earmark-text"></i> Generuoti
-                        </button>
                     </div>
                 </div>
             </div>
@@ -92,15 +82,20 @@
             }
             container.innerHTML = data.map((item, i) => `
                 <div class="form-check mb-2">
-                    <input class="form-check-input item-check" type="checkbox" id="check_${i}" data-index="${i}" checked>
+                    <input class="form-check-input item-check" type="checkbox" id="check_${i}" data-index="${i}">
                     <label class="form-check-label" for="check_${i}">${item.title}</label>
                 </div>
             `).join('');
 
-            // Attach change listeners for live update when in generated mode
+            // Attach change listeners - auto switch layout on check/uncheck
             container.querySelectorAll('.item-check').forEach(cb => {
                 cb.addEventListener('change', () => {
-                    if (isGenerated) {
+                    const anyChecked = document.querySelectorAll('.item-check:checked').length > 0;
+                    if (anyChecked && !isGenerated) {
+                        switchToGeneratedLayout();
+                    } else if (!anyChecked && isGenerated) {
+                        switchToInitialLayout();
+                    } else if (isGenerated) {
                         updateDocument();
                     }
                 });
@@ -187,7 +182,7 @@
                     data = JSON.parse(ev.target.result);
                     renderCheckboxes();
                     if (isGenerated) {
-                        updateDocument();
+                        switchToInitialLayout();
                     }
                 } catch (err) {
                     alert('Netinkamas JSON formatas.');
@@ -198,8 +193,6 @@
         });
 
         // Button handlers
-        document.getElementById('btnGenerate').addEventListener('click', switchToGeneratedLayout);
-        document.getElementById('btnBack').addEventListener('click', switchToInitialLayout);
         document.getElementById('btnCopy').addEventListener('click', copyDocument);
 
         // Init
