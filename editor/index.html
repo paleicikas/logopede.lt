@@ -76,7 +76,7 @@
 
             container.innerHTML = data.map((field, fi) => {
                 let html = `<div class="mb-3 pb-2 border-bottom">`;
-                html += `<div class="fw-bold mb-1">${esc(field.title)} <a href="#" class="fw-normal text-decoration-none small text-muted d-none" data-clear="${fi}" onclick="clearField(${fi}); return false;">&#x2715;</a></div>`;
+                html += `<div class="fw-bold mb-1">${esc(field.title)} <a href="#" class="fw-normal text-decoration-none small text-muted ms-1 d-none" data-clear="${fi}" onclick="clearField(${fi}); return false;">&#x2715;</a></div>`;
 
                 // Radio options (objects with label + optional checkboxes)
                 if (field.radio && field.radio.length) {
