@@ -1,22 +1,68 @@
 [
   {
-    "title": "Įvadas",
-    "text": "Logopedinis vertinimas atliktas siekiant nustatyti vaiko kalbos ir kalbėjimo raidos ypatumus. Vertinimo metu buvo stebima vaiko kalba, atlikti standartizuoti testai ir įvertinta bendra komunikacinė kompetencija."
+    "title": "Artikuliacinis aparatas",
+    "radio": ["Anatomiškai pakitęs", "Anatomiškai nepakitęs"],
+    "checkboxes": ["Aukštas gomurys", "Gomurio defektas"]
   },
   {
-    "title": "Fonologinė analizė",
-    "text": "Vaiko fonologinė sistema vertinta analizuojant garsų tarimą spontaninėje kalboje ir atliekant pakartojimo užduotis. Nustatyti šie fonologiniai procesai: priebalsių supaprastinimas, galūnių trumpinimas ir skiemenų redukcija."
+    "title": "Oralinė motorika",
+    "checkboxes": ["Pakankama", "Nepakankama", "Sutrikusi", "Nežymus seilėtekis"]
   },
   {
-    "title": "Leksikos vertinimas",
-    "text": "Aktyvusis ir pasyvusis žodynas vertintas naudojant standartizuotas priemones. Vaiko žodyno apimtis atitinka amžiaus normą. Pastebėta, kad vaikas tinkamai vartoja daiktavardžius ir veiksmažodžius, tačiau būdvardžių ir prieveiksmių vartojimas yra ribotas."
+    "title": "Rijimo procesas",
+    "checkboxes": ["Atitinka amžių", "Pakankamas", "Nepakankamas", "Sutrikęs", "Springsta", "Nekramto", "Maitinamas alternatyviu būdu", "Gėrimas neatitinka amžiaus", "Gėrimas atitinka amžių"]
   },
   {
-    "title": "Gramatinė struktūra",
-    "text": "Gramatinė sakinių struktūra vertinta analizuojant spontaninę kalbą. Vaikas dažniausiai vartoja paprastus sakinius, sudėtiniai sakiniai pasitaiko retai. Linksnių ir asmenų derinimas iš esmės taisyklingas, tačiau pasitaiko klaidų vartojant kilmininko ir galininko linksnius."
+    "title": "Dėmesio koncentracija",
+    "radio": ["Pakankama", "Nepakankama"]
   },
   {
-    "title": "Rekomendacijos",
-    "text": "Rekomenduojama tęsti logopedines pratybas 2 kartus per savaitę, skirti dėmesį fonologinių įgūdžių lavinimui, plėsti žodyną per kasdienę veiklą ir skatinti sudėtingesnių sakinių struktūrų vartojimą. Tėvams rekomenduojama kasdien skaityti vaikui ir aptarti perskaitytą turinį."
+    "title": "Akių kontaktas",
+    "radio": ["Yra", "Nėra", "Trumpalaikis"]
+  },
+  {
+    "title": "Tartis",
+    "radio": ["Aiški", "Suprantama", "Sutrikusi"]
+  },
+  {
+    "title": "Foneminė klausa",
+    "radio": ["Atitinka amžių", "Išlavėjusi", "Lavėjanti", "Nesusiformavusi"]
+  },
+  {
+    "title": "Žaidimo medžiaga",
+    "radio": ["Domisi", "Nesidomi", "Tyrinėja visais pojūčių kanalais"]
+  },
+  {
+    "title": "Pažinimo gebėjimai",
+    "radio": ["Atitinka amžių", "Sutrikęs", "Nesiekia amžiaus", "Dominuoja neverbalinė komunikacija"]
+  },
+  {
+    "title": "Kalbos suvokimas",
+    "radio": ["Atitinka amžių", "Nepakankamas", "Sutrikęs"]
+  },
+  {
+    "title": "Kalbinė raiška",
+    "radio": ["Atitinka amžių", "Sulėtėjusi", "Sutrikusi"],
+    "checkboxes": ["Gugavimas", "Vogravimas", "Čiaukškėjimas", "Pavieniai žodžiai", "Dviejų žodžių junginiais", "Trijų žodžių junginiais", "Sudėtiniais sakiniais"]
+  },
+  {
+    "title": "Aktyvus žodynas",
+    "radio": ["Atitinka amžių", "Skurdus", "Buitinio lygio"]
+  },
+  {
+    "title": "Pasyvus žodynas",
+    "radio": ["Atitinka amžių", "Skurdus", "Buitinio lygio"]
+  },
+  {
+    "title": "Gramatinė sandara",
+    "radio": ["Atitinka amžių", "Lavėjanti", "Nesusiformavusi", "Pasitaiko žodžių gramatinių klaidų"]
+  },
+  {
+    "title": "Rišlioji kalba",
+    "radio": ["Atitinka amžių", "Išlavėjusi", "Lavėjanti", "Nesuformuota"]
+  },
+  {
+    "title": "Rašymo sutrikimai",
+    "radio": ["Turi", "Neturi"]
   }
 ]

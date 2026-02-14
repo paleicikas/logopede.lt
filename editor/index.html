@@ -8,11 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container py-4">
+    <div class="container-fluid py-4 px-4">
         <h1 class="mb-4">Dokumento generatorius</h1>
 
         <div class="row" id="mainRow">
-            <!-- Document preview (hidden initially, shown on left after generate) -->
+            <!-- Document preview (hidden initially, shown on left) -->
             <div class="col-md-9 d-none" id="documentCol">
                 <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -27,18 +27,18 @@
                 </div>
             </div>
 
-            <!-- Form column (full width initially, moves to right after generate) -->
+            <!-- Form column (full width initially, col-md-3 when document visible) -->
             <div class="col-12" id="formCol">
                 <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <strong>Konfigūracija</strong>
+                        <strong>Forma</strong>
                         <label class="btn btn-sm btn-outline-secondary mb-0">
                             <i class="bi bi-upload"></i> Įkelti JSON
                             <input type="file" accept=".json" id="fileInput" class="d-none">
                         </label>
                     </div>
                     <div class="card-body">
-                        <div id="checkboxList">
+                        <div id="formFields">
                             <p class="text-muted">Kraunama...</p>
                         </div>
                     </div>
@@ -61,97 +61,127 @@
         let data = [];
         let isGenerated = false;
 
-        // Load default data.json
         async function loadDefaultData() {
             try {
                 const response = await fetch('data.json');
                 data = await response.json();
-                renderCheckboxes();
+                renderForm();
             } catch (e) {
-                document.getElementById('checkboxList').innerHTML =
+                document.getElementById('formFields').innerHTML =
                     '<p class="text-danger">Nepavyko užkrauti data.json</p>';
             }
         }
 
-        // Render checkboxes from data
-        function renderCheckboxes() {
-            const container = document.getElementById('checkboxList');
+        function renderForm() {
+            const container = document.getElementById('formFields');
             if (!data.length) {
                 container.innerHTML = '<p class="text-muted">Nėra duomenų.</p>';
                 return;
             }
-            container.innerHTML = data.map((item, i) => `
-                <div class="form-check mb-2">
-                    <input class="form-check-input item-check" type="checkbox" id="check_${i}" data-index="${i}">
-                    <label class="form-check-label" for="check_${i}">${item.title}</label>
-                </div>
-            `).join('');
 
-            // Attach change listeners - auto switch layout on check/uncheck
-            container.querySelectorAll('.item-check').forEach(cb => {
-                cb.addEventListener('change', () => {
-                    const anyChecked = document.querySelectorAll('.item-check:checked').length > 0;
-                    if (anyChecked && !isGenerated) {
-                        switchToGeneratedLayout();
-                    } else if (!anyChecked && isGenerated) {
-                        switchToInitialLayout();
-                    } else if (isGenerated) {
-                        updateDocument();
+            container.innerHTML = data.map((field, fi) => {
+                let html = `<div class="mb-3 pb-2 border-bottom">`;
+                html += `<div class="fw-bold mb-1">${field.title}</div>`;
+
+                // Radio buttons
+                if (field.radio && field.radio.length) {
+                    html += field.radio.map((opt, oi) => `
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input field-input" type="radio"
+                                   name="radio_${fi}" id="radio_${fi}_${oi}"
+                                   value="${escapeAttr(opt)}" data-field="${fi}">
+                            <label class="form-check-label" for="radio_${fi}_${oi}">${opt}</label>
+                        </div>
+                    `).join('');
+                }
+
+                // Checkboxes
+                if (field.checkboxes && field.checkboxes.length) {
+                    if (field.radio && field.radio.length) {
+                        html += '<br>';
                     }
-                });
+                    html += field.checkboxes.map((opt, oi) => `
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input field-input" type="checkbox"
+                                   id="cb_${fi}_${oi}" value="${escapeAttr(opt)}" data-field="${fi}">
+                            <label class="form-check-label" for="cb_${fi}_${oi}">${opt}</label>
+                        </div>
+                    `).join('');
+                }
+
+                html += `</div>`;
+                return html;
+            }).join('');
+
+            // Attach change listeners
+            container.querySelectorAll('.field-input').forEach(input => {
+                input.addEventListener('change', onFieldChange);
             });
         }
 
-        // Get checked items
-        function getCheckedItems() {
-            const checks = document.querySelectorAll('.item-check');
-            const items = [];
-            checks.forEach(cb => {
-                if (cb.checked) {
-                    items.push(data[parseInt(cb.dataset.index)]);
+        function escapeAttr(str) {
+            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+        }
+
+        function onFieldChange() {
+            const anySelected = document.querySelectorAll('.field-input:checked').length > 0;
+            if (anySelected && !isGenerated) {
+                switchToGeneratedLayout();
+            } else if (!anySelected && isGenerated) {
+                switchToInitialLayout();
+            } else if (isGenerated) {
+                updateDocument();
+            }
+        }
+
+        function getFieldSelections() {
+            const results = [];
+            data.forEach((field, fi) => {
+                const values = [];
+
+                // Selected radio
+                const radio = document.querySelector(`input[name="radio_${fi}"]:checked`);
+                if (radio) values.push(radio.value);
+
+                // Selected checkboxes
+                document.querySelectorAll(`input[type="checkbox"][data-field="${fi}"]:checked`).forEach(cb => {
+                    values.push(cb.value);
+                });
+
+                if (values.length) {
+                    results.push({ title: field.title, values });
                 }
             });
-            return items;
+            return results;
         }
 
-        // Update document preview
         function updateDocument() {
             const preview = document.getElementById('documentPreview');
-            const items = getCheckedItems();
-            if (!items.length) {
+            const selections = getFieldSelections();
+            if (!selections.length) {
                 preview.innerHTML = '<p class="text-muted">Pasirinkite bent vieną elementą.</p>';
                 return;
             }
-            preview.innerHTML = items.map(item =>
-                `<p>${item.text}</p>`
+            preview.innerHTML = selections.map(s =>
+                `<p><strong>${s.title}:</strong> ${s.values.join(', ')}</p>`
             ).join('');
         }
 
-        // Switch to generated layout
         function switchToGeneratedLayout() {
             isGenerated = true;
-            const formCol = document.getElementById('formCol');
-            const documentCol = document.getElementById('documentCol');
-
-            documentCol.classList.remove('d-none');
-            formCol.classList.remove('col-12');
-            formCol.classList.add('col-md-3');
-
+            document.getElementById('documentCol').classList.remove('d-none');
+            document.getElementById('formCol').classList.remove('col-12');
+            document.getElementById('formCol').classList.add('col-md-3');
             updateDocument();
         }
 
-        // Switch back to initial layout
         function switchToInitialLayout() {
             isGenerated = false;
-            const formCol = document.getElementById('formCol');
-            const documentCol = document.getElementById('documentCol');
-
-            documentCol.classList.add('d-none');
-            formCol.classList.remove('col-md-3');
-            formCol.classList.add('col-12');
+            document.getElementById('documentCol').classList.add('d-none');
+            document.getElementById('formCol').classList.remove('col-md-3');
+            document.getElementById('formCol').classList.add('col-12');
         }
 
-        // Copy document content
         async function copyDocument() {
             const preview = document.getElementById('documentPreview');
             try {
@@ -159,7 +189,6 @@
                 const toast = new bootstrap.Toast(document.getElementById('copyToast'));
                 toast.show();
             } catch (e) {
-                // Fallback
                 const range = document.createRange();
                 range.selectNodeContents(preview);
                 const sel = window.getSelection();
@@ -172,7 +201,7 @@
             }
         }
 
-        // File upload handler
+        // File upload
         document.getElementById('fileInput').addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (!file) return;
@@ -180,10 +209,8 @@
             reader.onload = (ev) => {
                 try {
                     data = JSON.parse(ev.target.result);
-                    renderCheckboxes();
-                    if (isGenerated) {
-                        switchToInitialLayout();
-                    }
+                    renderForm();
+                    if (isGenerated) switchToInitialLayout();
                 } catch (err) {
                     alert('Netinkamas JSON formatas.');
                 }
@@ -192,10 +219,8 @@
             e.target.value = '';
         });
 
-        // Button handlers
         document.getElementById('btnCopy').addEventListener('click', copyDocument);
 
-        // Init
         loadDefaultData();
     </script>
 </body>
