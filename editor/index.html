@@ -224,7 +224,7 @@
                 if (s.sub.length) {
                     text += ` (${s.sub.map(v => esc(v.toLowerCase())).join(', ')})`;
                 }
-                return `<p><strong>${esc(s.title)}:</strong> ${text}</p>`;
+                return `<p class="mb-0"><strong>${esc(s.title)}:</strong> ${text}</p>`;
             }).join('');
         }
 
