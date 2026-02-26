@@ -28,6 +28,9 @@
             <!-- Form column -->
             <div class="col-12" id="formCol">
                 <div class="card mb-3">
+                    <div class="card-header">
+                        <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Ieškoti...">
+                    </div>
                     <div class="card-body">
                         <div id="formFields">
                             <p class="text-muted">Kraunama...</p>
@@ -75,7 +78,7 @@
             }
 
             container.innerHTML = data.map((field, fi) => {
-                let html = `<div class="mb-3 pb-2 border-bottom">`;
+                let html = `<div class="mb-3 pb-2 border-bottom field-group" data-title="${esc(field.title.toLowerCase())}">`;
                 html += `<div class="fw-bold mb-1">${esc(field.title)} <a href="#" class="fw-normal text-decoration-none small text-muted ms-1 d-none" data-clear="${fi}" onclick="clearField(${fi}); return false;">&#x2715;</a></div>`;
 
                 // Radio options (objects with label + optional checkboxes)
@@ -263,6 +266,18 @@
         }
 
         document.getElementById('btnCopy').addEventListener('click', copyDocument);
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.field-group').forEach(group => {
+                const title = group.dataset.title;
+                if (title.includes(term)) {
+                    group.classList.remove('d-none');
+                } else {
+                    group.classList.add('d-none');
+                }
+            });
+        });
 
         loadDefaultData();
     </script>
