@@ -97,7 +97,7 @@
     "title": "Kalbos gramatinio taisyklingumo ugdymas",
     "entries": [
       { "type": "checkbox", "label": "Mokymasis skirti daiktavardžių vienaskaitos ir daugiskaitos formas" },
-      { "type": "checkbox", "label": "Mokymasis skirti pagrindinius prielinknius „ant, po, už", atlikdama(s) veiksmus su daiktais" },
+      { "type": "checkbox", "label": "Mokymasis skirti pagrindinius prielinknius „ant, po, už”, atlikdama(s) veiksmus su daiktais" },
       { "type": "checkbox", "label": "Mokymasis sudaryti ir vartoti daiktavardžių vienaskaitos ir daugiskaitos formas" },
       { "type": "checkbox", "label": "Mokymasis taisyklingai derinti daiktavardį - būdvardį" },
       { "type": "checkbox", "label": "Taisyklingai derina daiktavardį - skaitvardį" },
@@ -125,7 +125,7 @@
       { "type": "checkbox", "label": "Mokymasis orientuotis plokštumoje (lapo erdvėje, žemėlapyje, schemoje)" },
       { "type": "checkbox", "label": "Mokymasis sekti regimuoju pavyzdžiu (kopia, perpiešia, konstruoja pagal modelį)" },
       { "type": "checkbox", "label": "Mokymasis suvokti daiktų erdvinę padėtį ir santykius" },
-      { "type": "checkbox", "label": "Mokymasis skirti raides, skaičius, simbolius pagal regiminę išvaizdą (pvz., „b" ir „d", „6" ir „9")" },
+      { "type": "checkbox", "label": "Mokymasis skirti raides, skaičius, simbolius pagal regiminę išvaizdą (pvz., „b” ir „d”, „6” ir „9”)" },
       { "type": "checkbox", "label": "Mokymasis atpažinti ir sekti regiminę informaciją sudėtingesniuose vizualiniuose tekstuose (labirintas, schemos, instrukcijos)" }
     ]
   },
@@ -193,7 +193,7 @@
   {
     "title": "Matematinio raštingumo gebėjimų lavinimas",
     "entries": [
-      { "type": "checkbox", "label": "Mokymasis atpažinti ir įvardyti 1–2 daiktus („vienas", „du")" },
+      { "type": "checkbox", "label": "Mokymasis atpažinti ir įvardyti 1–2 daiktus („vienas”, „du”)" },
       { "type": "checkbox", "label": "Mokymasis skirti ir lyginti dydžius: didelis–mažas, ilgas–trumpas" },
       { "type": "checkbox", "label": "Mokymasis pastebėti ir rūšiuoti daiktus pagal vieną požymį (pvz., spalvą ar formą)" },
       { "type": "checkbox", "label": "Mokymasis skaičiuoti daiktus iki 3–5 ir sieti skaičių su kiekiu" },
