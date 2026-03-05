@@ -212,5 +212,25 @@
       { "type": "checkbox", "label": "Mokymasis matematiškai įvardyti ir apibūdinti geometrines figūras (kraštinių, kampų skaičių)" },
       { "type": "checkbox", "label": "Mokymasis matuoti ilgio, masės, tūrio vienetais (cm, g, l), suprasti, ką jie reiškia" }
     ]
+  },
+  {
+    "title": "Kita",
+    "entries": [
+      { "type": "checkbox", "label": "Kalbant neakcentuokite mikčiojimo, neliepkite pakartoti žodžių, kurių nepavyko taisyklingai ištarti." },
+      { "type": "checkbox", "label": "Leiskite vaikui pačiam kalbėti, neužbaikite jo žodžių ir minčių;" },
+      { "type": "checkbox", "label": "Kalbėkite su savo vaiku neskubėdami, darykite pauzes. Kai vaikas baigia kalbėti, palaukite keletą sekundžių ir tik tada pradėkite kalbėti. Jūsų lėtas ir ramus kalbėjimas yra veiksmingesnė pagalba nei ar patarimai „kalbėk lėčiau“, „pabandyk pasakyti dar kartą“ ir pan;" },
+      { "type": "checkbox", "label": "Sumažinkite vaikui užduodamų klausimų skaičių. Vaikai kalba laisviau, kai reiškia savo mintis, o ne atsakinėja į suaugusiųjų klausimus. Vietoje klausinėjimo paprastais žodžiais aptarkite tai, ką jūsų vaikas pasakė: tokiu būdu parodysite, kad girdite, ką jis sako;" },
+      { "type": "checkbox", "label": "Veido išraiška ir kūno kalba, parodykite vaikui, kad klausotės to, ką jis kalba, o ne kaip jis kalba. Domėkitės tuo, ką vaikas nori jums pasakyti. Klausykite aktyviai;" },
+      { "type": "checkbox", "label": "Kasdien raskite keletą minučių pastovaus laiko, kada visą savo dėmesį galėtumėte skirti tik vaikui. Tuo laiku leiskite jam rinktis, ką jis norėtų veikti. Leiskite vaikui vadovauti veiklai ir nuspręsti – kalbėti tuo metu, ar ne. Jeigu jūs šiuo specialiu laiku kalbatės, bendraukite ramiai, lėtai, dažnai sustokite;" },
+      { "type": "checkbox", "label": "Stebėkite kaip bendraujate su vaiku. Bandykite vaikui skirti daugiau laiko, kad jis žinotų turintis pakankamai laiko pasikalbėti su jumis. Bandykite mažiau patarinėti, įsiterpti ir klausinėti;" },
+      { "type": "checkbox", "label": "Parodykite, kad jūs priimate savo vaiką tokį, koks jis yra. Jūsų lėta, rami kalba ir vaiko pasitikėjimo savimi kalbant ugdymas turėtų didinti jo kalbos sklandumą ir sumažinti mikčiojimą." },
+      { "type": "checkbox", "label": "Namuose sukurkite ramią aplinką, laikykitės dienos režimo;" },
+      { "type": "checkbox", "label": "Kalbėdami su vaiku būkite dėmesingi, žiūrėkite jam į akis;" },
+      { "type": "checkbox", "label": "Jeigu vaikas kalba tuo metu, kai jūs dirbate, patikinkite vaiką, kad jo klausotės;" },
+      { "type": "checkbox", "label": "Jei vaikas ims klausinėti apie mikčiojimą, ramiai ir geranoriškai atsakykite į jį neraminančius klausimus;" },
+      { "type": "checkbox", "label": "Neverskite vaiko garsiai skaityti, dainuoti ar deklamuoti, jei jis to nenori;" },
+      { "type": "checkbox", "label": "Stenkitės kuo dažniau parodyti vaikui, kad jį mylite, vertinate ir, kad malonu su juo bendrauti." },
+      { "type": "checkbox", "label": "Pasirūpinkite vaiko dienotvarke, užtikrinkite jam ramybę ir poilsį. Taip nepervargs nervų sistema." }
+    ]
   }
 ]
