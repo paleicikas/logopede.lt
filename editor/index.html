@@ -218,8 +218,25 @@
             }
 
             container.innerHTML = data.map((field, fi) => {
+                // Build full-text search index for this field
+                const searchParts = [field.title];
+                if (field.entries) {
+                    field.entries.forEach(e => {
+                        if (e.label) searchParts.push(e.label);
+                        if (e.checkboxes) e.checkboxes.forEach(cb => searchParts.push(cb));
+                    });
+                }
+                if (field.subsections) {
+                    field.subsections.forEach(sub => {
+                        if (sub.label) searchParts.push(sub.label);
+                        sub.entries.forEach(e => { if (e.label) searchParts.push(e.label); });
+                    });
+                }
+                const searchText = searchParts.join(' ').toLowerCase();
+
                 let html = `<div class="mb-3 pb-2 border-bottom field-group"
-                                 data-title="${esc(field.title.toLowerCase())}">`;
+                                 data-title="${esc(field.title.toLowerCase())}"
+                                 data-search="${esc(searchText)}">`;
                 html += `<div class="fw-bold mb-2">${esc(field.title)} `;
                 html += `<a href="#" class="fw-normal text-decoration-none small text-muted ms-1 d-none"
                             data-clear="${fi}" onclick="clearField(${fi}); return false;">&#x2715;</a></div>`;
@@ -545,7 +562,7 @@
         document.getElementById('searchInput').addEventListener('input', e => {
             const term = e.target.value.toLowerCase();
             document.querySelectorAll('.field-group').forEach(group =>
-                group.classList.toggle('d-none', !group.dataset.title.includes(term))
+                group.classList.toggle('d-none', !group.dataset.search.includes(term))
             );
         });
 
