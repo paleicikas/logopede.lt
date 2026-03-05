@@ -44,6 +44,10 @@
             top: 0;
             z-index: 1020;
         }
+        .text-bg-warning {
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -149,6 +153,14 @@
 
         // ── Helpers ────────────────────────────────────────────────
 
+        function norm(str) {
+            if (!str) return '';
+            return str.toLowerCase()
+                .replace(/[ą]/g, 'a').replace(/[č]/g, 'c').replace(/[ę]/g, 'e').replace(/[ė]/g, 'e')
+                .replace(/[į]/g, 'i').replace(/[š]/g, 's').replace(/[ų]/g, 'u').replace(/[ū]/g, 'u')
+                .replace(/[ž]/g, 'z');
+        }
+
         function esc(str) {
             return String(str)
                 .replace(/&/g, '&amp;').replace(/"/g, '&quot;')
@@ -248,7 +260,7 @@
                         sub.entries.forEach(e => { if (e.label) searchParts.push(e.label); });
                     });
                 }
-                const searchText = searchParts.join(' ').toLowerCase();
+                const searchText = norm(searchParts.join(' '));
 
                 let html = `<div class="mb-3 pb-2 border-bottom field-group"
                                  data-title="${esc(field.title.toLowerCase())}"
@@ -576,10 +588,33 @@
         document.getElementById('btnCopy').addEventListener('click', copyDocument);
 
         document.getElementById('searchInput').addEventListener('input', e => {
-            const term = e.target.value.toLowerCase();
-            document.querySelectorAll('.field-group').forEach(group =>
-                group.classList.toggle('d-none', !group.dataset.search.includes(term))
-            );
+            const term = norm(e.target.value.trim());
+            
+            // 1. Reset all highlights and visibility
+            document.querySelectorAll('.field-group').forEach(group => {
+                group.classList.remove('d-none');
+                // Remove highlight classes from labels/titles
+                group.querySelectorAll('.text-bg-warning').forEach(el => el.classList.remove('text-bg-warning'));
+            });
+
+            if (!term) return;
+
+            // 2. Filter and highlight
+            document.querySelectorAll('.field-group').forEach(group => {
+                const searchTxt = group.dataset.search;
+                const matches = searchTxt.includes(term);
+                group.classList.toggle('d-none', !matches);
+
+                if (matches) {
+                    // Highlight specifically what matched inside the group
+                    // We check labels, titles, and sound buttons
+                    group.querySelectorAll('.fw-bold, .form-check-label, .sound-btn, .fst-italic').forEach(el => {
+                        if (norm(el.innerText).includes(term)) {
+                            el.classList.add('text-bg-warning');
+                        }
+                    });
+                }
+            });
         });
 
         init();
