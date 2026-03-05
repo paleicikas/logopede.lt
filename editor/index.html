@@ -30,17 +30,31 @@
             gap: 3px;
             margin: 2px 3px;
         }
+        #documentCol {
+            position: sticky;
+            top: 70px;
+            align-self: flex-start;
+        }
+        .document-preview-container {
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+        .sticky-top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
     </style>
 </head>
 <body>
     <!-- Document switcher -->
-    <div class="border-bottom bg-light py-2 px-4 d-flex align-items-center gap-3">
+    <div class="border-bottom bg-light py-2 px-4 d-flex align-items-center gap-3 sticky-top-nav">
         <span class="small text-muted fw-semibold">Dokumentas:</span>
         <ul class="nav nav-pills nav-fill" id="docTabs" style="gap:4px"></ul>
     </div>
 
     <div class="container-fluid py-4 px-4">
-        <div class="row" id="mainRow">
+        <div class="row align-items-start" id="mainRow">
             <!-- Document preview (hidden initially) -->
             <div class="col-md-9 d-none" id="documentCol">
                 <div class="card mb-3">
@@ -50,7 +64,7 @@
                             <i class="bi bi-clipboard"></i> Kopijuoti
                         </button>
                     </div>
-                    <div class="card-body bg-warning-subtle bg-opacity-25" id="documentPreview">
+                    <div class="card-body bg-warning-subtle bg-opacity-25 document-preview-container" id="documentPreview">
                         <p class="text-muted">Pasirinkite bent vieną elementą.</p>
                     </div>
                 </div>
