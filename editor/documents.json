@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Bendras",
+    "file": "data-bendras.json",
+    "outputStyle": "inline"
+  },
+  {
+    "name": "Individualus planas",
+    "file": "data-individualus.json",
+    "outputStyle": "block"
+  }
+]

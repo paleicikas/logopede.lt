@@ -6,16 +6,47 @@
     <title>Dokumento generatorius</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        .sound-btn {
+            display: inline-block;
+            padding: 2px 10px;
+            margin: 2px 3px;
+            border: 1.5px solid #0d6efd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 0.9rem;
+            user-select: none;
+            background: white;
+            color: #0d6efd;
+            transition: background 0.1s, color 0.1s;
+        }
+        .sound-btn:hover { background: #e7f0ff; }
+        .sound-btn.selected { background: #0d6efd; color: white; }
+        .sound-btn.selected:hover { background: #0a58ca; }
+        .sound-input-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            margin: 2px 3px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Document switcher -->
+    <div class="border-bottom bg-light py-2 px-4 d-flex align-items-center gap-3">
+        <span class="small text-muted fw-semibold">Dokumentas:</span>
+        <ul class="nav nav-pills nav-fill" id="docTabs" style="gap:4px"></ul>
+    </div>
+
     <div class="container-fluid py-4 px-4">
         <div class="row" id="mainRow">
-            <!-- Document preview (hidden initially, shown on left) -->
+            <!-- Document preview (hidden initially) -->
             <div class="col-md-9 d-none" id="documentCol">
                 <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <strong>Sugeneruotas dokumentas</strong>
-                        <button class="btn btn-sm btn-outline-primary" id="btnCopy" title="Kopijuoti">
+                        <button class="btn btn-sm btn-outline-primary" id="btnCopy">
                             <i class="bi bi-clipboard"></i> Kopijuoti
                         </button>
                     </div>
@@ -53,21 +84,130 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         let data = [];
+        let documents = [];
+        let currentDoc = null;
         let isGenerated = false;
 
-        async function loadDefaultData() {
+        // ── Bootstrap ──────────────────────────────────────────────
+
+        async function init() {
             try {
-                const response = await fetch('data.json');
-                data = await response.json();
-                renderForm();
+                documents = await fetch('documents.json').then(r => r.json());
+                renderTabs();
+                await switchDocument(0);
             } catch (e) {
                 document.getElementById('formFields').innerHTML =
-                    '<p class="text-danger">Nepavyko užkrauti data.json</p>';
+                    '<p class="text-danger">Nepavyko užkrauti documents.json</p>';
             }
         }
 
+        function renderTabs() {
+            document.getElementById('docTabs').innerHTML = documents.map((doc, i) =>
+                `<li class="nav-item">
+                    <a class="nav-link py-1 px-3 small" href="#"
+                       onclick="switchDocument(${i}); return false;">${esc(doc.name)}</a>
+                </li>`
+            ).join('');
+        }
+
+        async function switchDocument(idx) {
+            currentDoc = documents[idx];
+
+            document.querySelectorAll('#docTabs .nav-link').forEach((el, i) =>
+                el.classList.toggle('active', i === idx)
+            );
+
+            isGenerated = false;
+            switchToInitialLayout();
+            document.getElementById('searchInput').value = '';
+            document.getElementById('formFields').innerHTML = '<p class="text-muted">Kraunama...</p>';
+
+            try {
+                data = await fetch(currentDoc.file).then(r => r.json());
+                renderForm();
+            } catch (e) {
+                document.getElementById('formFields').innerHTML =
+                    `<p class="text-danger">Nepavyko užkrauti ${esc(currentDoc.file)}</p>`;
+            }
+        }
+
+        // ── Helpers ────────────────────────────────────────────────
+
         function esc(str) {
-            return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+            return String(str)
+                .replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+                .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        function eid(fi, si, ei) {
+            return (si !== null && si !== undefined && si !== '')
+                ? `f${fi}_s${si}_e${ei}`
+                : `f${fi}_e${ei}`;
+        }
+
+        // ── Render ─────────────────────────────────────────────────
+
+        function renderEntry(entry, fi, si, ei) {
+            const id = eid(fi, si, ei);
+            const siAttr = (si !== null && si !== undefined) ? si : '';
+
+            switch (entry.type) {
+                case 'radio': {
+                    let html = `<div class="form-check form-check-inline">
+                        <input class="form-check-input entry-radio" type="radio"
+                               name="radio_${fi}" id="rb_${id}"
+                               value="${esc(entry.label)}" data-fi="${fi}" data-ei="${ei}">
+                        <label class="form-check-label" for="rb_${id}">${esc(entry.label)}</label>
+                    </div>`;
+                    if (entry.checkboxes && entry.checkboxes.length) {
+                        html += `<div class="ms-4 d-none mb-1" id="rcb_${fi}_${ei}">`;
+                        html += entry.checkboxes.map((cb, ci) =>
+                            `<div class="form-check form-check-inline">
+                                <input class="form-check-input entry-nested-cb" type="checkbox"
+                                       id="ncb_${fi}_${ei}_${ci}" value="${esc(cb)}" data-fi="${fi}">
+                                <label class="form-check-label" for="ncb_${fi}_${ei}_${ci}">${esc(cb)}</label>
+                            </div>`
+                        ).join('');
+                        html += '</div>';
+                    }
+                    return html;
+                }
+
+                case 'checkbox':
+                    return `<div class="form-check mb-1">
+                        <input class="form-check-input entry-cb" type="checkbox"
+                               id="cb_${id}" data-fi="${fi}" data-si="${siAttr}" data-ei="${ei}">
+                        <label class="form-check-label" for="cb_${id}">${esc(entry.label)}</label>
+                    </div>`;
+
+                case 'checkbox_input':
+                    return `<div class="form-check mb-1 d-flex align-items-center gap-2 flex-wrap">
+                        <input class="form-check-input flex-shrink-0 entry-cb" type="checkbox"
+                               id="cb_${id}" data-fi="${fi}" data-si="${siAttr}" data-ei="${ei}">
+                        <label class="form-check-label" for="cb_${id}">${esc(entry.label)}</label>
+                        <input type="text" class="form-control form-control-sm entry-text"
+                               id="txt_${id}" style="width:160px;display:none" placeholder="(papildyti)">
+                    </div>`;
+
+                case 'sound':
+                case 'sound_pair':
+                    return `<span class="sound-btn" id="sb_${id}"
+                               data-fi="${fi}" data-si="${siAttr}" data-ei="${ei}"
+                               onclick="toggleSound(this)">[${esc(entry.label)}]</span>`;
+
+                case 'sound_input':
+                    return `<span class="sound-input-row">
+                        <span class="sound-btn" id="sb_${id}"
+                              data-fi="${fi}" data-si="${siAttr}" data-ei="${ei}"
+                              onclick="toggleSoundInput(this)">[${esc(entry.label)}]</span>
+                        <input type="text" class="form-control form-control-sm"
+                               id="sitxt_${id}" style="width:120px;display:none;font-size:0.8rem"
+                               placeholder="(kontekstas)">
+                    </span>`;
+
+                default:
+                    return '';
+            }
         }
 
         function renderForm() {
@@ -78,103 +218,163 @@
             }
 
             container.innerHTML = data.map((field, fi) => {
-                let html = `<div class="mb-3 pb-2 border-bottom field-group" data-title="${esc(field.title.toLowerCase())}">`;
-                html += `<div class="fw-bold mb-1">${esc(field.title)} <a href="#" class="fw-normal text-decoration-none small text-muted ms-1 d-none" data-clear="${fi}" onclick="clearField(${fi}); return false;">&#x2715;</a></div>`;
+                let html = `<div class="mb-3 pb-2 border-bottom field-group"
+                                 data-title="${esc(field.title.toLowerCase())}">`;
+                html += `<div class="fw-bold mb-2">${esc(field.title)} `;
+                html += `<a href="#" class="fw-normal text-decoration-none small text-muted ms-1 d-none"
+                            data-clear="${fi}" onclick="clearField(${fi}); return false;">&#x2715;</a></div>`;
 
-                // Radio options (objects with label + optional checkboxes)
-                if (field.radio && field.radio.length) {
-                    html += field.radio.map((opt, oi) => {
-                        let rHtml = `
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input field-radio" type="radio"
-                                       name="radio_${fi}" id="radio_${fi}_${oi}"
-                                       value="${esc(opt.label)}" data-field="${fi}" data-radio="${oi}">
-                                <label class="form-check-label" for="radio_${fi}_${oi}">${esc(opt.label)}</label>
-                            </div>`;
-
-                        // Nested checkboxes (hidden until this radio is selected)
-                        if (opt.checkboxes && opt.checkboxes.length) {
-                            rHtml += `<div class="ms-4 d-none" id="rcb_${fi}_${oi}">`;
-                            rHtml += opt.checkboxes.map((cb, ci) => `
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input field-cb-nested" type="checkbox"
-                                           id="cb_${fi}_${oi}_${ci}" value="${esc(cb)}"
-                                           data-field="${fi}" data-radio="${oi}">
-                                    <label class="form-check-label" for="cb_${fi}_${oi}_${ci}">${esc(cb)}</label>
-                                </div>
-                            `).join('');
-                            rHtml += `</div>`;
+                if (field.entries && field.entries.length) {
+                    let inSoundRow = false;
+                    field.entries.forEach((entry, ei) => {
+                        const isBlock = entry.type === 'radio' || entry.type === 'checkbox' || entry.type === 'checkbox_input';
+                        if (isBlock) {
+                            if (inSoundRow) { html += '</div>'; inSoundRow = false; }
+                        } else {
+                            if (!inSoundRow) { html += '<div class="mb-2">'; inSoundRow = true; }
                         }
-
-                        return rHtml;
-                    }).join('');
+                        html += renderEntry(entry, fi, null, ei);
+                    });
+                    if (inSoundRow) html += '</div>';
                 }
 
-                // Standalone checkboxes (field-level, not tied to radio)
-                if (field.checkboxes && field.checkboxes.length) {
-                    html += field.checkboxes.map((cb, ci) => `
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input field-cb-standalone" type="checkbox"
-                                   id="scb_${fi}_${ci}" value="${esc(cb)}" data-field="${fi}">
-                            <label class="form-check-label" for="scb_${fi}_${ci}">${esc(cb)}</label>
-                        </div>
-                    `).join('');
+                if (field.subsections && field.subsections.length) {
+                    field.subsections.forEach((sub, si) => {
+                        html += `<div class="mt-2 ms-2 ps-2 border-start">
+                            <div class="small text-muted fst-italic mb-1">${esc(sub.label)}</div>
+                            <div class="mb-1">`;
+                        sub.entries.forEach((entry, ei) => {
+                            html += renderEntry(entry, fi, si, ei);
+                        });
+                        html += '</div></div>';
+                    });
                 }
 
-                html += `</div>`;
+                html += '</div>';
                 return html;
             }).join('');
 
-            // Radio change: show/hide nested checkboxes
-            container.querySelectorAll('.field-radio').forEach(radio => {
-                radio.addEventListener('change', () => {
-                    const fi = radio.dataset.field;
-                    const oi = radio.dataset.radio;
+            attachListeners();
+        }
 
-                    // Hide all nested checkbox groups for this field
+        function attachListeners() {
+            const container = document.getElementById('formFields');
+
+            // Radio
+            container.querySelectorAll('.entry-radio').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const fi = radio.dataset.fi;
+                    const ei = radio.dataset.ei;
                     container.querySelectorAll(`[id^="rcb_${fi}_"]`).forEach(el => {
                         el.classList.add('d-none');
-                        // Uncheck hidden checkboxes
-                        el.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                        el.querySelectorAll('input').forEach(cb => cb.checked = false);
                     });
-
-                    // Show checkboxes for selected radio (if any)
-                    const target = document.getElementById(`rcb_${fi}_${oi}`);
-                    if (target) target.classList.remove('d-none');
-
-                    // Show clear link
-                    document.querySelector(`[data-clear="${fi}"]`).classList.remove('d-none');
-
+                    const group = document.getElementById(`rcb_${fi}_${ei}`);
+                    if (group) group.classList.remove('d-none');
+                    updateClearLink(fi);
                     onFieldChange();
                 });
             });
 
-            // Checkbox change
-            container.querySelectorAll('.field-cb-nested, .field-cb-standalone').forEach(cb => {
-                cb.addEventListener('change', onFieldChange);
+            // Nested checkboxes (just update preview)
+            container.querySelectorAll('.entry-nested-cb').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    if (isGenerated) updateDocument();
+                });
+            });
+
+            // Standalone checkboxes
+            container.querySelectorAll('.entry-cb').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const { fi, si, ei } = cb.dataset;
+                    const id = si !== '' ? `f${fi}_s${si}_e${ei}` : `f${fi}_e${ei}`;
+                    const txt = document.getElementById(`txt_${id}`);
+                    if (txt) {
+                        txt.style.display = cb.checked ? 'inline-block' : 'none';
+                        if (!cb.checked) txt.value = '';
+                    }
+                    updateClearLink(fi);
+                    onFieldChange();
+                });
+            });
+
+            // Text inputs (checkbox_input and sound_input)
+            container.querySelectorAll('.entry-text, [id^="sitxt_"]').forEach(txt => {
+                txt.addEventListener('input', () => {
+                    if (isGenerated) updateDocument();
+                });
             });
         }
 
-        function clearField(fi) {
-            // Uncheck radio
-            document.querySelectorAll(`input[name="radio_${fi}"]`).forEach(r => r.checked = false);
+        // ── Sound toggles ──────────────────────────────────────────
 
-            // Hide and uncheck nested checkboxes
-            document.querySelectorAll(`[id^="rcb_${fi}_"]`).forEach(el => {
+        function toggleSound(el) {
+            el.classList.toggle('selected');
+            updateClearLink(el.dataset.fi);
+            onFieldChange();
+        }
+
+        function toggleSoundInput(el) {
+            el.classList.toggle('selected');
+            const { fi, si, ei } = el.dataset;
+            const id = eid(fi, si, ei);
+            const txt = document.getElementById(`sitxt_${id}`);
+            if (txt) {
+                txt.style.display = el.classList.contains('selected') ? 'inline-block' : 'none';
+                if (!el.classList.contains('selected')) txt.value = '';
+            }
+            updateClearLink(fi);
+            onFieldChange();
+        }
+
+        // ── State helpers ──────────────────────────────────────────
+
+        function updateClearLink(fi) {
+            const container = document.getElementById('formFields');
+            const hasAny =
+                container.querySelectorAll(`input[name="radio_${fi}"]:checked`).length > 0 ||
+                container.querySelectorAll(`.entry-cb[data-fi="${fi}"]:checked`).length > 0 ||
+                container.querySelectorAll(`.sound-btn[data-fi="${fi}"].selected`).length > 0;
+            const link = document.querySelector(`[data-clear="${fi}"]`);
+            if (link) link.classList.toggle('d-none', !hasAny);
+        }
+
+        function clearField(fi) {
+            const container = document.getElementById('formFields');
+
+            document.querySelectorAll(`input[name="radio_${fi}"]`).forEach(r => r.checked = false);
+            container.querySelectorAll(`[id^="rcb_${fi}_"]`).forEach(el => {
                 el.classList.add('d-none');
-                el.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                el.querySelectorAll('input').forEach(cb => cb.checked = false);
             });
 
-            // Hide clear link
-            document.querySelector(`[data-clear="${fi}"]`).classList.add('d-none');
+            container.querySelectorAll(`.entry-cb[data-fi="${fi}"]`).forEach(cb => {
+                cb.checked = false;
+                const { si, ei } = cb.dataset;
+                const id = si !== '' ? `f${fi}_s${si}_e${ei}` : `f${fi}_e${ei}`;
+                const txt = document.getElementById(`txt_${id}`);
+                if (txt) { txt.style.display = 'none'; txt.value = ''; }
+            });
 
+            container.querySelectorAll(`.sound-btn[data-fi="${fi}"]`).forEach(btn => {
+                btn.classList.remove('selected');
+                const { si, ei } = btn.dataset;
+                const id = eid(fi, si, ei);
+                const txt = document.getElementById(`sitxt_${id}`);
+                if (txt) { txt.style.display = 'none'; txt.value = ''; }
+            });
+
+            const link = document.querySelector(`[data-clear="${fi}"]`);
+            if (link) link.classList.add('d-none');
             onFieldChange();
         }
 
         function onFieldChange() {
+            const container = document.getElementById('formFields');
             const anySelected =
-                document.querySelectorAll('.field-radio:checked').length > 0 ||
-                document.querySelectorAll('.field-cb-standalone:checked').length > 0;
+                container.querySelectorAll('.entry-radio:checked').length > 0 ||
+                container.querySelectorAll('.entry-cb:checked').length > 0 ||
+                container.querySelectorAll('.sound-btn.selected').length > 0;
 
             if (anySelected && !isGenerated) {
                 switchToGeneratedLayout();
@@ -185,73 +385,149 @@
             }
         }
 
-        function getFieldSelections() {
+        // ── Document generation ────────────────────────────────────
+
+        function getSelections() {
+            const container = document.getElementById('formFields');
             const results = [];
+
             data.forEach((field, fi) => {
-                let main = [];
-                let sub = [];
+                const r = { title: field.title, radioLabel: null, radioSubs: [], lines: [], sounds: [], subGroups: [] };
+                let hasAny = false;
 
-                // Selected radio
-                const radio = document.querySelector(`input[name="radio_${fi}"]:checked`);
-                if (radio) {
-                    main.push(radio.value);
+                if (field.entries) {
+                    const radio = document.querySelector(`input[name="radio_${fi}"]:checked`);
+                    if (radio) {
+                        r.radioLabel = radio.value;
+                        hasAny = true;
+                        container.querySelectorAll(`#rcb_${fi}_${radio.dataset.ei} input:checked`).forEach(cb => {
+                            r.radioSubs.push(cb.value);
+                        });
+                    }
 
-                    // Nested checkboxes of selected radio
-                    const oi = radio.dataset.radio;
-                    document.querySelectorAll(`#rcb_${fi}_${oi} input[type="checkbox"]:checked`).forEach(cb => {
-                        sub.push(cb.value);
+                    field.entries.forEach((entry, ei) => {
+                        if (entry.type === 'radio') return;
+                        const id = `f${fi}_e${ei}`;
+
+                        if (entry.type === 'checkbox') {
+                            const cb = document.getElementById(`cb_${id}`);
+                            if (cb && cb.checked) { r.lines.push(entry.label); hasAny = true; }
+
+                        } else if (entry.type === 'checkbox_input') {
+                            const cb = document.getElementById(`cb_${id}`);
+                            if (cb && cb.checked) {
+                                const txt = document.getElementById(`txt_${id}`);
+                                const val = txt ? txt.value.trim() : '';
+                                r.lines.push(val ? `${entry.label}: ${val}` : entry.label);
+                                hasAny = true;
+                            }
+
+                        } else if (entry.type === 'sound' || entry.type === 'sound_pair') {
+                            const btn = document.getElementById(`sb_${id}`);
+                            if (btn && btn.classList.contains('selected')) {
+                                r.sounds.push(`[${entry.label}]`);
+                                hasAny = true;
+                            }
+
+                        } else if (entry.type === 'sound_input') {
+                            const btn = document.getElementById(`sb_${id}`);
+                            if (btn && btn.classList.contains('selected')) {
+                                const txt = document.getElementById(`sitxt_${id}`);
+                                const val = txt ? txt.value.trim() : '';
+                                r.sounds.push(val ? `[${entry.label}] ${val}` : `[${entry.label}]`);
+                                hasAny = true;
+                            }
+                        }
                     });
                 }
 
-                // Standalone checkboxes
-                document.querySelectorAll(`.field-cb-standalone[data-field="${fi}"]:checked`).forEach(cb => {
-                    main.push(cb.value);
-                });
-
-                if (main.length || sub.length) {
-                    results.push({ title: field.title, main, sub });
+                if (field.subsections) {
+                    field.subsections.forEach((sub, si) => {
+                        const pairs = [];
+                        sub.entries.forEach((entry, ei) => {
+                            const btn = document.getElementById(`sb_f${fi}_s${si}_e${ei}`);
+                            if (btn && btn.classList.contains('selected')) {
+                                pairs.push(`[${entry.label}]`);
+                                hasAny = true;
+                            }
+                        });
+                        if (pairs.length) r.subGroups.push({ label: sub.label, pairs });
+                    });
                 }
+
+                if (hasAny) results.push(r);
             });
+
             return results;
         }
 
         function updateDocument() {
             const preview = document.getElementById('documentPreview');
-            const selections = getFieldSelections();
+            const selections = getSelections();
+            const inline = currentDoc && currentDoc.outputStyle === 'inline';
+
             if (!selections.length) {
                 preview.innerHTML = '<p class="text-muted">Pasirinkite bent vieną elementą.</p>';
                 return;
             }
+
             preview.innerHTML = selections.map(s => {
-                let text = s.main.map(v => esc(v.toLowerCase())).join(', ');
-                if (s.sub.length) {
-                    text += ` (${s.sub.map(v => esc(v.toLowerCase())).join(', ')})`;
+                // Radio field — always single-line
+                if (s.radioLabel) {
+                    let text = esc(s.radioLabel.toLowerCase());
+                    if (s.radioSubs.length) {
+                        text += ` (${s.radioSubs.map(v => esc(v.toLowerCase())).join(', ')})`;
+                    }
+                    return `<p class="mb-0"><strong>${esc(s.title)}:</strong> ${text}</p>`;
                 }
-                return `<p class="mb-0"><strong>${esc(s.title)}:</strong> ${text}</p>`;
+
+                // Inline style: one line per section
+                if (inline) {
+                    const all = [
+                        ...s.lines.map(l => esc(l.toLowerCase())),
+                        ...s.sounds.map(esc),
+                        ...s.subGroups.flatMap(sg => sg.pairs.map(esc))
+                    ];
+                    return `<p class="mb-0"><strong>${esc(s.title)}:</strong> ${all.join(', ')}</p>`;
+                }
+
+                // Block style: bullet points
+                let html = `<p class="mb-1"><strong>${esc(s.title)}:</strong></p>`;
+                if (s.sounds.length) {
+                    html += `<p class="mb-1 ms-3">${s.sounds.map(esc).join(' ')}</p>`;
+                }
+                s.lines.forEach(line => {
+                    html += `<p class="mb-0 ms-3">– ${esc(line)}</p>`;
+                });
+                s.subGroups.forEach(sg => {
+                    html += `<p class="mb-0 ms-3"><em>${esc(sg.label)}</em> ${sg.pairs.map(esc).join(' ')}</p>`;
+                });
+                return html + '<div class="mb-2"></div>';
             }).join('');
         }
+
+        // ── Layout ─────────────────────────────────────────────────
 
         function switchToGeneratedLayout() {
             isGenerated = true;
             document.getElementById('documentCol').classList.remove('d-none');
-            document.getElementById('formCol').classList.remove('col-12');
-            document.getElementById('formCol').classList.add('col-md-3');
+            document.getElementById('formCol').classList.replace('col-12', 'col-md-3');
             updateDocument();
         }
 
         function switchToInitialLayout() {
             isGenerated = false;
             document.getElementById('documentCol').classList.add('d-none');
-            document.getElementById('formCol').classList.remove('col-md-3');
-            document.getElementById('formCol').classList.add('col-12');
+            const fc = document.getElementById('formCol');
+            if (!fc.classList.contains('col-12')) fc.classList.replace('col-md-3', 'col-12');
         }
+
+        // ── Copy ───────────────────────────────────────────────────
 
         async function copyDocument() {
             const preview = document.getElementById('documentPreview');
             try {
                 await navigator.clipboard.writeText(preview.innerText);
-                const toast = new bootstrap.Toast(document.getElementById('copyToast'));
-                toast.show();
             } catch (e) {
                 const range = document.createRange();
                 range.selectNodeContents(preview);
@@ -260,26 +536,20 @@
                 sel.addRange(range);
                 document.execCommand('copy');
                 sel.removeAllRanges();
-                const toast = new bootstrap.Toast(document.getElementById('copyToast'));
-                toast.show();
             }
+            new bootstrap.Toast(document.getElementById('copyToast')).show();
         }
 
         document.getElementById('btnCopy').addEventListener('click', copyDocument);
 
-        document.getElementById('searchInput').addEventListener('input', (e) => {
+        document.getElementById('searchInput').addEventListener('input', e => {
             const term = e.target.value.toLowerCase();
-            document.querySelectorAll('.field-group').forEach(group => {
-                const title = group.dataset.title;
-                if (title.includes(term)) {
-                    group.classList.remove('d-none');
-                } else {
-                    group.classList.add('d-none');
-                }
-            });
+            document.querySelectorAll('.field-group').forEach(group =>
+                group.classList.toggle('d-none', !group.dataset.title.includes(term))
+            );
         });
 
-        loadDefaultData();
+        init();
     </script>
 </body>
 </html>

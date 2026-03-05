@@ -1,0 +1,216 @@
+[
+  {
+    "title": "Artikuliacinio aparato lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Tinkamą lūpų atitraukimą ir suapvalinimą skatinantys pratimai" },
+      { "type": "checkbox", "label": "Žandikaulio judesių koordinavimą lavinantys pratimai" },
+      { "type": "checkbox", "label": "Liežuvio judesių greitį ir tikslumą lavinantys pratimai" },
+      { "type": "checkbox", "label": "Pūtimo pratimai" }
+    ]
+  },
+  {
+    "title": "Garsų tarimo mokymas",
+    "entries": [
+      { "type": "sound", "label": "s" },
+      { "type": "sound", "label": "z" },
+      { "type": "sound", "label": "c" },
+      { "type": "sound", "label": "š" },
+      { "type": "sound", "label": "ž" },
+      { "type": "sound", "label": "č" },
+      { "type": "sound", "label": "l" },
+      { "type": "sound", "label": "r" },
+      { "type": "sound", "label": "g" },
+      { "type": "sound", "label": "k" }
+    ]
+  },
+  {
+    "title": "Garsų tarimo įtvirtinimas",
+    "entries": [
+      { "type": "sound_input", "label": "s" },
+      { "type": "sound_input", "label": "z" },
+      { "type": "sound_input", "label": "c" },
+      { "type": "sound_input", "label": "š" },
+      { "type": "sound_input", "label": "ž" },
+      { "type": "sound_input", "label": "č" },
+      { "type": "sound_input", "label": "l" },
+      { "type": "sound_input", "label": "r" },
+      { "type": "sound_input", "label": "g" },
+      { "type": "sound_input", "label": "k" }
+    ]
+  },
+  {
+    "title": "Žodyno plėtra",
+    "entries": [
+      { "type": "checkbox_input", "label": "Garsais" },
+      { "type": "checkbox_input", "label": "Garsažodžiais" },
+      { "type": "checkbox_input", "label": "Dviskiemeniais žodžiais" },
+      { "type": "checkbox", "label": "Artimiausios aplinkos daiktais" },
+      { "type": "checkbox", "label": "Veiksmažodžiais" },
+      { "type": "checkbox", "label": "Daiktų apibūdinimais: spalva, forma, dydis" },
+      { "type": "checkbox", "label": "Gyvūnų pavadinimais" },
+      { "type": "checkbox", "label": "Erdvės ir laiko savokomis" },
+      { "type": "checkbox", "label": "Apibendrinančiomis sąvokomis" }
+    ]
+  },
+  {
+    "title": "Foneminio suvokimo lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Nekalbinių (neverbalinių) garsų atpažinimo mokymasis" },
+      { "type": "checkbox", "label": "Panašiai akustiškai skambančių garsų skyrimo mokymasis" },
+      { "type": "checkbox", "label": "Garsų išskyrimo garsų eilėje mokymasis" }
+    ],
+    "subsections": [
+      {
+        "label": "Panašiai skambančių kalbinių garsų skyrimo mokymasis:",
+        "entries": [
+          { "type": "sound_pair", "label": "s-š" },
+          { "type": "sound_pair", "label": "c-š" },
+          { "type": "sound_pair", "label": "č-c" },
+          { "type": "sound_pair", "label": "č-š" },
+          { "type": "sound_pair", "label": "r-l" },
+          { "type": "sound_pair", "label": "r-j" },
+          { "type": "sound_pair", "label": "l-j" },
+          { "type": "sound_pair", "label": "l-v" },
+          { "type": "sound_pair", "label": "k-t" },
+          { "type": "sound_pair", "label": "z-ž" },
+          { "type": "sound_pair", "label": "g-d" },
+          { "type": "sound_pair", "label": "z-s" },
+          { "type": "sound_pair", "label": "ž-š" },
+          { "type": "sound_pair", "label": "g-k" },
+          { "type": "sound_pair", "label": "d-t" },
+          { "type": "sound_pair", "label": "b-p" }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Garsinės analizės ir sintezės gebėjimų ugdymas",
+    "entries": [
+      { "type": "checkbox", "label": "Pirmo žodžio garso nustatymo mokymasis" },
+      { "type": "checkbox", "label": "Paskutinio žodžio garso nustatymo mokymasis" },
+      { "type": "checkbox", "label": "Gebėjimo atrinkti paveikslėlius, kurių pavadinimas prasideda nurodytu garsu lavinimas" },
+      { "type": "checkbox", "label": "Gebėjimo skaidyti žodžius skiemenimis lavinimas" },
+      { "type": "checkbox", "label": "Gebėjimo skaityti žodžius garsais lavinimas" }
+    ]
+  },
+  {
+    "title": "Kalbos gramatinio taisyklingumo ugdymas",
+    "entries": [
+      { "type": "checkbox", "label": "Mokymasis skirti daiktavardžių vienaskaitos ir daugiskaitos formas" },
+      { "type": "checkbox", "label": "Mokymasis skirti pagrindinius prielinknius „ant, po, už", atlikdama(s) veiksmus su daiktais" },
+      { "type": "checkbox", "label": "Mokymasis sudaryti ir vartoti daiktavardžių vienaskaitos ir daugiskaitos formas" },
+      { "type": "checkbox", "label": "Mokymasis taisyklingai derinti daiktavardį - būdvardį" },
+      { "type": "checkbox", "label": "Taisyklingai derina daiktavardį - skaitvardį" },
+      { "type": "checkbox", "label": "Mokymasis vartoti kelintinius skaitvardžius" },
+      { "type": "checkbox", "label": "Mokymasis sudaryti ir vartoti mažybines daiktavardžių formas" }
+    ]
+  },
+  {
+    "title": "Smulkiosios motorikos lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Žaidimai skirti pirštų koordinacijai ir dėmesio koncentracijai gerinti" },
+      { "type": "checkbox", "label": "Piešimas ir karpymas" },
+      { "type": "checkbox", "label": "Konstravimas ir spalvinimas" },
+      { "type": "checkbox", "label": "Manipuliacinės veiklos su smulkiais daiktais" }
+    ]
+  },
+  {
+    "title": "Regimojo suvokimo lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Mokymasis atskirti, įvardyti ir rūšiuoti daiktus pagal vieną ar kelis požymius (spalvą, formą, dydį, kiekį)" },
+      { "type": "checkbox", "label": "Mokymasis atpažinti ir įvardyti pagrindines bei sudėtingesnes geometrines formas (nuo apskritimo iki penkiakampio ar trapecijos)" },
+      { "type": "checkbox", "label": "Mokymasis pastebėti skirtumus ir panašumus tarp paveikslėlių ar daiktų" },
+      { "type": "checkbox", "label": "Mokymasis atpažinti dalį kaip visumos elementą (dalis–visuma santykis)" },
+      { "type": "checkbox", "label": "Mokymasis atpažinti pasikartojančius regimuosius raštus (modelius, sekas)" },
+      { "type": "checkbox", "label": "Mokymasis orientuotis plokštumoje (lapo erdvėje, žemėlapyje, schemoje)" },
+      { "type": "checkbox", "label": "Mokymasis sekti regimuoju pavyzdžiu (kopia, perpiešia, konstruoja pagal modelį)" },
+      { "type": "checkbox", "label": "Mokymasis suvokti daiktų erdvinę padėtį ir santykius" },
+      { "type": "checkbox", "label": "Mokymasis skirti raides, skaičius, simbolius pagal regiminę išvaizdą (pvz., „b" ir „d", „6" ir „9")" },
+      { "type": "checkbox", "label": "Mokymasis atpažinti ir sekti regiminę informaciją sudėtingesniuose vizualiniuose tekstuose (labirintas, schemos, instrukcijos)" }
+    ]
+  },
+  {
+    "title": "Mąstymo gebėjimų lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Skatinti daiktų klasifikavimą pagal bendrus požymius" },
+      { "type": "checkbox", "label": "Lavinti priežasties ir pasekmės suvokimą" },
+      { "type": "checkbox", "label": "Skatinti vaiko gebėjimą lyginti ir rasti skirtumus bei panašumus" },
+      { "type": "checkbox", "label": "Formuoti gebėjimą tęsti seką ar modelį" },
+      { "type": "checkbox", "label": "Skatinti spėjimo (hipotezės) formulavimą ir tikrinimą" },
+      { "type": "checkbox", "label": "Lavinti loginį mąstymą sprendžiant paprastas problemas" },
+      { "type": "checkbox", "label": "Plėtoti kūrybinį mąstymą ir idėjų generavimą" },
+      { "type": "checkbox", "label": "Mokytis sudėlioti įvykius ar veiksmus logine tvarka" },
+      { "type": "checkbox", "label": "Skatinti atminties lavinimą per įsiminimą ir atgaminimą" },
+      { "type": "checkbox", "label": "Lavinti gebėjimą pateikti argumentus ir pasirinkimo priežastis" }
+    ]
+  },
+  {
+    "title": "Rišliosios kalbos lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Kalbėjimo garsažodžiais skatinimas" },
+      { "type": "checkbox", "label": "Skatinimas vartoti vieno žodžio sakinius" },
+      { "type": "checkbox", "label": "Skatinimas vartoti žodžių junginius (daiktavardis – veiksmažodis; daiktavardis – būdvardis, kt.)" },
+      { "type": "checkbox", "label": "Skatinimas vartoti 2/3/4 žodžių sakinius" },
+      { "type": "checkbox", "label": "Skatinimas vartoti sudėtinius sakinius su jungtukais" },
+      { "type": "checkbox", "label": "Gebėjimo susikaupti ir išlaikyti dėmesį klausant nesudėtingo teksto lavinimas" },
+      { "type": "checkbox", "label": "Gebėjimo susikaupti ir išlaikyti dėmesį klausant sudėtingo pasakojimo lavinimas" },
+      { "type": "checkbox", "label": "Gebėjimo atpasakoti girdėtą pasakojimą (paveikslėlių ir klausimų pagalba) lavinimas" }
+    ]
+  },
+  {
+    "title": "Skaitymo gebėjimų lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Mokymasis įvardyti raides" },
+      { "type": "checkbox", "label": "Mokymasis skaityti skiemenis" },
+      { "type": "checkbox", "label": "Mokymasis skaityti žodžius" },
+      { "type": "checkbox", "label": "Mokymasis skaityti sakinius" },
+      { "type": "checkbox", "label": "Mokymasis skaityti tekstą" },
+      { "type": "checkbox", "label": "Mokymasis skaityti tinkamu tempu" },
+      { "type": "checkbox", "label": "Mokymasis skaityti sklandžiai" },
+      { "type": "checkbox", "label": "Mokymasis tinkamai intonuoti sakinius" }
+    ]
+  },
+  {
+    "title": "Teksto suvokimo gebėjimų lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Mokymasis suprasti paties skaitomą tekstą, atsakyti į klausimus" },
+      { "type": "checkbox", "label": "Mokymasis trumpai apibūdinti kūrinio veikėjus" },
+      { "type": "checkbox", "label": "Mokymasis nurodyti veiksmo vietą, laiką, įvykių seką" },
+      { "type": "checkbox", "label": "Mokymasis paaiškinti tekste vartojamus vaizdingus žodžius ir frazes" },
+      { "type": "checkbox", "label": "Mokymasis suvokti teksto stilių ir paskirtį" },
+      { "type": "checkbox", "label": "Mokymasis išsakyti įspūdžius ir nuomonę apie kūrinį" }
+    ]
+  },
+  {
+    "title": "Rašymo gebėjimų lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Raidžių rašymo mokymasis" },
+      { "type": "checkbox", "label": "Žodžių rašymo mokymasis" },
+      { "type": "checkbox", "label": "Mokymasis rašant išlaikyti raidinę ir skiemeninę žodžio struktūrą" },
+      { "type": "checkbox", "label": "Mokymasis tinkamai taikyti išmoktas rašybos ir skyrybos taisykles" }
+    ]
+  },
+  {
+    "title": "Matematinio raštingumo gebėjimų lavinimas",
+    "entries": [
+      { "type": "checkbox", "label": "Mokymasis atpažinti ir įvardyti 1–2 daiktus („vienas", „du")" },
+      { "type": "checkbox", "label": "Mokymasis skirti ir lyginti dydžius: didelis–mažas, ilgas–trumpas" },
+      { "type": "checkbox", "label": "Mokymasis pastebėti ir rūšiuoti daiktus pagal vieną požymį (pvz., spalvą ar formą)" },
+      { "type": "checkbox", "label": "Mokymasis skaičiuoti daiktus iki 3–5 ir sieti skaičių su kiekiu" },
+      { "type": "checkbox", "label": "Mokymasis atpažinti pagrindines geometrines figūras (apskritimą, kvadratą, trikampį)" },
+      { "type": "checkbox", "label": "Mokymasis naudoti sąvokas: virš, po, šalia, viduje" },
+      { "type": "checkbox", "label": "Mokymasis skaičiuoti daiktus iki 10 ir pažinti skaitmenis nuo 1 iki 5" },
+      { "type": "checkbox", "label": "Mokymasis rūšiuoti daiktus pagal du požymius (pvz., spalvą ir dydį)" },
+      { "type": "checkbox", "label": "Mokymasis tęsti paprastą seką (spalvų, formų, objektų)" },
+      { "type": "checkbox", "label": "Mokymasis atlikti paprastus veiksmus su mažais skaičiais (pvz., 2 + 1, 5 – 2)" },
+      { "type": "checkbox", "label": "Mokymasis lyginti kiekius: daugiau, mažiau, tiek pat" },
+      { "type": "checkbox", "label": "Mokymasis matyti ir kurti pasikartojančius modelius (pvz., spalva–spalva–figūra)" },
+      { "type": "checkbox", "label": "Mokymasis atpažinti skaičius iki 20, mokėti skaičiuoti pirmyn ir atgal" },
+      { "type": "checkbox", "label": "Mokymasis suprasti skaičių sandarą: iš ko susideda 10 (pvz., 7 + 3, 5 + 5)" },
+      { "type": "checkbox", "label": "Mokymasis išspręsti paprastą žodinę užduotį su sudėtimi ar atimtimi" },
+      { "type": "checkbox", "label": "Mokymasis spręsti sudėtingesnes matematikos užduotis (su dviem veiksmais)" },
+      { "type": "checkbox", "label": "Mokymasis matematiškai įvardyti ir apibūdinti geometrines figūras (kraštinių, kampų skaičių)" },
+      { "type": "checkbox", "label": "Mokymasis matuoti ilgio, masės, tūrio vienetais (cm, g, l), suprasti, ką jie reiškia" }
+    ]
+  }
+]
