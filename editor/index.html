@@ -106,7 +106,8 @@
 
         async function init() {
             try {
-                documents = await fetch('documents.json').then(r => r.json());
+                const v = Date.now();
+                documents = await fetch(`documents.json?v=${v}`).then(r => r.json());
                 renderTabs();
                 await switchDocument(0);
             } catch (e) {
@@ -137,7 +138,8 @@
             document.getElementById('formFields').innerHTML = '<p class="text-muted">Kraunama...</p>';
 
             try {
-                data = await fetch(currentDoc.file).then(r => r.json());
+                const v = Date.now();
+                data = await fetch(`${currentDoc.file}?v=${v}`).then(r => r.json());
                 renderForm();
             } catch (e) {
                 document.getElementById('formFields').innerHTML =
