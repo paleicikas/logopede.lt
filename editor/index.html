@@ -523,7 +523,7 @@
                     if (s.radioSubs.length) {
                         text += ` (${s.radioSubs.map(v => esc(v.toLowerCase())).join(', ')})`;
                     }
-                    return `<p class="mb-0"><strong>${esc(s.title)}:</strong> ${text}</p>`;
+                    return `<div class="mb-0"><strong>${esc(s.title)}:</strong> ${text}</div>`;
                 }
 
                 // Inline style: one line per section
@@ -533,21 +533,21 @@
                         ...s.sounds.map(esc),
                         ...s.subGroups.flatMap(sg => sg.pairs.map(esc))
                     ];
-                    return `<p class="mb-0"><strong>${esc(s.title)}:</strong> ${all.join(', ')}</p>`;
+                    return `<div class="mb-0"><strong>${esc(s.title)}:</strong> ${all.join(', ')}</div>`;
                 }
 
                 // Block style: bullet points
-                let html = `<p class="mb-1"><strong>${esc(s.title)}:</strong></p>`;
+                let html = `<div class="mb-1"><strong>${esc(s.title)}:</strong></div>`;
                 if (s.sounds.length) {
-                    html += `<p class="mb-1 ms-3">${s.sounds.map(esc).join(' ')}</p>`;
+                    html += `<div class="mb-1 ms-3">${s.sounds.map(esc).join(' ')}</div>`;
                 }
                 s.lines.forEach(line => {
-                    html += `<p class="mb-0 ms-3">– ${esc(line)}</p>`;
+                    html += `<div class="mb-0 ms-3">– ${esc(line)}</div>`;
                 });
                 s.subGroups.forEach(sg => {
-                    html += `<p class="mb-0 ms-3"><em>${esc(sg.label)}</em> ${sg.pairs.map(esc).join(' ')}</p>`;
+                    html += `<div class="mb-0 ms-3"><em>${esc(sg.label)}</em> ${sg.pairs.map(esc).join(' ')}</div>`;
                 });
-                return html + '<div class="mb-2"></div>';
+                return html + '<div class="mb-1"></div>';
             }).join('');
         }
 
