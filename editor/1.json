@@ -18,24 +18,6 @@
     ]
   },
   {
-    "title": "Reakcija į bendravimą",
-    "entries": [
-      { "type": "checkbox", "label": "į bendravimą" },
-      { "type": "checkbox", "label": "į kalbinimą" },
-      { "type": "checkbox", "label": "į mėgdžiojimą" }
-    ]
-  },
-  {
-    "title": "Kalbos supratimas (vaiko reakcija)",
-    "entries": [
-      { "type": "checkbox", "label": "į 1 dalies prašymą" },
-      { "type": "checkbox", "label": "į paprastus klausimus" },
-      { "type": "checkbox", "label": "į draudimą" },
-      { "type": "checkbox", "label": "į paveikslėlių įvardijimą" },
-      { "type": "checkbox", "label": "į objektų įvardijimą frazėmis" }
-    ]
-  },
-  {
     "title": "(Ne)verbalinio bendravimo įgūdžiai",
     "entries": [
       { "type": "checkbox", "label": "Mimikos mėgdžiojimas" },
