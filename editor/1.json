@@ -226,7 +226,7 @@
     ]
   },
   {
-    "title": "Foneminė klausa",
+    "title": "Foneminis suvokimas",
     "entries": [
       { "type": "radio", "label": "Atitinka amžių", "checkboxes": ["skiria fonemas"] },
       { "type": "radio", "label": "Išlavėjusi" },
