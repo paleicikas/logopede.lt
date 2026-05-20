@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Bendras",
+    "file": "1.json",
+    "outputStyle": "inline"
+  },
+  {
+    "name": "Individualus planas",
+    "file": "2.json",
+    "outputStyle": "block"
+  }
+]

@@ -1,0 +1,334 @@
+[
+  {
+    "title": "Kalba, kuria kalbama šeimoje",
+    "entries": [
+      { "type": "radio", "label": "Lietuvių" },
+      { "type": "radio", "label": "Rusų" },
+      { "type": "radio", "label": "Lenkų" },
+      { "type": "radio", "label": "Kita" }
+    ]
+  },
+  {
+    "title": "Kalba, kuria ugdomas įstaigoje",
+    "entries": [
+      { "type": "radio", "label": "Lietuvių" },
+      { "type": "radio", "label": "Rusų" },
+      { "type": "radio", "label": "Lenkų" },
+      { "type": "radio", "label": "Kita" }
+    ]
+  },
+  {
+    "title": "(Ne)verbalinio bendravimo įgūdžiai",
+    "entries": [
+      { "type": "checkbox", "label": "Mimikos mėgdžiojimas" },
+      { "type": "checkbox", "label": "Gestų mėgdžiojimas" },
+      { "type": "checkbox", "label": "Garsų, garsažodžių pakartojimas" }
+    ]
+  },
+  {
+    "title": "Akių kontaktas",
+    "entries": [
+      { "type": "radio", "label": "Normalus" },
+      { "type": "radio", "label": "Nėra", "checkboxes": ["vengia akių kontakto"] },
+      { "type": "radio", "label": "Epizodiškas", "checkboxes": ["neužmezga ilgalaikio kontakto"] }
+    ]
+  },
+  {
+    "title": "Pirminis kontaktas, komunikacija",
+    "entries": [
+      { "type": "checkbox", "label": "Geba bendrauti" },
+      { "type": "checkbox", "label": "Palaiko akių kontaktą" },
+      { "type": "checkbox", "label": "Nepalaiko akių kontakto" },
+      { "type": "checkbox", "label": "Bendravimo įgūdžiai nesusiformavę" },
+      { "type": "checkbox", "label": "Drąsus" },
+      { "type": "checkbox", "label": "Linksmas" },
+      { "type": "checkbox", "label": "Piktas" },
+      { "type": "checkbox", "label": "Lengvai bendraujantis" },
+      { "type": "checkbox", "label": "Nelinkęs bendrauti" },
+      { "type": "checkbox", "label": "Verksmingas" },
+      { "type": "checkbox", "label": "Jautrus" },
+      { "type": "checkbox", "label": "Didelė nuotaikų kaita" },
+      { "type": "checkbox", "label": "Kantrus" },
+      { "type": "checkbox", "label": "Geranoriškas" },
+      { "type": "checkbox", "label": "Pozityvus" }
+    ]
+  },
+  {
+    "title": "Kalbinė raiška",
+    "entries": [
+      { "type": "radio", "label": "Atitinka amžių" },
+      { "type": "radio", "label": "Sulėtėjusi", "checkboxes": ["žodyno trūkumas", "agramatizmai"] },
+      { "type": "radio", "label": "Sutrikusi", "checkboxes": ["garsais", "garsažodžiais", "žodžių nuotrupomis", "„sava kalba“", "žodžiais", "frazėmis", "sakiniais", "gugavimas", "vogravimas", "čiaukškėjimas", "pavieniai žodžiai", "echolalijos", "kalba tik garsažodžiais"] }
+    ]
+  },
+  {
+    "title": "Kalbos tempas",
+    "entries": [
+      { "type": "radio", "label": "Normalus" },
+      { "type": "radio", "label": "Greitas" },
+      { "type": "radio", "label": "Lėtas" }
+    ]
+  },
+  {
+    "title": "Artikuliacinis aparatas",
+    "entries": [
+      { "type": "radio", "label": "Anatomiškai nepakitęs" },
+      { "type": "radio", "label": "Anatomiškai pakitęs", "checkboxes": ["aukštas kietasis gomurys", "žemas kietasis gomurys", "normalus kietasis gomurys", "gomurio defektas", "trumpas poliežuvinis raištis", "netaisyklingas sąkandis", "taisyklingas sąkandis", "lūpos nesuaugimas", "dantų anomalijos"] }
+    ]
+  },
+  {
+    "title": "Mimika",
+    "entries": [
+      { "type": "radio", "label": "Išraiškinga" },
+      { "type": "radio", "label": "Neišraiškinga", "checkboxes": ["vangi", "amimiška"] },
+      { "type": "radio", "label": "Asimetriška (silpnumas)", "checkboxes": ["amimiškas veidas", "silpnumas", "seilėtekis"] },
+      { "type": "radio", "label": "Asimetriška (įtampa)", "checkboxes": ["įtampa", "tremoras", "trūkčiojimas", "sinkinezijos"] }
+    ]
+  },
+  {
+    "title": "Minkštasis gomurys",
+    "entries": [
+      { "type": "radio", "label": "Simetriškas", "checkboxes": ["judrus", "funkcionalus"] },
+      { "type": "radio", "label": "Asimetriškas", "checkboxes": ["nejudrus", "žemas", "aukštas", "siauras", "iš dalies pakyla", "nepakyla", "liežuvėlis pakrypęs", "liežuvėlis nukaręs", "liežuvėlis nejudrus", "vangus"] }
+    ]
+  },
+  {
+    "title": "Liežuvis (padėtis ir savybės)",
+    "entries": [
+      { "type": "radio", "label": "Judesys simetriškas" },
+      { "type": "radio", "label": "Nukrypimai", "checkboxes": ["guli burnos dugne", "atitrauktas atgal", "iškištas tarp dantų", "nuolat iškištas „pakabintas“", "krypsta į šoną"] },
+      { "type": "radio", "label": "Savybės", "checkboxes": ["judrus", "nejudrus", "vangus", "pasklidęs", "smailėjantis", "trūkčiojantis", "sinkinezijos"] }
+    ]
+  },
+  {
+    "title": "Liežuvis (judesiai)",
+    "entries": [
+      { "type": "radio", "label": "Judesys simetriškas", "checkboxes": ["nuoseklus", "greitas"] },
+      { "type": "radio", "label": "Judesiai sutrikę", "checkboxes": ["netiksliai atlieka artikuliacinius judesius", "greitai nuvargsta", "nepakelia į viršų", "pasikartojantys", "neranda padėties", "negali pakelti", "negali nuleisti", "negali aplaižyti lūpų", "judesiai netikslūs"] },
+      { "type": "radio", "label": "Judesys asimetriškas", "checkboxes": ["vangus", "lėtėjantis", "nepakankama apimtis", "prilaikomas lūpos", "trūkčiojantis", "sinkinezijos"] }
+    ]
+  },
+  {
+    "title": "Lūpos",
+    "entries": [
+      { "type": "radio", "label": "Judesiai nuoseklūs", "checkboxes": ["simetriškos", "kalbant aktyvios", "judesių koordinacija gera", "greiti", "pakankama amplitudė"] },
+      { "type": "radio", "label": "Judesiai nenuoseklūs", "checkboxes": ["pasyvios", "judesių koordinacija bloga", "pasikartojantys", "sunkiai randa padėtį", "padėties neranda", "nesučiupia", "negali atkišti", "negali ištempti"] },
+      { "type": "radio", "label": "Judesiai asimetriški", "checkboxes": ["vangūs", "išsenkantys", "nepaslankūs", "nepakankama apimtis", "pražiotos", "nejudrios", "sinkinezijos"] }
+    ]
+  },
+  {
+    "title": "Apatinis žandikaulis",
+    "entries": [
+      { "type": "radio", "label": "Pakankama amplitudė" },
+      { "type": "radio", "label": "Judesiai kartojami nevienodai", "checkboxes": ["judesio neatlieka", "ribotas išsižiojimas"] },
+      { "type": "radio", "label": "Judesiai asimetriški", "checkboxes": ["vangūs", "lėtėjantys", "išsenkantys", "nepakankama amplitudė", "nukrypsta į šoną"] },
+      { "type": "radio", "label": "Judesiai trūkčiojantys", "checkboxes": ["sinkinezijos"] }
+    ]
+  },
+  {
+    "title": "Fonacija (balsas)",
+    "entries": [
+      { "type": "radio", "label": "Normalus", "checkboxes": ["skambus", "tolygus", "fonuoja tęsiamai"] },
+      { "type": "radio", "label": "Sutrikęs", "checkboxes": ["kimus", "duslus", "nosinis", "išsenkantis", "trumpa fonacija", "tylus", "afonija"] },
+      { "type": "radio", "label": "Įtemptas", "checkboxes": ["čaižus", "virpantis", "netolygus"] }
+    ]
+  },
+  {
+    "title": "Kvėpavimas",
+    "entries": [
+      { "type": "radio", "label": "Normalus", "checkboxes": ["pučia tiksliai ir tolygiai"] },
+      { "type": "radio", "label": "Sutrikęs", "checkboxes": ["greitas", "paviršutiniškas", "sunku pradėti pūsti", "judesiai nekoordinuoti", "nepučia", "kvėpuoja pro burną"] },
+      { "type": "radio", "label": "Oro srovė silpna", "checkboxes": ["netolygi", "trumpa pūtimo trukmė", "pučiant išpučia skruostus", "kalbant trūksta oro srovės"] }
+    ]
+  },
+  {
+    "title": "Oralinė motorika",
+    "entries": [
+      { "type": "checkbox", "label": "pakankama" },
+      { "type": "checkbox", "label": "nepakankama" },
+      { "type": "checkbox", "label": "sutrikusi" },
+      { "type": "checkbox", "label": "nežymus seilėtekis" },
+      { "type": "checkbox", "label": "gausus seilėtekis" },
+      { "type": "checkbox", "label": "negali sulaikyti seilių" },
+      { "type": "checkbox", "label": "sutrikęs kramtymas" }
+    ]
+  },
+  {
+    "title": "Rijimas, kramtymas, maitinimasis",
+    "entries": [
+      { "type": "radio", "label": "Norma", "checkboxes": ["atitinka amžių", "pakankamas", "nespringsta"] },
+      { "type": "radio", "label": "Sutrikęs", "checkboxes": ["negali kosėti", "seilėtekis yra", "springsta nuo skysto maisto", "springsta nuo tiršto maisto", "lėtai kramto", "nekramto", "valgo trintą maistą", "geria iš puodelio", "springsta", "maitinamas alternatyviu būdu", "gėrimas neatitinka amžiaus", "infantilus rijimas"] }
+    ]
+  },
+  {
+    "title": "Bendroji motorika",
+    "entries": [
+      { "type": "radio", "label": "Norma" },
+      { "type": "radio", "label": "Sutrikusi" }
+    ]
+  },
+  {
+    "title": "Smulkioji motorika",
+    "entries": [
+      { "type": "radio", "label": "Norma" },
+      { "type": "radio", "label": "Neišlavėjusi" },
+      { "type": "radio", "label": "Dalinai išlavėjusi" },
+      { "type": "radio", "label": "Sutrikusi" }
+    ]
+  },
+  {
+    "title": "Klausa",
+    "entries": [
+      { "type": "radio", "label": "Girdi" },
+      { "type": "radio", "label": "Sutrikusi", "checkboxes": ["pasisuka į garso šaltinį", "kompensuota: su klausos aparatu", "kochleriniu implantu"] }
+    ]
+  },
+  {
+    "title": "Rega",
+    "entries": [
+      { "type": "radio", "label": "Mato" },
+      { "type": "radio", "label": "Mato su korekcija" },
+      { "type": "radio", "label": "Nemato" },
+      { "type": "radio", "label": "Regėjimo aštrumo negalima nustatyti" }
+    ]
+  },
+  {
+    "title": "Tartis (garsų tarimas)",
+    "entries": [
+      { "type": "radio", "label": "Taria taisyklingai" },
+      { "type": "radio", "label": "Aiški" },
+      { "type": "radio", "label": "Suprantama" },
+      { "type": "radio", "label": "Sutrikusi", "checkboxes": ["netaria", "neaiškiai taria", "taria kai kuriuos", "šveplavimas", "rotacizmas", "sigmatizmas", "lambdacizmas", "kapacizmas", "garsų keitimas", "garsų praleidimas", "tarpdantinis tarimas", "šoninis tarimas"] }
+    ]
+  },
+  {
+    "title": "Garsų tarimo klaidos",
+    "entries": [
+      { "type": "radio", "label": "Priebalsių tarimo klaidos pastovios", "checkboxes": ["asimiliacija", "elizija", "garsų iškraipymas"] },
+      { "type": "radio", "label": "Klaidos nepastovios", "checkboxes": ["daugėja sudėtingėjant turiniui", "izoliuoti garsai tariami taisyklingai"] },
+      { "type": "radio", "label": "Balsių ir priebalsių tarimo klaidos pastovios" }
+    ]
+  },
+  {
+    "title": "Žodžių struktūra",
+    "entries": [
+      { "type": "radio", "label": "Išlaiko skiemeninę ir garsinę struktūrą", "checkboxes": ["išlaiko žodžių eiliškumą"] },
+      { "type": "radio", "label": "Neišlaiko skiemenų eiliškumo", "checkboxes": ["sutrumpina žodžius", "neišlaiko žodžių eiliškumo", "praleidžia žodžius", "skiemenų praleidimas", "skiemenų sukeitimas (metatezė)", "skiemenų pridėjimas", "redukcija"] },
+      { "type": "radio", "label": "Išlaiko skiemeninę struktūrą, bet iškraipo garsinę", "checkboxes": ["lėtėjantis tempas"] }
+    ]
+  },
+  {
+    "title": "Prozodija",
+    "entries": [
+      { "type": "radio", "label": "Pastoviai keičia loginį kirtį" },
+      { "type": "radio", "label": "Nepastoviai keičia loginį kirtį" },
+      { "type": "radio", "label": "Monotoniškas kalbėjimas", "checkboxes": ["pagreitėjęs tempas (tachilalija)", "sulėtėjęs tempas (bradilalija)", "skanduojantis kalbėjimas", "nerišli intonacija"] }
+    ]
+  },
+  {
+    "title": "Foneminis suvokimas",
+    "entries": [
+      { "type": "radio", "label": "Atitinka amžių", "checkboxes": ["skiria fonemas"] },
+      { "type": "radio", "label": "Išlavėjusi" },
+      { "type": "radio", "label": "Lavėjanti", "checkboxes": ["iš dalies skiria fonemas"] },
+      { "type": "radio", "label": "Nesusiformavusi", "checkboxes": ["neskiria fonemų", "neskiria opozicinių garsų", "neskiria skardžiųjų ir dusliųjų", "neskiria kietųjų ir minkštųjų"] }
+    ]
+  },
+  {
+    "title": "Kalbos suvokimas",
+    "entries": [
+      { "type": "radio", "label": "Atitinka amžių" },
+      { "type": "radio", "label": "Nepakankamas", "checkboxes": ["supranta tik buitinę kalbą", "nesupranta sudėtingų instrukcijų", "nesupranta prielinksnių"] },
+      { "type": "radio", "label": "Sutrikęs", "checkboxes": ["nesupranta perkeltinės prasmės", "supranta tik situaciškai"] }
+    ]
+  },
+  {
+    "title": "Aktyvus žodynas",
+    "entries": [
+      { "type": "radio", "label": "Atitinka amžių", "checkboxes": ["norma"] },
+      { "type": "radio", "label": "Skurdus", "checkboxes": ["negausus", "vyrauja daiktavardžiai", "trūksta veiksmažodžių", "trūksta būdvardžių", "sunkiai randa tinkamą žodį", "naudoja garsažodžius"] },
+      { "type": "radio", "label": "Nesusiformavęs" },
+      { "type": "radio", "label": "Buitinio lygio" }
+    ]
+  },
+  {
+    "title": "Pasyvus žodynas",
+    "entries": [
+      { "type": "radio", "label": "Atitinka amžių", "checkboxes": ["norma"] },
+      { "type": "radio", "label": "Skurdus", "checkboxes": ["negausus", "siauresnis už normą", "sunkiai atpažįsta veiksmus", "sunkiai atpažįsta savybes"] },
+      { "type": "radio", "label": "Nesusiformavęs" },
+      { "type": "radio", "label": "Buitinio lygio" }
+    ]
+  },
+  {
+    "title": "Gramatinė sandara",
+    "entries": [
+      { "type": "radio", "label": "Atitinka amžių" },
+      { "type": "radio", "label": "Lavėjanti" },
+      { "type": "radio", "label": "Nesusiformavusi" },
+      { "type": "radio", "label": "Pasitaiko gramatinių klaidų", "checkboxes": ["linksnių derinimo klaidos", "giminių derinimo klaidos", "skaičių derinimo klaidos", "prielinksnių praleidimas", "neteisingas prielinksnių vartojimas"] }
+    ]
+  },
+  {
+    "title": "Rišlioji kalba",
+    "entries": [
+      { "type": "radio", "label": "Atitinka amžių" },
+      { "type": "radio", "label": "Išlavėjusi" },
+      { "type": "radio", "label": "Lavėjanti" },
+      { "type": "radio", "label": "Nesuformuota", "checkboxes": ["pasakoja pavieniais žodžiais", "negeba atpasakoti", "negeba sudaryti pasakojimo pagal paveikslėlį", "pasakojimas nenuoseklus", "trūksta siužeto linijos"] }
+    ]
+  },
+  {
+    "title": "Dėmesio koncentracija",
+    "entries": [
+      { "type": "radio", "label": "Pakankama" },
+      { "type": "radio", "label": "Nepakankama", "checkboxes": ["greitai išblaškomas", "sunkiai sutelkia dėmesį", "trumpalaikė"] }
+    ]
+  },
+  {
+    "title": "Žaidimo medžiaga",
+    "entries": [
+      { "type": "radio", "label": "Domisi" },
+      { "type": "radio", "label": "Nesidomi", "checkboxes": ["žaidimas manipuliatyvus", "žaidimas destruktyvus", "trūksta siužetinio žaidimo"] },
+      { "type": "radio", "label": "Tyrinėja visais pojūčių kanalais" }
+    ]
+  },
+  {
+    "title": "Pažinimo gebėjimai",
+    "entries": [
+      { "type": "radio", "label": "Atitinka amžių" },
+      { "type": "radio", "label": "Gebėjimai", "checkboxes": ["objekto pastovumo suvokimas", "suvokia daiktų funkciją", "iš dalies suvokia daiktų funkciją", "nesuvokia daiktų funkcijos", "suvokia priežastinius ryšius", "iš dalies suvokia priežastinius ryšius", "nesuvokia priežastinių ryšių"] },
+      { "type": "radio", "label": "Sutrikęs", "checkboxes": ["sunkiai orientuojasi erdvėje", "sunkiai skiria spalvas", "sunkiai skiria formas"] },
+      { "type": "radio", "label": "Nesiekia amžiaus" },
+      { "type": "radio", "label": "Dominuoja neverbalinė komunikacija" }
+    ]
+  },
+  {
+    "title": "Mokymosi sutrikimai",
+    "entries": [
+      { "type": "radio", "label": "Turi", "checkboxes": ["disgrafija", "disleksija", "raidžių praleidimas", "raidžių sukeitimas", "optinė disgrafija", "akustinė disgrafija", "motorinė disgrafija"] },
+      { "type": "radio", "label": "Neturi" }
+    ]
+  },
+  {
+    "title": "Individualus sutrikimų/sunkumų įveikos planas",
+    "entries": [
+      { "type": "checkbox", "label": "Bendravimo (verbalinių ir neverbalinių) įgūdžių lavinimas" },
+      { "type": "checkbox", "label": "Artikuliacinio aparato lavinimas", "checkboxes": ["pasyvus", "pusiau aktyvus", "aktyvus"] },
+      { "type": "checkbox", "label": "Kalbinio kvėpavimo lavinimas" },
+      { "type": "checkbox", "label": "Balso sutrikimo lavinimas" },
+      { "type": "checkbox", "label": "Oralinio aparato raumenų įtampos normalizavimas" },
+      { "type": "checkbox", "label": "Rijimo, kramtymo, maitinimo sutrikimų šalinimas" },
+      { "type": "checkbox", "label": "Žodyno plėtra, tikslinimas" },
+      { "type": "checkbox", "label": "Kalbos supratimo ugdymas" },
+      { "type": "checkbox", "label": "Regimojo - girdimojo suvokimo lavinimas" },
+      { "type": "checkbox", "label": "Garsų mokymas" },
+      { "type": "checkbox", "label": "Gramatinės kalbos sandaros formavimas" },
+      { "type": "checkbox", "label": "Foneminės klausos lavinimas" },
+      { "type": "checkbox", "label": "Savireguliacijos ir savikontrolės įgūdžių lavinimas" },
+      { "type": "checkbox", "label": "Pažinimo įgūdžių lavinimas" },
+      { "type": "checkbox", "label": "Alternatyvios komunikacijos mokymas" },
+      { "type": "checkbox", "label": "Kita" }
+    ]
+  }
+]
