@@ -517,7 +517,7 @@
                                 const nested = container.querySelectorAll(`#ccb_${id} input:checked`);
                                 const nestedLabels = Array.from(nested).map(input => input.value);
                                 r.lines.push(nestedLabels.length
-                                    ? `${entry.label}: ${nestedLabels.join(', ')}`
+                                    ? `${entry.label} (${nestedLabels.join(', ')})`
                                     : entry.label);
                                 hasAny = true;
                             }
@@ -607,7 +607,7 @@
                         ...s.sounds.map(esc),
                         ...s.subGroups.flatMap(sg => sg.pairs.map(esc))
                     ];
-                    return `<div class="mb-0"><strong>${esc(s.title)}:</strong> ${all.join('; ')}</div>`;
+                    return `<div class="mb-0"><strong>${esc(s.title)}:</strong> ${all.join(', ')}</div>`;
                 }
 
                 // Block style: bullet points
