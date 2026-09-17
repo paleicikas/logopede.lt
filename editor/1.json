@@ -1,11 +1,5 @@
 [
   {
-    "title": "Logoterapeuto pastabos",
-    "entries": [
-      { "type": "textarea", "label": "Pastabos", "rows": 4 }
-    ]
-  },
-  {
     "title": "Tėvų/globėjų/rūpintojų bendravimas",
     "entries": [
       { "type": "checkbox", "label": "Reakcija į bendravimą" },
@@ -349,12 +343,6 @@
     ]
   },
   {
-    "title": "Įvertinimo išvada",
-    "entries": [
-      { "type": "textarea", "label": "Išvada", "rows": 4 }
-    ]
-  },
-  {
     "title": "Taikomi logoterapijos metodai",
     "entries": [
       { "type": "checkbox", "label": "Kalbėjimo sutrikimų terapija" },
@@ -389,6 +377,18 @@
     ]
   },
   {
+    "title": "Komunikacijos amžius",
+    "entries": [
+      { "type": "text", "label": "Amžius" }
+    ]
+  },
+  {
+    "title": "Įvertinimo išvada",
+    "entries": [
+      { "type": "textarea", "label": "Išvada", "rows": 4 }
+    ]
+  },
+  {
     "title": "Logoterapijos eiga, pasiekimai ir rezultatai baigiant terapiją",
     "entries": [
       { "type": "textarea", "label": "Aprašymas", "rows": 4 }
@@ -398,18 +398,6 @@
     "title": "Rekomendacijos",
     "entries": [
       { "type": "textarea", "label": "Rekomendacijos", "rows": 4 }
-    ]
-  },
-  {
-    "title": "Komunikacijos amžius",
-    "entries": [
-      { "type": "text", "label": "Amžius" }
-    ]
-  },
-  {
-    "title": "Klinikinis logopedas",
-    "entries": [
-      { "type": "text", "label": "Vardas, pavardė" }
     ]
   }
 ]
