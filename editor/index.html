@@ -202,11 +202,23 @@
                 }
 
                 case 'checkbox':
-                    return `<div class="form-check mb-1">
+                    let html = `<div class="form-check mb-1">
                         <input class="form-check-input entry-cb" type="checkbox"
                                id="cb_${id}" data-fi="${fi}" data-si="${siAttr}" data-ei="${ei}">
                         <label class="form-check-label" for="cb_${id}">${esc(entry.label)}</label>
                     </div>`;
+                    if (entry.checkboxes && entry.checkboxes.length) {
+                        html += `<div class="ms-4 d-none mb-1" id="ccb_${id}">`;
+                        html += entry.checkboxes.map((cb, ci) =>
+                            `<div class="form-check form-check-inline">
+                                <input class="form-check-input entry-nested-cb" type="checkbox"
+                                       id="ncb_${id}_${ci}" value="${esc(cb)}" data-fi="${fi}">
+                                <label class="form-check-label" for="ncb_${id}_${ci}">${esc(cb)}</label>
+                            </div>`
+                        ).join('');
+                        html += '</div>';
+                    }
+                    return html;
 
                 case 'checkbox_input':
                     return `<div class="form-check mb-1 d-flex align-items-center gap-2 flex-wrap">
@@ -215,6 +227,23 @@
                         <label class="form-check-label" for="cb_${id}">${esc(entry.label)}</label>
                         <input type="text" class="form-control form-control-sm entry-text"
                                id="txt_${id}" style="width:160px;display:none" placeholder="(papildyti)">
+                    </div>`;
+
+                case 'text':
+                    return `<div class="mb-2">
+                        <label class="form-label small mb-1" for="txt_${id}">${esc(entry.label)}</label>
+                        <input type="text" class="form-control form-control-sm entry-free-text"
+                               id="txt_${id}" data-fi="${fi}" data-si="${siAttr}" data-ei="${ei}"
+                               placeholder="${esc(entry.placeholder || '')}">
+                    </div>`;
+
+                case 'textarea':
+                    return `<div class="mb-2">
+                        <label class="form-label small mb-1" for="ta_${id}">${esc(entry.label)}</label>
+                        <textarea class="form-control form-control-sm entry-free-text"
+                                  id="ta_${id}" data-fi="${fi}" data-si="${siAttr}" data-ei="${ei}"
+                                  rows="${entry.rows || 3}"
+                                  placeholder="${esc(entry.placeholder || '')}"></textarea>
                     </div>`;
 
                 case 'sound':
@@ -272,7 +301,8 @@
                 if (field.entries && field.entries.length) {
                     let inSoundRow = false;
                     field.entries.forEach((entry, ei) => {
-                        const isBlock = entry.type === 'radio' || entry.type === 'checkbox' || entry.type === 'checkbox_input';
+                        const isBlock = entry.type === 'radio' || entry.type === 'checkbox' ||
+                            entry.type === 'checkbox_input' || entry.type === 'text' || entry.type === 'textarea';
                         if (isBlock) {
                             if (inSoundRow) { html += '</div>'; inSoundRow = false; }
                         } else {
@@ -324,6 +354,7 @@
             // Nested checkboxes (just update preview)
             container.querySelectorAll('.entry-nested-cb').forEach(cb => {
                 cb.addEventListener('change', () => {
+                    updateClearLink(cb.dataset.fi);
                     if (isGenerated) updateDocument();
                 });
             });
@@ -333,6 +364,13 @@
                 cb.addEventListener('change', () => {
                     const { fi, si, ei } = cb.dataset;
                     const id = si !== '' ? `f${fi}_s${si}_e${ei}` : `f${fi}_e${ei}`;
+                    const nestedGroup = document.getElementById(`ccb_${id}`);
+                    if (nestedGroup) {
+                        nestedGroup.classList.toggle('d-none', !cb.checked);
+                        if (!cb.checked) {
+                            nestedGroup.querySelectorAll('input').forEach(nested => nested.checked = false);
+                        }
+                    }
                     const txt = document.getElementById(`txt_${id}`);
                     if (txt) {
                         txt.style.display = cb.checked ? 'inline-block' : 'none';
@@ -347,6 +385,13 @@
             container.querySelectorAll('.entry-text, [id^="sitxt_"]').forEach(txt => {
                 txt.addEventListener('input', () => {
                     if (isGenerated) updateDocument();
+                });
+            });
+
+            container.querySelectorAll('.entry-free-text').forEach(txt => {
+                txt.addEventListener('input', () => {
+                    updateClearLink(txt.dataset.fi);
+                    onFieldChange();
                 });
             });
         }
@@ -379,7 +424,9 @@
             const hasAny =
                 container.querySelectorAll(`input[name="radio_${fi}"]:checked`).length > 0 ||
                 container.querySelectorAll(`.entry-cb[data-fi="${fi}"]:checked`).length > 0 ||
-                container.querySelectorAll(`.sound-btn[data-fi="${fi}"].selected`).length > 0;
+                container.querySelectorAll(`.sound-btn[data-fi="${fi}"].selected`).length > 0 ||
+                Array.from(container.querySelectorAll(`.entry-free-text[data-fi="${fi}"]`))
+                    .some(input => input.value.trim() !== '');
             const link = document.querySelector(`[data-clear="${fi}"]`);
             if (link) link.classList.toggle('d-none', !hasAny);
         }
@@ -389,6 +436,10 @@
 
             document.querySelectorAll(`input[name="radio_${fi}"]`).forEach(r => r.checked = false);
             container.querySelectorAll(`[id^="rcb_${fi}_"]`).forEach(el => {
+                el.classList.add('d-none');
+                el.querySelectorAll('input').forEach(cb => cb.checked = false);
+            });
+            container.querySelectorAll(`[id^="ccb_f${fi}_"]`).forEach(el => {
                 el.classList.add('d-none');
                 el.querySelectorAll('input').forEach(cb => cb.checked = false);
             });
@@ -409,6 +460,10 @@
                 if (txt) { txt.style.display = 'none'; txt.value = ''; }
             });
 
+            container.querySelectorAll(`.entry-free-text[data-fi="${fi}"]`).forEach(input => {
+                input.value = '';
+            });
+
             const link = document.querySelector(`[data-clear="${fi}"]`);
             if (link) link.classList.add('d-none');
             onFieldChange();
@@ -419,7 +474,9 @@
             const anySelected =
                 container.querySelectorAll('.entry-radio:checked').length > 0 ||
                 container.querySelectorAll('.entry-cb:checked').length > 0 ||
-                container.querySelectorAll('.sound-btn.selected').length > 0;
+                container.querySelectorAll('.sound-btn.selected').length > 0 ||
+                Array.from(container.querySelectorAll('.entry-free-text'))
+                    .some(input => input.value.trim() !== '');
 
             if (anySelected && !isGenerated) {
                 switchToGeneratedLayout();
@@ -437,7 +494,7 @@
             const results = [];
 
             data.forEach((field, fi) => {
-                const r = { title: field.title, radioLabel: null, radioSubs: [], lines: [], sounds: [], subGroups: [] };
+                const r = { title: field.title, radioLabel: null, radioSubs: [], lines: [], texts: [], sounds: [], subGroups: [] };
                 let hasAny = false;
 
                 if (field.entries) {
@@ -456,7 +513,14 @@
 
                         if (entry.type === 'checkbox') {
                             const cb = document.getElementById(`cb_${id}`);
-                            if (cb && cb.checked) { r.lines.push(entry.label); hasAny = true; }
+                            if (cb && cb.checked) {
+                                const nested = container.querySelectorAll(`#ccb_${id} input:checked`);
+                                const nestedLabels = Array.from(nested).map(input => input.value);
+                                r.lines.push(nestedLabels.length
+                                    ? `${entry.label}: ${nestedLabels.join(', ')}`
+                                    : entry.label);
+                                hasAny = true;
+                            }
 
                         } else if (entry.type === 'checkbox_input') {
                             const cb = document.getElementById(`cb_${id}`);
@@ -464,6 +528,15 @@
                                 const txt = document.getElementById(`txt_${id}`);
                                 const val = txt ? txt.value.trim() : '';
                                 r.lines.push(val ? `${entry.label}: ${val}` : entry.label);
+                                hasAny = true;
+                            }
+
+                        } else if (entry.type === 'text' || entry.type === 'textarea') {
+                            const inputId = entry.type === 'textarea' ? `ta_${id}` : `txt_${id}`;
+                            const input = document.getElementById(inputId);
+                            const val = input ? input.value.trim() : '';
+                            if (val) {
+                                r.texts.push(`${entry.label}: ${val}`);
                                 hasAny = true;
                             }
 
@@ -530,6 +603,7 @@
                 if (inline) {
                     const all = [
                         ...s.lines.map(l => esc(l.toLowerCase())),
+                        ...s.texts.map(esc),
                         ...s.sounds.map(esc),
                         ...s.subGroups.flatMap(sg => sg.pairs.map(esc))
                     ];
@@ -543,6 +617,9 @@
                 }
                 s.lines.forEach(line => {
                     html += `<div class="mb-0 ms-3">– ${esc(line)}</div>`;
+                });
+                s.texts.forEach(text => {
+                    html += `<div class="mb-0 ms-3">– ${esc(text)}</div>`;
                 });
                 s.subGroups.forEach(sg => {
                     html += `<div class="mb-0 ms-3"><em>${esc(sg.label)}</em> ${sg.pairs.map(esc).join(' ')}</div>`;

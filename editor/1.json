@@ -1,5 +1,29 @@
 [
   {
+    "title": "Logoterapeuto pastabos",
+    "entries": [
+      { "type": "textarea", "label": "Pastabos", "rows": 4 }
+    ]
+  },
+  {
+    "title": "Tėvų/globėjų/rūpintojų bendravimas",
+    "entries": [
+      { "type": "checkbox", "label": "Reakcija į bendravimą" },
+      { "type": "checkbox", "label": "Reakcija į kalbinimą" },
+      { "type": "checkbox", "label": "Reakcija į mėgdžiojimą" }
+    ]
+  },
+  {
+    "title": "Kalbos supratimas",
+    "entries": [
+      { "type": "checkbox", "label": "Reakcija į 1 dalies prašymą" },
+      { "type": "checkbox", "label": "Reaguoja į paprastus klausimus" },
+      { "type": "checkbox", "label": "Reaguoja į draudimą" },
+      { "type": "checkbox", "label": "Paveikslėlių įvardijimas" },
+      { "type": "checkbox", "label": "Objektų įvardijimas frazėmis" }
+    ]
+  },
+  {
     "title": "Kalba, kuria kalbama šeimoje",
     "entries": [
       { "type": "radio", "label": "Lietuvių" },
@@ -50,7 +74,8 @@
       { "type": "checkbox", "label": "Didelė nuotaikų kaita" },
       { "type": "checkbox", "label": "Kantrus" },
       { "type": "checkbox", "label": "Geranoriškas" },
-      { "type": "checkbox", "label": "Pozityvus" }
+      { "type": "checkbox", "label": "Pozityvus" },
+      { "type": "checkbox_input", "label": "Kita" }
     ]
   },
   {
@@ -73,7 +98,7 @@
     "title": "Artikuliacinis aparatas",
     "entries": [
       { "type": "radio", "label": "Anatomiškai nepakitęs" },
-      { "type": "radio", "label": "Anatomiškai pakitęs", "checkboxes": ["aukštas kietasis gomurys", "žemas kietasis gomurys", "normalus kietasis gomurys", "gomurio defektas", "trumpas poliežuvinis raištis", "netaisyklingas sąkandis", "taisyklingas sąkandis", "lūpos nesuaugimas", "dantų anomalijos"] }
+      { "type": "radio", "label": "Anatomiškai pakitęs", "checkboxes": ["aukštas kietasis gomurys", "žemas kietasis gomurys", "normalus kietasis gomurys", "gomurio defektas", "trumpas poliežuvinis raištis", "netaisyklingas sąkandis", "taisyklingas sąkandis", "lūpos nesuaugimas", "dantų anomalijos", "kita"] }
     ]
   },
   {
@@ -89,14 +114,14 @@
     "title": "Minkštasis gomurys",
     "entries": [
       { "type": "radio", "label": "Simetriškas", "checkboxes": ["judrus", "funkcionalus"] },
-      { "type": "radio", "label": "Asimetriškas", "checkboxes": ["nejudrus", "žemas", "aukštas", "siauras", "iš dalies pakyla", "nepakyla", "liežuvėlis pakrypęs", "liežuvėlis nukaręs", "liežuvėlis nejudrus", "vangus"] }
+      { "type": "radio", "label": "Asimetriškas", "checkboxes": ["nejudrus", "žemas", "aukštas", "siauras", "iš dalies pakyla", "nepakyla", "liežuvėlis pakrypęs", "liežuvėlis nukaręs", "liežuvėlis nejudrus", "vangus", "kita"] }
     ]
   },
   {
     "title": "Liežuvis (padėtis ir savybės)",
     "entries": [
       { "type": "radio", "label": "Judesys simetriškas" },
-      { "type": "radio", "label": "Nukrypimai", "checkboxes": ["guli burnos dugne", "atitrauktas atgal", "iškištas tarp dantų", "nuolat iškištas „pakabintas“", "krypsta į šoną"] },
+      { "type": "radio", "label": "Nukrypimai", "checkboxes": ["guli burnos dugne", "atitrauktas atgal", "iškištas tarp dantų", "nuolat iškištas „pakabintas“", "krypsta į šoną", "kita"] },
       { "type": "radio", "label": "Savybės", "checkboxes": ["judrus", "nejudrus", "vangus", "pasklidęs", "smailėjantis", "trūkčiojantis", "sinkinezijos"] }
     ]
   },
@@ -112,7 +137,7 @@
     "title": "Lūpos",
     "entries": [
       { "type": "radio", "label": "Judesiai nuoseklūs", "checkboxes": ["simetriškos", "kalbant aktyvios", "judesių koordinacija gera", "greiti", "pakankama amplitudė"] },
-      { "type": "radio", "label": "Judesiai nenuoseklūs", "checkboxes": ["pasyvios", "judesių koordinacija bloga", "pasikartojantys", "sunkiai randa padėtį", "padėties neranda", "nesučiupia", "negali atkišti", "negali ištempti"] },
+      { "type": "radio", "label": "Judesiai nenuoseklūs", "checkboxes": ["pasyvios", "judesių koordinacija bloga", "pasikartojantys", "sunkiai randa padėtį", "padėties neranda", "nesučiupia", "negali atkišti", "negali ištempti", "kita"] },
       { "type": "radio", "label": "Judesiai asimetriški", "checkboxes": ["vangūs", "išsenkantys", "nepaslankūs", "nepakankama apimtis", "pražiotos", "nejudrios", "sinkinezijos"] }
     ]
   },
@@ -126,11 +151,21 @@
     ]
   },
   {
+    "title": "Sąkandis",
+    "entries": [
+      { "type": "radio", "label": "Taisyklingas" },
+      { "type": "radio", "label": "Netaisyklingas" },
+      { "type": "radio", "label": "Kita" }
+    ]
+  },
+  {
     "title": "Fonacija (balsas)",
     "entries": [
       { "type": "radio", "label": "Normalus", "checkboxes": ["skambus", "tolygus", "fonuoja tęsiamai"] },
       { "type": "radio", "label": "Sutrikęs", "checkboxes": ["kimus", "duslus", "nosinis", "išsenkantis", "trumpa fonacija", "tylus", "afonija"] },
-      { "type": "radio", "label": "Įtemptas", "checkboxes": ["čaižus", "virpantis", "netolygus"] }
+      { "type": "radio", "label": "Įtemptas", "checkboxes": ["čaižus", "virpantis", "netolygus"] },
+      { "type": "radio", "label": "Nosinis" },
+      { "type": "radio", "label": "Kita" }
     ]
   },
   {
@@ -156,15 +191,16 @@
   {
     "title": "Rijimas, kramtymas, maitinimasis",
     "entries": [
-      { "type": "radio", "label": "Norma", "checkboxes": ["atitinka amžių", "pakankamas", "nespringsta"] },
-      { "type": "radio", "label": "Sutrikęs", "checkboxes": ["negali kosėti", "seilėtekis yra", "springsta nuo skysto maisto", "springsta nuo tiršto maisto", "lėtai kramto", "nekramto", "valgo trintą maistą", "geria iš puodelio", "springsta", "maitinamas alternatyviu būdu", "gėrimas neatitinka amžiaus", "infantilus rijimas"] }
+      { "type": "radio", "label": "Norma", "checkboxes": ["atitinka amžių", "pakankamas", "gali kosėti", "nespringsta"] },
+      { "type": "radio", "label": "Sutrikęs", "checkboxes": ["negali kosėti", "seilėtekis yra", "seilėtekio nėra", "springsta nuo skysto maisto", "springsta nuo tiršto maisto", "lėtai kramto", "nekramto", "valgo trintą maistą", "geria iš puodelio", "springsta", "maitinamas alternatyviu būdu", "gėrimas neatitinka amžiaus", "infantilus rijimas", "kita"] }
     ]
   },
   {
     "title": "Bendroji motorika",
     "entries": [
       { "type": "radio", "label": "Norma" },
-      { "type": "radio", "label": "Sutrikusi" }
+      { "type": "radio", "label": "Sutrikusi" },
+      { "type": "radio", "label": "Kita" }
     ]
   },
   {
@@ -173,7 +209,8 @@
       { "type": "radio", "label": "Norma" },
       { "type": "radio", "label": "Neišlavėjusi" },
       { "type": "radio", "label": "Dalinai išlavėjusi" },
-      { "type": "radio", "label": "Sutrikusi" }
+      { "type": "radio", "label": "Sutrikusi" },
+      { "type": "radio", "label": "Kita" }
     ]
   },
   {
@@ -189,7 +226,8 @@
       { "type": "radio", "label": "Mato" },
       { "type": "radio", "label": "Mato su korekcija" },
       { "type": "radio", "label": "Nemato" },
-      { "type": "radio", "label": "Regėjimo aštrumo negalima nustatyti" }
+      { "type": "radio", "label": "Regėjimo aštrumo negalima nustatyti" },
+      { "type": "radio", "label": "Kita" }
     ]
   },
   {
@@ -226,7 +264,7 @@
     ]
   },
   {
-    "title": "Foneminis suvokimas",
+    "title": "Foneminis suvokimas (foneminė klausa, klausos dėmesys)",
     "entries": [
       { "type": "radio", "label": "Atitinka amžių", "checkboxes": ["skiria fonemas"] },
       { "type": "radio", "label": "Išlavėjusi" },
@@ -311,6 +349,22 @@
     ]
   },
   {
+    "title": "Įvertinimo išvada",
+    "entries": [
+      { "type": "textarea", "label": "Išvada", "rows": 4 }
+    ]
+  },
+  {
+    "title": "Taikomi logoterapijos metodai",
+    "entries": [
+      { "type": "checkbox", "label": "Kalbėjimo sutrikimų terapija" },
+      { "type": "checkbox", "label": "Kalbos sutrikimų terapija" },
+      { "type": "checkbox", "label": "Balso sutrikimų terapija" },
+      { "type": "checkbox", "label": "Komunikacijos sutrikimų terapija" },
+      { "type": "checkbox", "label": "Maitinimo terapija" }
+    ]
+  },
+  {
     "title": "Individualus sutrikimų/sunkumų įveikos planas",
     "entries": [
       { "type": "checkbox", "label": "Bendravimo (verbalinių ir neverbalinių) įgūdžių lavinimas" },
@@ -319,6 +373,9 @@
       { "type": "checkbox", "label": "Balso sutrikimo lavinimas" },
       { "type": "checkbox", "label": "Oralinio aparato raumenų įtampos normalizavimas" },
       { "type": "checkbox", "label": "Rijimo, kramtymo, maitinimo sutrikimų šalinimas" },
+      { "type": "checkbox", "label": "Rijimo sutrikimų šalinimas" },
+      { "type": "checkbox", "label": "Kramtymo sutrikimų šalinimas" },
+      { "type": "checkbox", "label": "Maitinimo sutrikimų šalinimas" },
       { "type": "checkbox", "label": "Žodyno plėtra, tikslinimas" },
       { "type": "checkbox", "label": "Kalbos supratimo ugdymas" },
       { "type": "checkbox", "label": "Regimojo - girdimojo suvokimo lavinimas" },
@@ -328,7 +385,31 @@
       { "type": "checkbox", "label": "Savireguliacijos ir savikontrolės įgūdžių lavinimas" },
       { "type": "checkbox", "label": "Pažinimo įgūdžių lavinimas" },
       { "type": "checkbox", "label": "Alternatyvios komunikacijos mokymas" },
-      { "type": "checkbox", "label": "Kita" }
+      { "type": "checkbox_input", "label": "Kita" }
+    ]
+  },
+  {
+    "title": "Logoterapijos eiga, pasiekimai ir rezultatai baigiant terapiją",
+    "entries": [
+      { "type": "textarea", "label": "Aprašymas", "rows": 4 }
+    ]
+  },
+  {
+    "title": "Rekomendacijos",
+    "entries": [
+      { "type": "textarea", "label": "Rekomendacijos", "rows": 4 }
+    ]
+  },
+  {
+    "title": "Komunikacijos amžius",
+    "entries": [
+      { "type": "text", "label": "Amžius" }
+    ]
+  },
+  {
+    "title": "Klinikinis logopedas",
+    "entries": [
+      { "type": "text", "label": "Vardas, pavardė" }
     ]
   }
 ]
