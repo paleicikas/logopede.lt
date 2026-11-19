@@ -600,7 +600,7 @@
             data.forEach((field, fi) => {
                 const r = {
                     title: field.title, radioLabel: null, radioSubs: [], lines: [], texts: [], sounds: [], subGroups: [],
-                    answers: [], ynTotal: yesNoCount(field), showScore: hasScore(field)
+                    answers: [], ynTotal: yesNoCount(field)
                 };
                 let hasAny = false;
 
@@ -778,11 +778,6 @@
                     html += `<div class="mb-0 ms-3">– ${esc(a.label)}: ${esc(text)}</div>`;
                 }
             });
-            if (s.showScore) {
-                const yes = s.answers.filter(a => a.value === 'taip').length;
-                const no = s.answers.filter(a => a.value === 'ne').length;
-                html += `<div class="mb-0 ms-3">– Rezultatas: ${yes}/${s.ynTotal} atitinka (${no}/${s.ynTotal} pažymėta skiltyje NE).</div>`;
-            }
             return html + '<div class="mb-2"></div>';
         }
 
