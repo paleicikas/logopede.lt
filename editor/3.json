@@ -1,6 +1,6 @@
 [
   {
-    "title": "SAO – A. Struktūra: griaučių (stebėjimas ramybės būsenoje)",
+    "title": "Struktūra: griaučių (stebėjimas ramybės būsenoje)",
     "score": false,
     "entries": [
       { "type": "yesno", "label": "1. Kliento veidas yra simetriškos formos", "short": "1. Veido simetrija" },
@@ -10,14 +10,14 @@
     ]
   },
   {
-    "title": "SAO – Etapas I: Tonusas / nervų ir raumenų stabilumas",
+    "title": "Tonusas / nervų ir raumenų stabilumas",
     "entries": [
       { "type": "yesno", "label": "5. Kūno, liemens ir veido tonusas normalus", "hint": "pvz., nepastebima kūno, viršutinės krūtinės dalies ar veido raumenų hiper- ar hipotonija", "short": "5. Kūno, liemens ir veido tonusas" },
       { "type": "yesno", "label": "6. Ankstyvųjų refleksų nestebima", "hint": "pvz., nestebimi refleksai valgant ar atliekant žodines užduotis, nėra liežuvio fascikuliacijos/trūkčiojimų", "short": "6. Ankstyvieji refleksai" }
     ]
   },
   {
-    "title": "SAO – Etapas II: Balso ir kvėpavimo kontrolė (remiantis atskirų garsų tarimo stebėjimu)",
+    "title": "Balso ir kvėpavimo kontrolė (remiantis atskirų garsų tarimo stebėjimu)",
     "entries": [
       { "type": "yesno", "label": "7. Fonacija ir kvėpavimo palaikymas yra tinkami", "hint": "pvz., 1–3 sek. trukmės fonavimas", "short": "7. Fonacija ir kvėpavimo palaikymas" },
       { "type": "yesno", "label": "8. Gebėjimas ištarti balsius, nosinius, dusliuosius (a, m, h) fonemas", "short": "8. Balsių, nosinių, dusliųjų fonemų tarimas" },
@@ -25,7 +25,7 @@
     ]
   },
   {
-    "title": "SAO – Etapas III: Apatinio žandikaulio valdymas (remiantis spontaninės kalbos stebėjimu)",
+    "title": "Apatinio žandikaulio valdymas (remiantis spontaninės kalbos stebėjimu)",
     "entries": [
       {
         "type": "yesno", "group": "10. Žandikaulio judesiai",
@@ -47,7 +47,7 @@
     ]
   },
   {
-    "title": "SAO – Etapas IV: Lūpų ir veido kontrolė (spontaninės kalbos stebėjimas)",
+    "title": "Lūpų ir veido kontrolė (spontaninės kalbos stebėjimas)",
     "entries": [
       {
         "type": "yesno", "group": "11. Lūpų judesiai",
@@ -93,7 +93,7 @@
     ]
   },
   {
-    "title": "SAO – Etapas V: Liežuvio kontrolė (spontaninės kalbos stebėjimas)",
+    "title": "Liežuvio kontrolė (spontaninės kalbos stebėjimas)",
     "entries": [
       {
         "type": "yesno", "group": "13. Liežuvio judesiai nepriklausomai nuo žandikaulio",
@@ -124,7 +124,7 @@
     ]
   },
   {
-    "title": "SAO – Etapas VI: Nuoseklūs judesiai visose plokštumose",
+    "title": "Nuoseklūs judesiai visose plokštumose",
     "entries": [
       {
         "type": "yesno",
@@ -171,7 +171,7 @@
     ]
   },
   {
-    "title": "SAO – Etapas VII: Prozodija",
+    "title": "Prozodija",
     "entries": [
       {
         "type": "yesno",
