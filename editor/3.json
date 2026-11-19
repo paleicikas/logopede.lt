@@ -1,0 +1,184 @@
+[
+  {
+    "title": "SAO – A. Struktūra: griaučių (stebėjimas ramybės būsenoje)",
+    "score": false,
+    "entries": [
+      { "type": "yesno", "label": "1. Kliento veidas yra simetriškos formos", "short": "1. Veido simetrija" },
+      { "type": "yesno", "label": "2. Apatinis ir viršutinis žandikauliai yra tinkamo lygiavimo, aukščio, formos ir dydžio", "short": "2. Žandikaulių lygiavimas, aukštis, forma ir dydis" },
+      { "type": "yesno", "label": "3. Dantų sąkandis yra normalus", "hint": "pvz., nėra atviro sąkandžio, progenijos, prognatijos", "short": "3. Dantų sąkandis" },
+      { "type": "yesno", "label": "4. Gomurio lankas ir kitos burnos ertmės struktūros yra normalios", "short": "4. Gomurio lankas ir burnos ertmės struktūros" }
+    ]
+  },
+  {
+    "title": "SAO – Etapas I: Tonusas / nervų ir raumenų stabilumas",
+    "entries": [
+      { "type": "yesno", "label": "5. Kūno, liemens ir veido tonusas normalus", "hint": "pvz., nepastebima kūno, viršutinės krūtinės dalies ar veido raumenų hiper- ar hipotonija", "short": "5. Kūno, liemens ir veido tonusas" },
+      { "type": "yesno", "label": "6. Ankstyvųjų refleksų nestebima", "hint": "pvz., nestebimi refleksai valgant ar atliekant žodines užduotis, nėra liežuvio fascikuliacijos/trūkčiojimų", "short": "6. Ankstyvieji refleksai" }
+    ]
+  },
+  {
+    "title": "SAO – Etapas II: Balso ir kvėpavimo kontrolė (remiantis atskirų garsų tarimo stebėjimu)",
+    "entries": [
+      { "type": "yesno", "label": "7. Fonacija ir kvėpavimo palaikymas yra tinkami", "hint": "pvz., 1–3 sek. trukmės fonavimas", "short": "7. Fonacija ir kvėpavimo palaikymas" },
+      { "type": "yesno", "label": "8. Gebėjimas ištarti balsius, nosinius, dusliuosius (a, m, h) fonemas", "short": "8. Balsių, nosinių, dusliųjų fonemų tarimas" },
+      { "type": "yesno", "label": "9. Rezonansas yra normalus", "hint": "pvz., nėra jokio vyraujančio hiper/hiponosinumo", "short": "9. Rezonansas" }
+    ]
+  },
+  {
+    "title": "SAO – Etapas III: Apatinio žandikaulio valdymas (remiantis spontaninės kalbos stebėjimu)",
+    "entries": [
+      {
+        "type": "yesno", "group": "10. Žandikaulio judesiai",
+        "label": "Pakankama judesio amplitudė ir laipsniškumas",
+        "hint": "pvz., atvira-uždara/uždara-atvira/uždara-atvira-uždara padėtis",
+        "options": [
+          "Prastas žandikaulių išsidėstymas",
+          "Sunkumai nustatant apatinio ir viršutinio žandikaulio ribas (pvz., debesis)"
+        ]
+      },
+      {
+        "type": "yesno", "group": "10. Žandikaulio judesiai",
+        "label": "Stabilus valdymas vidurio linijoje",
+        "hint": "nėra šoninio ar priekinio pasislinkimo",
+        "options": [
+          "Stebimas nežymus apatinio žandikaulio šoninis (lateralinis) poslinkis ir poslinkis į priekį"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "SAO – Etapas IV: Lūpų ir veido kontrolė (spontaninės kalbos stebėjimas)",
+    "entries": [
+      {
+        "type": "yesno", "group": "11. Lūpų judesiai",
+        "label": "Stabilus kontaktas",
+        "hint": "pvz., kontaktas viduriniame lūpų paviršiaus trečdalyje",
+        "options": [
+          "Ne visada suglaudžia lūpas (pvz., pas, namuose)",
+          "Platus lūpų kontaktas arba jo nėra (pvz., namo)"
+        ]
+      },
+      {
+        "type": "yesno", "group": "11. Lūpų judesiai",
+        "label": "Savarankiškas judesys",
+        "hint": "pvz., lūpos juda nepriklausomai nuo žandikaulio",
+        "options": [
+          "Nepakankamas lūpų apvalinimas",
+          "Atkišamas visas žandikaulis į priekį"
+        ]
+      },
+      {
+        "type": "yesno", "group": "11. Lūpų judesiai",
+        "label": "Individualus judesys",
+        "hint": "pvz., nepriklausomas apatinės lūpos judesys",
+        "options": [
+          "Trūksta apatinės lūpos kontrolės [v]–[f] garsams (pvz., varlė)"
+        ]
+      },
+      {
+        "type": "yesno", "group": "12. Lūpų raumenų judesiai",
+        "label": "Tipinis atitraukimas",
+        "options": [
+          "Nepakankama atitraukimo kontrolė",
+          "Kartais išraiška fiksuojama retrakcijoje"
+        ]
+      },
+      {
+        "type": "yesno", "group": "12. Lūpų raumenų judesiai",
+        "label": "Tipinis apvalinimas",
+        "options": [
+          "Nepakankamas lūpų apvalinimas [u], [o] (pvz., namo, pomidorai, šypsenos, dažo, žuvis)"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "SAO – Etapas V: Liežuvio kontrolė (spontaninės kalbos stebėjimas)",
+    "entries": [
+      {
+        "type": "yesno", "group": "13. Liežuvio judesiai nepriklausomai nuo žandikaulio",
+        "label": "Priekinė dalis",
+        "options": [
+          "Nepakankamai tikslus",
+          "Plati liežuvio pozicija"
+        ]
+      },
+      {
+        "type": "yesno", "group": "13. Liežuvio judesiai nepriklausomai nuo žandikaulio",
+        "label": "Vidurinė dalis",
+        "options": [
+          "Pastebėta tariant žodį debesys"
+        ]
+      },
+      {
+        "type": "yesno", "group": "13. Liežuvio judesiai nepriklausomai nuo žandikaulio",
+        "label": "Vidurinė-užpakalinė dalis",
+        "options": [
+          "Pastebėta tariant žodį keturios"
+        ]
+      },
+      {
+        "type": "yesno", "group": "13. Liežuvio judesiai nepriklausomai nuo žandikaulio",
+        "label": "Užpakalinė dalis"
+      }
+    ]
+  },
+  {
+    "title": "SAO – Etapas VI: Nuoseklūs judesiai visose plokštumose",
+    "entries": [
+      {
+        "type": "yesno",
+        "label": "14. Skardumas yra pakankamas ir gali būti išlaikomas sakiniuose, frazėse",
+        "hint": "pvz., būda, gavau",
+        "short": "14. Skardumas"
+      },
+      {
+        "type": "yesno",
+        "label": "15. Duslumas yra tinkamas ir gali būti išlaikytas žodžio pradžioje, nedarant įtakos likusiai žodžio daliai",
+        "hint": "pvz., Ten, pūs",
+        "short": "15. Duslumas"
+      },
+      {
+        "type": "yesno",
+        "label": "16. Visi burnos raumenys tinkamai juda kalbėjimo metu",
+        "hint": "pvz., be papildomų nevalingų judesių, ilgesnės artikuliacinės padėties paieškos, papildomų garsų",
+        "short": "16. Burnos raumenų judesiai",
+        "options": [
+          "Yra asimetrinių judesių į dešinę",
+          "Fiksuota retrakcija",
+          "Papildomi nevalingi judesiai (pvz., namo, triušis, šypsenos)"
+        ]
+      },
+      {
+        "type": "yesno",
+        "label": "17. Veido raumenys gerai juda – kombinuotai ir besikeičiančiai",
+        "hint": "pvz., atitraukimas/apvalinimas (retrakcija/labilizacija); puiku, lijo, šyla",
+        "short": "17. Veido raumenų judesiai (kombinuoti/besikeičiantys)",
+        "options": [
+          "Pastebėti trūkumai tariant žodžius durys, šypsenos, žuvis"
+        ]
+      },
+      {
+        "type": "yesno",
+        "label": "18. Visos raumenų grupės pasižymi pakankamu tonusu, simetriškais judesiais, savarankišku ir koordinuotu veikimu",
+        "hint": "pvz., žandikaulis, veidas, lūpos, liežuvis",
+        "short": "18. Raumenų grupių tonusas ir koordinacija",
+        "options": [
+          "Trūksta simetriško ir tikslaus artikuliacinių raumenų bei subsistemų darbo",
+          "Lūpos ir liežuvis pasižymi nekoordinuotumu"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "SAO – Etapas VII: Prozodija",
+    "entries": [
+      {
+        "type": "yesno",
+        "label": "19. Paciento amžių atitinkantys vienalaikiai kelių kalbos padargų judesiai, tariant kalbos garsus (koartikuliacija)",
+        "hint": "pvz., stebima intonacija, frazavimas",
+        "short": "19. Koartikuliacija"
+      }
+    ]
+  }
+]

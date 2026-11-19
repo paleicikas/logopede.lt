@@ -8,5 +8,10 @@
     "name": "Individualus planas",
     "file": "2.json",
     "outputStyle": "block"
+  },
+  {
+    "name": "SAO",
+    "file": "3.json",
+    "outputStyle": "block"
   }
 ]

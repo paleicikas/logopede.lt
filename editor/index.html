@@ -246,6 +246,42 @@
                                   placeholder="${esc(entry.placeholder || '')}"></textarea>
                     </div>`;
 
+                case 'yesno': {
+                    const opts = entry.options || [];
+                    let html = `<div class="mb-2${entry.group ? ' ms-3' : ''}">
+                        <div class="d-flex align-items-start gap-2">
+                            <div class="btn-group btn-group-sm flex-shrink-0">
+                                <button type="button" class="btn btn-outline-success yn-btn"
+                                        data-fi="${fi}" data-ei="${ei}" data-val="taip"
+                                        onclick="toggleYesNo(this)">Taip</button>
+                                <button type="button" class="btn btn-outline-danger yn-btn"
+                                        data-fi="${fi}" data-ei="${ei}" data-val="ne"
+                                        onclick="toggleYesNo(this)">Ne</button>
+                            </div>
+                            <div class="small">
+                                <span class="yn-label">${esc(entry.label)}</span>
+                                ${entry.hint ? `<div class="text-muted fst-italic">${esc(entry.hint)}</div>` : ''}
+                            </div>
+                        </div>
+                        <div class="ms-5 mt-1 d-none" id="ync_${id}">`;
+                    if (opts.length) {
+                        html += `<div class="d-none" id="yno_${id}">`;
+                        html += opts.map((opt, oi) =>
+                            `<div class="form-check mb-0">
+                                <input class="form-check-input entry-yn-opt" type="checkbox"
+                                       id="ynoc_${id}_${oi}" value="${esc(opt)}" data-fi="${fi}">
+                                <label class="form-check-label small" for="ynoc_${id}_${oi}">${esc(opt)}</label>
+                            </div>`
+                        ).join('');
+                        html += '</div>';
+                    }
+                    html += `<input type="text" class="form-control form-control-sm mt-1 entry-yn-text"
+                                    id="ynx_${id}" data-fi="${fi}" placeholder="Komentaras">
+                        </div>
+                    </div>`;
+                    return html;
+                }
+
                 case 'sound':
                 case 'sound_pair':
                     return `<span class="sound-btn" id="sb_${id}"
@@ -280,7 +316,10 @@
                 if (field.entries) {
                     field.entries.forEach(e => {
                         if (e.label) searchParts.push(e.label);
+                        if (e.hint) searchParts.push(e.hint);
+                        if (e.group) searchParts.push(e.group);
                         if (e.checkboxes) e.checkboxes.forEach(cb => searchParts.push(cb));
+                        if (e.options) e.options.forEach(opt => searchParts.push(opt));
                     });
                 }
                 if (field.subsections) {
@@ -295,19 +334,28 @@
                                  data-title="${esc(field.title.toLowerCase())}"
                                  data-search="${esc(searchText)}">`;
                 html += `<div class="fw-bold mb-2">${esc(field.title)} `;
+                if (hasScore(field)) {
+                    html += `<span class="badge text-bg-light border fw-normal ms-1" id="score_${fi}">VISO NE: 0/${yesNoCount(field)}</span>`;
+                }
                 html += `<a href="#" class="fw-normal text-decoration-none small text-muted ms-1 d-none"
                             data-clear="${fi}" onclick="clearField(${fi}); return false;">&#x2715;</a></div>`;
 
                 if (field.entries && field.entries.length) {
                     let inSoundRow = false;
+                    let currentGroup = null;
                     field.entries.forEach((entry, ei) => {
                         const isBlock = entry.type === 'radio' || entry.type === 'checkbox' ||
-                            entry.type === 'checkbox_input' || entry.type === 'text' || entry.type === 'textarea';
+                            entry.type === 'checkbox_input' || entry.type === 'text' || entry.type === 'textarea' ||
+                            entry.type === 'yesno';
                         if (isBlock) {
                             if (inSoundRow) { html += '</div>'; inSoundRow = false; }
                         } else {
                             if (!inSoundRow) { html += '<div class="mb-2">'; inSoundRow = true; }
                         }
+                        if (entry.group && entry.group !== currentGroup) {
+                            html += `<div class="small fw-semibold mb-1 yn-group">${esc(entry.group)}:</div>`;
+                        }
+                        currentGroup = entry.group || null;
                         html += renderEntry(entry, fi, null, ei);
                     });
                     if (inSoundRow) html += '</div>';
@@ -381,8 +429,14 @@
                 });
             });
 
-            // Text inputs (checkbox_input and sound_input)
-            container.querySelectorAll('.entry-text, [id^="sitxt_"]').forEach(txt => {
+            container.querySelectorAll('.entry-yn-opt').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    if (isGenerated) updateDocument();
+                });
+            });
+
+            // Text inputs (checkbox_input, sound_input and yesno comments)
+            container.querySelectorAll('.entry-text, [id^="sitxt_"], .entry-yn-text').forEach(txt => {
                 txt.addEventListener('input', () => {
                     if (isGenerated) updateDocument();
                 });
@@ -417,6 +471,45 @@
             onFieldChange();
         }
 
+        // ── Yes/No toggles ─────────────────────────────────────────
+
+        function toggleYesNo(btn) {
+            const { fi, ei } = btn.dataset;
+            const id = `f${fi}_e${ei}`;
+            const wasActive = btn.classList.contains('active');
+            document.querySelectorAll(`.yn-btn[data-fi="${fi}"][data-ei="${ei}"]`)
+                .forEach(b => b.classList.remove('active'));
+            if (!wasActive) btn.classList.add('active');
+            const val = wasActive ? null : btn.dataset.val;
+
+            document.getElementById(`ync_${id}`).classList.toggle('d-none', !val);
+            const opts = document.getElementById(`yno_${id}`);
+            if (opts) {
+                opts.classList.toggle('d-none', val !== 'ne');
+                if (val !== 'ne') opts.querySelectorAll('input').forEach(cb => cb.checked = false);
+            }
+            if (!val) document.getElementById(`ynx_${id}`).value = '';
+
+            updateScore(fi);
+            updateClearLink(fi);
+            onFieldChange();
+        }
+
+        function yesNoCount(field) {
+            return (field.entries || []).filter(e => e.type === 'yesno').length;
+        }
+
+        function hasScore(field) {
+            return field.score !== false && yesNoCount(field) > 0;
+        }
+
+        function updateScore(fi) {
+            const badge = document.getElementById(`score_${fi}`);
+            if (!badge) return;
+            const no = document.querySelectorAll(`.yn-btn.active[data-fi="${fi}"][data-val="ne"]`).length;
+            badge.textContent = `VISO NE: ${no}/${yesNoCount(data[fi])}`;
+        }
+
         // ── State helpers ──────────────────────────────────────────
 
         function updateClearLink(fi) {
@@ -425,6 +518,7 @@
                 container.querySelectorAll(`input[name="radio_${fi}"]:checked`).length > 0 ||
                 container.querySelectorAll(`.entry-cb[data-fi="${fi}"]:checked`).length > 0 ||
                 container.querySelectorAll(`.sound-btn[data-fi="${fi}"].selected`).length > 0 ||
+                container.querySelectorAll(`.yn-btn[data-fi="${fi}"].active`).length > 0 ||
                 Array.from(container.querySelectorAll(`.entry-free-text[data-fi="${fi}"]`))
                     .some(input => input.value.trim() !== '');
             const link = document.querySelector(`[data-clear="${fi}"]`);
@@ -464,6 +558,15 @@
                 input.value = '';
             });
 
+            container.querySelectorAll(`.yn-btn[data-fi="${fi}"]`).forEach(btn => btn.classList.remove('active'));
+            container.querySelectorAll(`[id^="ync_f${fi}_"]`).forEach(el => el.classList.add('d-none'));
+            container.querySelectorAll(`[id^="yno_f${fi}_"]`).forEach(el => {
+                el.classList.add('d-none');
+                el.querySelectorAll('input').forEach(cb => cb.checked = false);
+            });
+            container.querySelectorAll(`.entry-yn-text[data-fi="${fi}"]`).forEach(input => input.value = '');
+            updateScore(fi);
+
             const link = document.querySelector(`[data-clear="${fi}"]`);
             if (link) link.classList.add('d-none');
             onFieldChange();
@@ -475,6 +578,7 @@
                 container.querySelectorAll('.entry-radio:checked').length > 0 ||
                 container.querySelectorAll('.entry-cb:checked').length > 0 ||
                 container.querySelectorAll('.sound-btn.selected').length > 0 ||
+                container.querySelectorAll('.yn-btn.active').length > 0 ||
                 Array.from(container.querySelectorAll('.entry-free-text'))
                     .some(input => input.value.trim() !== '');
 
@@ -494,7 +598,10 @@
             const results = [];
 
             data.forEach((field, fi) => {
-                const r = { title: field.title, radioLabel: null, radioSubs: [], lines: [], texts: [], sounds: [], subGroups: [] };
+                const r = {
+                    title: field.title, radioLabel: null, radioSubs: [], lines: [], texts: [], sounds: [], subGroups: [],
+                    answers: [], ynTotal: yesNoCount(field), showScore: hasScore(field)
+                };
                 let hasAny = false;
 
                 if (field.entries) {
@@ -555,6 +662,22 @@
                                 r.sounds.push(val ? `[${entry.label}] ${val}` : `[${entry.label}]`);
                                 hasAny = true;
                             }
+
+                        } else if (entry.type === 'yesno') {
+                            const active = container.querySelector(`.yn-btn.active[data-fi="${fi}"][data-ei="${ei}"]`);
+                            if (active) {
+                                const comments = Array.from(container.querySelectorAll(`#yno_${id} input:checked`))
+                                    .map(cb => cb.value);
+                                const txt = document.getElementById(`ynx_${id}`).value.trim();
+                                if (txt) comments.push(txt);
+                                r.answers.push({
+                                    group: entry.group || null,
+                                    label: entry.short || entry.label,
+                                    value: active.dataset.val,
+                                    comments
+                                });
+                                hasAny = true;
+                            }
                         }
                     });
                 }
@@ -590,6 +713,8 @@
             }
 
             preview.innerHTML = selections.map(s => {
+                if (s.ynTotal) return renderYesNoSection(s);
+
                 // Radio field — always single-line
                 if (s.radioLabel) {
                     let text = esc(s.radioLabel.toLowerCase());
@@ -626,6 +751,47 @@
                 });
                 return html + '<div class="mb-1"></div>';
             }).join('');
+        }
+
+        function joinSentence(parts) {
+            const text = parts
+                .map(p => p.trim().replace(/[.;,]+$/, ''))
+                .filter(Boolean)
+                .map((p, i) => i ? p.charAt(0).toLowerCase() + p.slice(1) : p.charAt(0).toUpperCase() + p.slice(1))
+                .join('; ');
+            return text ? text + '.' : '';
+        }
+
+        function yesNoAnswerText(a) {
+            if (a.value === 'ne') {
+                return a.comments.length ? joinSentence(a.comments) : 'Pažymėta skiltyje NE.';
+            }
+            return a.comments.length ? joinSentence(['Atitinka', ...a.comments]) : '';
+        }
+
+        function renderYesNoSection(s) {
+            let html = `<div class="mb-1"><strong>${esc(s.title)}</strong></div>`;
+            let currentGroup = null;
+            s.answers.forEach(a => {
+                const text = yesNoAnswerText(a);
+                if (!text) return;
+                if (a.group) {
+                    if (a.group !== currentGroup) {
+                        html += `<div class="mb-0 ms-3">– ${esc(a.group)}:</div>`;
+                        currentGroup = a.group;
+                    }
+                    html += `<div class="mb-0 ms-5">• ${esc(a.label)}: ${esc(text)}</div>`;
+                } else {
+                    currentGroup = null;
+                    html += `<div class="mb-0 ms-3">– ${esc(a.label)}: ${esc(text)}</div>`;
+                }
+            });
+            if (s.showScore) {
+                const yes = s.answers.filter(a => a.value === 'taip').length;
+                const no = s.answers.filter(a => a.value === 'ne').length;
+                html += `<div class="mb-0 ms-3">– Rezultatas: ${yes}/${s.ynTotal} atitinka (${no}/${s.ynTotal} pažymėta skiltyje NE).</div>`;
+            }
+            return html + '<div class="mb-2"></div>';
         }
 
         // ── Layout ─────────────────────────────────────────────────
@@ -685,7 +851,7 @@
                 if (matches) {
                     // Highlight specifically what matched inside the group
                     // We check labels, titles, and sound buttons
-                    group.querySelectorAll('.fw-bold, .form-check-label, .sound-btn, .fst-italic').forEach(el => {
+                    group.querySelectorAll('.fw-bold, .form-check-label, .sound-btn, .fst-italic, .yn-label, .yn-group').forEach(el => {
                         if (norm(el.innerText).includes(term)) {
                             el.classList.add('text-bg-warning');
                         }
