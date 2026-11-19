@@ -764,7 +764,7 @@
 
         function yesNoAnswerText(a) {
             if (a.value === 'ne') {
-                return a.comments.length ? joinSentence(a.comments) : 'Pažymėta skiltyje NE.';
+                return a.comments.length ? joinSentence(a.comments) : 'NE.';
             }
             return a.comments.length ? joinSentence(['Atitinka', ...a.comments]) : '';
         }
